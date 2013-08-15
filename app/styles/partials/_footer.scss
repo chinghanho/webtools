@@ -1,0 +1,10 @@
+.page-footer {
+  border-top: 1px solid hsla(0, 0%, 72%, 1);
+  @include box-shadow(hsla(0, 0%, 100%, 1) 0 1px inset);
+  p {
+    text-align: center;
+    margin: 15px auto;
+    color: $footer-text-color;
+    font-size: 12px;
+  }
+}

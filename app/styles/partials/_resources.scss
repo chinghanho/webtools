@@ -1,0 +1,234 @@
+
+/*--------------------------------------*\
+    Large Display - Break Point
+
+    ^large-display
+\*--------------------------------------*/
+@include at-breakpoint($large-display) {
+  .resources-item {
+    @include isolate-grid(3, 12);
+    margin-bottom: gutter($large-display-break);
+  }
+
+  .resource {
+    margin-bottom: gutter($large-display-break);
+  }
+
+  .resource--info__name {
+    @include span-columns(6, 12);
+    h3 {
+      padding-right: 0 !important;
+    }
+  }
+
+  .resource--info__description {
+    @include span-columns(6, 12);
+    p {
+      padding-top: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+
+  .resource--info__img {
+    @include span-columns(6 omega, 12);
+  }
+}
+
+
+
+
+
+/*--------------------------------------*\
+    Desktop - Break Point
+
+    ^desktop
+\*--------------------------------------*/
+@include at-breakpoint($desktop) {
+  .resources-item {
+    @include isolate-grid(3, $desktop-break);
+    margin-bottom: gutter($desktop-break);
+  }
+
+  .resource {
+    margin-bottom: gutter($desktop-break);
+  }
+
+  .resource--info__name {
+    @include span-columns(6, 12);
+    h3 {
+      padding-right: 0 !important;
+    }
+  }
+
+  .resource--info__description {
+    @include span-columns(6, 12);
+    p {
+      padding-top: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+
+  .resource--info__img {
+    @include span-columns(6 omega, 12);
+  }
+}
+
+
+
+/*--------------------------------------*\
+    Tables - Break Point
+
+    ^tables
+\*--------------------------------------*/
+@include at-breakpoint($tables) {
+  .resources-item {
+    @include isolate-grid(3, $tables-break);
+    margin-bottom: gutter($tables-break);
+  }
+
+  .resource {
+    margin-bottom: gutter($tables-break);
+  }
+
+  .resource--info__name {
+    @include span-columns(4, 9);
+    h3 {
+      padding-right: 0 !important;
+    }
+  }
+
+  .resource--info__description {
+    @include span-columns(4, 9);
+    p {
+      padding-top: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+
+  .resource--info__img {
+    @include span-columns(5 omega, 9);
+  }
+}
+
+
+
+
+/*--------------------------------------*\
+    Phones to Tables - Break Point
+
+    ^phones-to-tables
+\*--------------------------------------*/
+@include at-breakpoint($phones-to-tables) {
+  .resources-item {
+    @include isolate-grid(3, $phones-to-tables-break);
+    margin-bottom: gutter($phones-to-tables-break);
+  }
+
+  .resource {
+    margin-bottom: gutter($phones-to-tables-break);
+  }
+
+  .resource--info__img img {
+    padding-top: 0 !important;
+  }
+}
+
+
+
+
+
+
+/*--------------------------------------*\
+    Phones - Break Point
+
+    ^phones
+\*--------------------------------------*/
+@include at-breakpoint($phones) {
+  .resources-item {
+    @include isolate-grid(6, $phones-break);
+    margin-bottom: gutter($phones-break);
+  }
+
+  .resource {
+    margin-bottom: gutter($phones-break);
+  }
+
+  .resource--info__img img {
+    padding-top: 0 !important;
+  }
+}
+
+
+
+
+.resources-item__thumb {
+  padding: 6px;
+}
+
+.resources-item__thumb--info {
+  margin-top: 6px;
+}
+
+.resources-item__thumb--info__name {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.resources-item__thumb--info__description {
+  font-size: 12px;
+  color: $paragraph-text-color;
+}
+
+.resources-item__thumb--img img {
+  //
+}
+
+.show-resource {
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+.resource {
+  //
+}
+
+.resource--empty {
+  margin: 40px;
+  text-align: center;
+}
+
+.resource--info {
+  // padding: 15px;
+}
+
+.resource--info__name {
+  h3 {
+    padding: $gutter-width;
+    color: $heading-text-color;
+  }
+}
+
+.resource--info__description p, .resource--info__url a {
+  padding: $gutter-width;
+}
+
+  .resource--info__description p {
+    line-height: 1.6;
+  }
+
+  .resource--info__url a {
+    display: inline-block;
+    padding-top: 0;
+  }
+
+.resource--info__img {
+  img {
+    @include box-sizing(border-box);
+    padding: $gutter-width;
+  }
+}

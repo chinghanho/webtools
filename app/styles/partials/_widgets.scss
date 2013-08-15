@@ -1,0 +1,87 @@
+/**
+ *  Widgets
+ */
+
+/*--------------------------------------*\
+    Large Display - Break Point
+
+    ^large-display
+\*--------------------------------------*/
+@include at-breakpoint($large-display) {
+  [class^="widgets__"],
+  [class*=" widgets__"] {
+    margin-bottom: 10px;
+  }
+}
+
+
+
+
+
+/*--------------------------------------*\
+    Desktop - Break Point
+
+    ^desktop
+\*--------------------------------------*/
+@include at-breakpoint($desktop) {
+
+  [class^="widgets__"],
+  [class*=" widgets__"] {
+    display: inline-block;
+    margin-left: 10px;
+  }
+
+}
+
+
+
+
+
+/*--------------------------------------*\
+    Tables - Break Point
+
+    ^tables
+\*--------------------------------------*/
+@include at-breakpoint($tables) {
+
+  [class^="widgets__"],
+  [class*=" widgets__"] {
+    margin-bottom: 10px;
+  }
+
+}
+
+
+
+
+/*--------------------------------------*\
+    Phones to Tables - Break Point
+
+    ^phones-to-tables
+\*--------------------------------------*/
+@include at-breakpoint($phones-to-tables) {
+
+  [class^="widgets__"],
+  [class*=" widgets__"] {
+    margin-bottom: 10px;
+  }
+
+}
+
+
+
+
+
+/*--------------------------------------*\
+    Phones - Break Point
+
+    ^phones
+\*--------------------------------------*/
+@include at-breakpoint($phones) {
+
+  [class^="widgets__"],
+  [class*=" widgets__"] {
+    margin-bottom: 10px;
+  }
+
+}

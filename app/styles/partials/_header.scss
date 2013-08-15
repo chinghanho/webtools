@@ -1,0 +1,90 @@
+/*--------------------------------------*\
+    Large Display - Break Point
+
+    ^large-display
+\*--------------------------------------*/
+@include at-breakpoint($large-display) {
+  #logo {
+    position: relative !important;
+  }
+}
+
+
+
+
+
+/*--------------------------------------*\
+    Desktop - Break Point
+
+    ^desktop
+\*--------------------------------------*/
+@include at-breakpoint($desktop) {
+  .icon-list { display: none; }
+}
+
+
+
+
+
+/*--------------------------------------*\
+    Tables - Break Point
+
+    ^tables
+\*--------------------------------------*/
+@include at-breakpoint($tables) {
+  .nav--widgets > nav { display: none; }
+  #logo {
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+}
+
+
+
+
+/*--------------------------------------*\
+    Phones to Tables - Break Point
+
+    ^phones-to-tables
+\*--------------------------------------*/
+@include at-breakpoint($phones-to-tables) {
+  .nav--widgets > nav { display: none; }
+  #logo {
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+}
+
+
+
+
+
+/*--------------------------------------*\
+    Phones - Break Point
+
+    ^phones
+\*--------------------------------------*/
+@include at-breakpoint($phones) {
+  .nav--widgets > nav { display: none; }
+  #logo {
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+}
+
+#logo {
+  //
+}
+
+.page-header {
+  border-bottom: 1px solid $border-color;
+  @include box-shadow(hsla(0, 0%, 100%, 1) 0 1px);
+}
+
+.page-header__wrapper {
+  padding-top: 14px;
+  padding-bottom: 15px;
+}

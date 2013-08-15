@@ -1,0 +1,23 @@
+$sans-serif: tahoma, sans-serif;
+
+$paragraph-text-color: hsla(0, 0%, 53%, 1);
+$footer-text-color: hsla(219, 10%, 55%, 1);
+$heading-text-color: hsla(200, 30%, 35%, 1);
+$link-normal-color: $heading-text-color;
+
+$modal-background-color: hsla(0, 0%, 98%, 1);
+
+$border-color: hsla(0, 0%, 72%, 1);
+
+body {
+  @include background(image-url('white_wall_hash/white_wall_hash.png'));
+}
+
+#logo {
+  color: $heading-text-color;
+}
+
+.paragraph-text {
+  line-height: 1.6em;
+  color: $paragraph-text-color;
+}

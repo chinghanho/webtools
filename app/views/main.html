@@ -1,0 +1,237 @@
+<div class="modal__overlay"></div>
+
+<!-- modal: start -->
+<modal class="show-resource" ng-show="showModal">
+  <div class="modal__wrapper">
+    <div class="modal__wrapper-inner">
+      <div class="modal__content" ng-switch on="modalContent">
+        <div ng-switch-when="newResource">
+          <form name="newResourceForm" id="new-resource-form" ng-submit="submitNewResource()">
+            <div class="modal__header">
+              <div ng-dblclick="enableNameEditor()"
+                   ng-show="nameEditorDisabled"
+                   ng-bind="resourceModel.name || 'Double click to edit name...'"></div>
+              <input type="text" class="paragraph-text" name="name" placeholder="Press enter to complete..." required
+                     ng-minlength=3
+                     ng-maxlength=20
+                     ng-model="resourceModel.name"
+                     ng-hide="nameEditorDisabled"
+                     ui-keydown="{enter: 'nameEditorDone($event)'}">
+               <div class="popover bottom"
+                 ng-show="newResourceForm.name.$dirty && newResourceForm.name.$invalid">
+                 <div class="arrow"></div>
+                 <h3 class="popover-title">Resource name</h3>
+                 <div class="popover-content">Resource name at least 3 letters.</div>
+               </div>
+            </div>
+
+            <div class="modal__body">
+              <div class="modal__cover-image" dropzone model="resourceModel.img_url">
+                <input type="text" name="img_url" style="display: none;" ng-model="resourceModel.img_url" required>
+                <div id="upload-cover-image">
+                  Drag and drop an image.
+                </div>
+              </div>
+
+              <div class="modal__description modal__separator">
+                <p class="paragraph-text"
+                   ng-dblclick="enableDescriptionEditor()"
+                   ng-show="descriptionEditorDisabled"
+                   ng-bind="resourceModel.description || 'Double click to edit description...'"></p>
+
+                <textarea class="paragraph-text" name="description" placeholder="Press enter to complete..." required
+                          ng-minlength=20
+                          ng-model="resourceModel.description"
+                          ng-hide="descriptionEditorDisabled"
+                          ui-keydown="{enter: 'descriptionEditorDone($event)'}"></textarea>
+                <div class="popover bottom"
+                  ng-show="newResourceForm.description.$dirty && newResourceForm.description.$invalid">
+                  <div class="arrow"></div>
+                  <h3 class="popover-title">Resource description</h3>
+                  <div class="popover-content">Resource description at least 20 letters.</div>
+                </div>
+              </div>
+
+              <div class="modal__separator paragraph-text clearfix">
+                <div class="modal__url">
+                  <div ng-dblclick="enableUrlEditor()"
+                       ng-show="urlEditorDisabled"
+                       ng-bind="resourceModel.url || 'Double click to edit resource URL...'">
+                  </div>
+                  <input type="url" name="url" required
+                         placeholder="Resource URL..."
+                         ng-model="resourceModel.url"
+                         ng-hide="urlEditorDisabled"
+                         ui-keydown="{enter: 'urlEditorDone($event)'}">
+                  <div class="popover bottom"
+                    ng-show="newResourceForm.url.$dirty && newResourceForm.url.$invalid">
+                    <div class="arrow"></div>
+                    <h3 class="popover-title">Resource URL</h3>
+                    <div class="popover-content">Resource URL must be used with a prefix: `http://`.</div>
+                  </div>
+                </div>
+
+                <div class="modal__type">
+                  <select name="type" ui-select2 ng-model="resourceModel.type">
+                    <option ng-repeat="type in types" value="{{type._id}}">{{type.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal__submit">
+              <button type="submit" class="btn">Submit New Resource</button>
+            </div>
+          </form>
+        </div>
+
+        <div ng-switch-default>
+          <div class="modal__header">
+            <a ng-href="/resources/{{modalResource._id}}">
+              <h3 ng-bind="modalResource.name"></h3>
+            </a>
+          </div>
+
+          <div class="modal__body modal__separator">
+            <a class="modal__cover-image" ng-href="{{modalResource.url}}" target="_blank">
+              <img ng-src="{{modalResource.img_url}}" alt="{{modalResource.name}}">
+            </a>
+            <p ng-bind="modalResource.description" class="modal__description paragraph-text">Loading...</p>
+          </div>
+
+          <div class="modal__footer">
+            <div class="pull-right">
+              <div class="label" ng-bind="resourceType(modalResource.type_id)"></div>
+            </div>
+            <a ng-href="{{modalResource.url}}" ng-bind="modalResource.url" target="_blank"></a>
+          </div>
+        </div>
+      </div>
+      <div ng-click="modal(false)" class="modal__close-button">&times;</div>
+    </div>
+  </div>
+</modal>
+<!-- modal: end -->
+
+<!-- header: start -->
+<header class="page-header">
+  <div class="page-header__wrapper">
+    <div class="nav--widgets pull-right">
+      <i class="icon-list clickable" ng-init="showNav = false" ng-click="showNav = !showNav"></i>
+      <nav>
+        <ul>
+          <li class="widgets__submit">
+            <a href class="btn narrow" ng-click="modal('newResource')">
+              Submit Resource
+            </a>
+          </li>
+          <li class="widgets__search">
+            <div>
+              <input type="text" ng-model="search.name">
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <h1 id="logo">
+      <a ng-href="/">Web Develpment / Design</a>
+    </h1>
+  </div>
+
+  <nav ng-show="showNav" class="nav--main">
+    <ul class="nav--main__wrapper">
+      <li class="widgets__submit">
+        <a href class="btn" ng-click="modal('newResource'); showNav = !showNav">
+          Submit Resource
+        </a>
+      </li>
+      <li class="widgets__search">
+        <div>
+          <input type="text" ng-model="search.name">
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+<!-- header: end -->
+
+
+<!-- page-wrapper: start -->
+<div class="page-wrapper">
+
+  <div class="resources">
+    <div ng-switch on="resourcesContent">
+      <div ng-switch-when="showResource">
+        <div class="resource box">
+          <div class="resource--info clearfix">
+            <div class="resource--info__name">
+              <a ng-href="{{resource.url}}" target="_blank">
+                <h3 ng-bind="resource.name || 'Can not fetch the name of this resource. Please refresh your browser try it again.'"></h3>
+              </a>
+            </div>
+
+            <div class="resource--info__img">
+              <img ng-src="{{resource.img_url}}" alt="{{resource.name}}">
+            </div>
+
+            <div class="resource--info__description">
+              <p ng-bind="resource.description || 'Can not fetch the description of this resource. Please refresh your browser try it again.'"></p>
+            </div>
+
+            <div class="resource--info__url">
+              <a ng-href="{{resource.url}}" ng-bind="resource.url" target="_blank"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div ng-switch-default>
+        <div class="resources-item box" ng-repeat="resource in filteredResources = (resources | filter:search)">
+          <div class="resources-item__thumb clickable" ng-click="modal(resource)">
+            <div class="resources-item__thumb--img">
+              <div>
+                <img ng-src="{{resource.img_url}}" alt="{{resource.name}}">
+              </div>
+            </div>
+
+            <div class="resources-item__thumb--info">
+              <div class="resources-item__thumb--info__name" ng-bind="resource.name"></div>
+              <div class="resources-item__thumb--info__type">
+                <div class="label" ng-bind="resourceType(resource.type_id)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource--empty" ng-hide="filteredResources.length">
+          <p>There are not any resources.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="resources--sidebar">
+    <ul>
+      <li class="widgets__submit">
+        <div class="btn clickable" ng-click="modal('newResource')">
+          Submit Resource
+        </div>
+      </li>
+      <li class="widgets__search">
+        <div>
+          <input type="text" ng-model="search.name">
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+<!-- page-wrapper: end -->
+
+
+<!-- footer: start -->
+<footer class="page-footer">
+  <p>Created by <a href="//about.chh.tw">CHH</a>.</p>
+  <p>Background image come from <a href="http://subtlepatterns.com/">Subtle Patterns</a>.</p>
+</footer>
+<!-- footer: end -->

@@ -1,0 +1,240 @@
+/*--------------------------------------*\
+    Large Display - Break Point
+
+    ^large-display
+\*--------------------------------------*/
+@include at-breakpoint($large-display) {
+  .modal__wrapper {
+    @include container;
+    @include prefix(4);
+    @include span-columns(6, $large-display-break);
+    .modal__wrapper-inner {
+      @include set-container-width;
+      position: relative;
+      margin: $grid-padding * 4 0;
+      @include border-radius(3px);
+    }
+    .modal__url { @include span-columns(3, 6); }
+    .modal__type { @include span-columns(3 omega, 6); }
+  }
+}
+
+
+
+
+
+
+/*--------------------------------------*\
+    Desktop - Break Point
+
+    ^desktop
+\*--------------------------------------*/
+@include at-breakpoint($desktop) {
+  .modal__wrapper {
+    @include container;
+    @include prefix(3);
+    @include span-columns(6, $desktop-break);
+    .modal__wrapper-inner {
+      @include set-container-width;
+      position: relative;
+      margin: $grid-padding * 2 0;
+      @include border-radius(3px);
+    }
+    .modal__url { @include span-columns(3, 6); }
+    .modal__type { @include span-columns(3 omega, 6); }
+  }
+}
+
+
+
+
+
+
+/*--------------------------------------*\
+    Tables - Break Point
+
+    ^tables
+\*--------------------------------------*/
+@include at-breakpoint($tables) {
+  .modal__wrapper {
+    @include container;
+    @include prefix(2);
+    @include span-columns(5, $tables-break);
+    .modal__wrapper-inner {
+      @include set-container-width;
+      position: relative;
+      margin: $grid-padding 0;
+      @include border-radius(3px);
+    }
+    .modal__url { @include span-columns(3, 5); }
+    .modal__type { @include span-columns(2 omega, 5); }
+  }
+}
+
+
+
+
+
+
+
+
+/*--------------------------------------*\
+    Phones to Tables - Break Point
+
+    ^phones-to-tables
+\*--------------------------------------*/
+@include at-breakpoint($phones-to-tables) {
+  .modal__wrapper {
+    @include container;
+    @include prefix(1);
+    @include span-columns(7, $phones-to-tables-break);
+    .modal__wrapper-inner {
+      @include set-container-width;
+      position: relative;
+      margin: $grid-padding 0;
+      @include border-radius(3px);
+    }
+    .modal__url { @include span-columns(4, 7); }
+    .modal__type { @include span-columns(3 omega, 7); }
+  }
+}
+
+
+
+
+
+
+
+/*--------------------------------------*\
+    Phones - Break Point
+
+    ^phones
+\*--------------------------------------*/
+@include at-breakpoint($phones) {
+  .modal__wrapper {
+    @include container;
+    .modal__wrapper-inner {
+      @include set-container-width;
+      position: relative;
+      margin: $grid-padding 0;
+      @include border-radius(3px);
+    }
+  }
+}
+
+
+
+
+
+
+/* body */ .modal-enabled {
+  overflow: hidden;
+}
+
+.modal__overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  @include background(hsla(0, 0%, 34%, .7));
+  &.modal-enabled {
+    display: block;
+  }
+}
+
+.modal__wrapper {
+  //
+}
+
+.modal__wrapper-inner {
+  @include background($modal-background-color);
+}
+
+.modal__header {
+  padding: 10px 8px 11px;
+  border-bottom: 1px solid $border-color;
+  color: $heading-text-color;
+  a {
+    display: block;
+  }
+  input {
+    width: 80%;
+    margin: -4px 0;
+  }
+}
+
+.modal__content {
+  //
+}
+
+.modal__body {
+  //
+}
+
+.modal__cover-image {
+  width: 100%;
+  border-bottom: 1px solid $border-color;
+  &.dragged {
+    background: #ccc;
+  }
+  img {
+    width: 100%;
+    max-height: 300px;
+  }
+  .cover-image-overlay {
+    @include background(hsla(0, 0%, 18%, .6));
+  }
+}
+
+#upload-cover-image {
+  text-align: center;
+  border: 2px dashed #bbb;
+  border-radius: 5px;
+  font: 20pt bold;
+  color: #bbb;
+  line-height: 227px;
+  &.dropped {
+    border: none;
+    line-height: 1;
+  }
+}
+
+.modal__description {
+  padding: 11px 8px;
+  min-height: 50px;
+}
+
+.modal__separator {
+  border-bottom: 1px solid $border-color;
+}
+
+.modal__footer, .modal__submit, .modal__url, .modal__type {
+  @include box-sizing(border-box);
+  padding: 11px 8px;
+}
+
+.modal__close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: lighten($link-normal-color, 14%);
+  border-left: 1px solid $border-color;
+  padding: 11px 12px;
+  @extend .clickable;
+  &:hover {
+    color: lighten($link-normal-color, 28%)
+  }
+}
+
+.progress {
+  margin-bottom: 0;
+}
+
+.popover {
+  display: inline;
+  top: auto;
+  left: auto;
+}

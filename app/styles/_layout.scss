@@ -1,0 +1,118 @@
+@import "susy";
+
+$total-columns: 14;
+$column-width: 60px;
+$gutter-width: 20px;
+$grid-padding: 10px;
+
+/**
+ *
+ * 可以用 ^ 作為搜尋的起始標籤，用搜尋功能跳至該區塊
+ * 例如搜尋：^phones 或 ^phones-to-tables
+ *
+ */
+
+// 各種螢幕尺寸即網格數
+$phones-break: 6;
+$phones-to-tables-break: 9;
+$tables-break: 9;
+$desktop-break: 12;
+$large-display-break: $total-columns;
+
+$phones: $phones-break 480px;
+$phones-to-tables: 481px $phones-to-tables-break 767px;
+$tables: 768px $tables-break 980px;
+$desktop: 981px $desktop-break 1200px;
+$large-display: 1201px $large-display-break;
+
+
+.page-wrapper, .page-header__wrapper, .nav--main__wrapper {
+  @include container;
+}
+
+.page-wrapper {
+  @include set-container-width;
+}
+
+
+
+
+
+/*--------------------------------------*\
+    Large Display - Break Point
+
+    ^large-display
+\*--------------------------------------*/
+@include at-breakpoint($large-display) {
+  .nav--widgets { display: none; }
+
+  .resources { @include span-columns(12, $large-display-break); }
+  .resources--sidebar { @include span-columns(2 omega, $total-columns); }
+
+  .page-header { margin-bottom: gutter($large-display-break); }
+  .nav--main { display: none; }
+}
+
+
+
+
+
+/*--------------------------------------*\
+    Desktop - Break Point
+
+    ^desktop
+\*--------------------------------------*/
+@include at-breakpoint($desktop) {
+  .resources { @include span-columns($desktop-break); }
+  .resources--sidebar { display: none; }
+
+  .page-header { margin-bottom: gutter($desktop-break); }
+  .nav--main { display: none; }
+}
+
+
+
+
+
+/*--------------------------------------*\
+    Tables - Break Point
+
+    ^tables
+\*--------------------------------------*/
+@include at-breakpoint($tables) {
+  .resources { @include span-columns($tables-break); }
+  .resources--sidebar { display: none; }
+  .page-header { margin-bottom: gutter($tables-break); }
+  .nav--main { margin-bottom: $grid-padding; }
+}
+
+
+
+
+/*--------------------------------------*\
+    Phones to Tables - Break Point
+
+    ^phones-to-tables
+\*--------------------------------------*/
+@include at-breakpoint($phones-to-tables) {
+  .resources { @include span-columns($phones-to-tables-break); }
+  .resources--sidebar { display: none; }
+  .page-header { margin-bottom: gutter($phones-to-tables-break); }
+  .nav--main { margin-bottom: $grid-padding; }
+}
+
+
+
+
+
+/*--------------------------------------*\
+    Phones - Break Point
+
+    ^phones
+\*--------------------------------------*/
+@include at-breakpoint($phones) {
+  .resources { @include span-columns($phones-break); }
+  .resources--sidebar { display: none; }
+  .page-header { margin-bottom: gutter($phones-break); }
+  .nav--main { margin-bottom: $grid-padding; }
+}

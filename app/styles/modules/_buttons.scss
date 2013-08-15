@@ -1,0 +1,23 @@
+$normal-button-bg-color: hsl(132, 34%, 47%);
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  width: 100%;
+  @include background($normal-button-bg-color);
+  padding: 10px 8px 11px;
+  text-align: center;
+  @include border-radius(3px);
+  color: hsla(0, 0%, 96%, 1);
+  border: 1px solid darken($normal-button-bg-color, 9%);
+  font-size: 12px;
+  outline: none;
+  @include box-sizing(border-box);
+  &:hover {
+    @include box-shadow(darken($normal-button-bg-color, 14%) 0 -2px inset);
+  }
+
+  &.narrow {
+    padding: 4px 8px 5px;
+  }
+}
