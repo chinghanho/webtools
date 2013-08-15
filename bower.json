@@ -9,7 +9,10 @@
     "es5-shim": "~2.0.8",
     "angular-resource": "~1.0.7",
     "angular-cookies": "~1.0.7",
-    "angular-ui-select2": "latest"
+    "angular-ui-select2": "latest",
+    "angular-ui-utils": "0.0.4",
+    "underscore": "1.5.1",
+    "angular-bootstrap": "~0.5.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",
