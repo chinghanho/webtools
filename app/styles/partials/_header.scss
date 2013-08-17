@@ -4,8 +4,9 @@
     ^large-display
 \*--------------------------------------*/
 @include at-breakpoint($large-display) {
-  #logo {
-    position: relative !important;
+  .icon-list { display: none; }
+  .nav--widgets {
+    .widgets__submit, .widgets__search { display: none !important; }
   }
 }
 
@@ -33,6 +34,9 @@
 \*--------------------------------------*/
 @include at-breakpoint($tables) {
   .nav--widgets > nav { display: none; }
+  .nav--widgets {
+    .widgets__submit, .widgets__search { display: none; }
+  }
   #logo {
     left: 0;
     right: 0;

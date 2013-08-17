@@ -8,6 +8,14 @@
     ^large-display
 \*--------------------------------------*/
 @include at-breakpoint($large-display) {
+  .nav--widgets {
+    [class^="widgets__"],
+    [class*=" widgets__"] {
+      display: inline-block;
+      margin-bottom: 0;
+    }
+  }
+
   [class^="widgets__"],
   [class*=" widgets__"] {
     margin-bottom: 10px;

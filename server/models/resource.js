@@ -6,8 +6,8 @@
  * Module dependencies
  */
 
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema
+var mongoose = require('mongoose')
+  , Schema = mongoose.Schema
 
 /**
  * Resources Schema
@@ -36,7 +36,7 @@ ResourceSchema.methods = {
     this.description = description
     this.img_url     = img_url
     this.url         = url
-    this.type_id = type_id
+    this.type_id     = type_id
     this.save(callback)
   }
 

@@ -5,6 +5,68 @@
   <div class="modal__wrapper">
     <div class="modal__wrapper-inner">
       <div class="modal__content" ng-switch on="modalContent">
+        <div ng-switch-when="signUp">
+          <div class="modal__header">
+            <h3>Sign up</h3>
+          </div>
+
+          <div class="modal__body clearfix modal__separator">
+            <form name="newUserForm" id="new-user-form" ng-submit="submitNewUser()">
+              <div class="modal__body__form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" placeholder="Pick a username"
+                       ng-minlength=6
+                       ng-maxlength=20
+                       ng-model="userModel.username">
+              </div>
+
+              <div class="modal__body__form-group modal__separator">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Create a password"
+                       ng-minlength=8
+                       ng-model="userModel.password">
+              </div>
+
+              <div class="modal__body__form-group">
+                <button type="submit" class="btn">Sign up for WebTools</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div ng-switch-when="signIn">
+          <div class="modal__header">
+            <h3>Sign in</h3>
+          </div>
+
+          <div class="modal__body clearfix modal__separator">
+            <form name="newSessionForm" id="new-session-form" ng-submit="submitNewSession()">
+              <div class="modal__body__form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username"
+                       ng-minlength=6
+                       ng-maxlength=20
+                       ng-model="sessionModel.username">
+              </div>
+
+              <div class="modal__body__form-group modal__separator">
+                <label for="password">Password</label>
+                <input type="password" name="password"
+                       ng-minlength=8
+                       ng-model="sessionModel.password">
+              </div>
+
+              <div class="modal__body__form-group">
+                <button type="submit" class="btn">Sign in</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- <div class="modal__footer">
+            <a href="" class="btn blue">Twitter</a>
+          </div> -->
+        </div>
+
         <div ng-switch-when="newResource">
           <form name="newResourceForm" id="new-resource-form" ng-submit="submitNewResource()">
             <div class="modal__header">
@@ -120,6 +182,16 @@
       <i class="icon-list clickable" ng-init="showNav = false" ng-click="showNav = !showNav"></i>
       <nav>
         <ul>
+          <li class="widgets__signin">
+            <a href class="btn narrow" ng-click="modal('signIn')">
+              Sign in
+            </a>
+          </li>
+          <li class="widgets__signup">
+            <a href class="btn narrow" ng-click="modal('signUp')">
+              Sign up
+            </a>
+          </li>
           <li class="widgets__submit">
             <a href class="btn narrow" ng-click="modal('newResource')">
               Submit Resource
@@ -140,6 +212,16 @@
 
   <nav ng-show="showNav" class="nav--main">
     <ul class="nav--main__wrapper">
+      <li class="widgets__login--twitter">
+        <a href class="btn" ng-click="modal('signIn')">
+          Sign in
+        </a>
+      </li>
+      <li class="widgets__signup">
+        <a href class="btn narrow" ng-click="modal('signUp')">
+          Sign up
+        </a>
+      </li>
       <li class="widgets__submit">
         <a href class="btn" ng-click="modal('newResource'); showNav = !showNav">
           Submit Resource

@@ -42,6 +42,11 @@ angular.module('chhResourcesApp')
       type: ""
     };
 
+    $scope.sessionModel = $scope.userModel = {
+      username: "",
+      password: ""
+    }
+
     /**
      * Modal Control
      */
@@ -50,8 +55,16 @@ angular.module('chhResourcesApp')
     $scope.modal = function(arg) {
 
       if (arg == 'newResource') {
-        $scope.modalContent = 'newResource'
+        $scope.modalContent = 'newResource';
         $scope.showModal = true;
+      }
+      else if (arg == 'signIn') {
+        $scope.modalContent = 'signIn';
+        $scope.showModal = true;
+      }
+      else if (arg == 'signUp') {
+        $scope.showModal = true;
+        $scope.modalContent = 'signUp';
       }
       else if (arg) {
         clearModalContent();
@@ -154,6 +167,28 @@ angular.module('chhResourcesApp')
         .error(function(data, status, headers, config) {
           console.log('Submit new resource failed');
         })
+    }
+
+    $scope.submitNewSession = function() {
+      $http.post('/api/sessions', $scope.sessionModel)
+        .success(function(data, status, headers, config) {
+          console.log('Create new session successfully.');
+          $scope.modal(false);
+        })
+        .error(function() {
+          console.log('New session failed.');
+        });
+    }
+
+    $scope.submitNewUser = function() {
+      $http.post('/api/users', $scope.userModel)
+        .success(function(data, status, headers, config) {
+          console.log('Create new user successfully.');
+          $scope.modal(false);
+        })
+        .error(function() {
+          console.log('New user failed.');
+        });
     }
 
     /**

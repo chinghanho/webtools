@@ -16,6 +16,11 @@
     }
     .modal__url { @include span-columns(3, 6); }
     .modal__type { @include span-columns(3 omega, 6); }
+    .modal__body__form-group {
+      @include span-columns(6, 6);
+      label { @include span-columns(1, 6); }
+      input { @include span-columns(5 omega, 6); }
+    }
   }
 }
 
@@ -42,6 +47,11 @@
     }
     .modal__url { @include span-columns(3, 6); }
     .modal__type { @include span-columns(3 omega, 6); }
+    .modal__body__form-group {
+      @include span-columns(6, 6);
+      label { @include span-columns(1, 6); }
+      input { @include span-columns(5 omega, 6); }
+    }
   }
 }
 
@@ -68,6 +78,11 @@
     }
     .modal__url { @include span-columns(3, 5); }
     .modal__type { @include span-columns(2 omega, 5); }
+    .modal__body__form-group {
+      @include span-columns(5, 5);
+      label { @include span-columns(1, 5); }
+      input { @include span-columns(4 omega, 5); }
+    }
   }
 }
 
@@ -96,6 +111,11 @@
     }
     .modal__url { @include span-columns(4, 7); }
     .modal__type { @include span-columns(3 omega, 7); }
+  }
+  .modal__body__form-group {
+    @include span-columns(7, 7);
+    label { @include span-columns(1, 7); }
+    input { @include span-columns(6 omega, 7); }
   }
 }
 
@@ -166,12 +186,29 @@
   }
 }
 
+.modal__header, .modal__url {
+  input {
+    resize: none;
+  }
+}
+
 .modal__content {
   //
 }
 
 .modal__body {
   //
+}
+
+.modal__body__form-group {
+  @include box-sizing(border-box);
+  padding: 11px 8px;
+  &:first-child {
+    padding-bottom: 0;
+  }
+  input {
+    resize: none;
+  }
 }
 
 .modal__cover-image {

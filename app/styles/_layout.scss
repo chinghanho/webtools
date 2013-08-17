@@ -44,8 +44,6 @@ $large-display: 1201px $large-display-break;
     ^large-display
 \*--------------------------------------*/
 @include at-breakpoint($large-display) {
-  .nav--widgets { display: none; }
-
   .resources { @include span-columns(12, $large-display-break); }
   .resources--sidebar { @include span-columns(2 omega, $total-columns); }
 
