@@ -1,0 +1,77 @@
+<form name="newResourceForm" id="new-resource-form" ng-submit="submitNewResource()">
+  <div class="modal__header">
+    <div ng-dblclick="enableNameEditor()"
+         ng-show="nameEditorDisabled"
+         ng-bind="resourceModel.name || 'Double click to edit name...'"></div>
+    <input type="text" class="paragraph-text" name="name" placeholder="Press enter to complete..." required
+           ng-minlength=3
+           ng-maxlength=20
+           ng-model="resourceModel.name"
+           ng-hide="nameEditorDisabled"
+           ui-keydown="{enter: 'nameEditorDone($event)'}">
+     <div class="popover bottom"
+       ng-show="newResourceForm.name.$dirty && newResourceForm.name.$invalid">
+       <div class="arrow"></div>
+       <h3 class="popover-title">Resource name</h3>
+       <div class="popover-content">Resource name at least 3 letters.</div>
+     </div>
+  </div>
+
+  <div class="modal__body">
+    <div class="modal__cover-image" dropzone model="resourceModel.img_url">
+      <input type="text" name="img_url" style="display: none;" ng-model="resourceModel.img_url" required>
+      <div id="upload-cover-image">
+        Drag and drop an image.
+      </div>
+    </div>
+
+    <div class="modal__description modal__separator">
+      <p class="paragraph-text"
+         ng-dblclick="enableDescriptionEditor()"
+         ng-show="descriptionEditorDisabled"
+         ng-bind="resourceModel.description || 'Double click to edit description...'"></p>
+
+      <textarea class="paragraph-text" name="description" placeholder="Press enter to complete..." required
+                ng-minlength=20
+                ng-model="resourceModel.description"
+                ng-hide="descriptionEditorDisabled"
+                ui-keydown="{enter: 'descriptionEditorDone($event)'}"></textarea>
+      <div class="popover bottom"
+        ng-show="newResourceForm.description.$dirty && newResourceForm.description.$invalid">
+        <div class="arrow"></div>
+        <h3 class="popover-title">Resource description</h3>
+        <div class="popover-content">Resource description at least 20 letters.</div>
+      </div>
+    </div>
+
+    <div class="modal__separator paragraph-text clearfix">
+      <div class="modal__url">
+        <div ng-dblclick="enableUrlEditor()"
+             ng-show="urlEditorDisabled"
+             ng-bind="resourceModel.url || 'Double click to edit resource URL...'">
+        </div>
+        <input type="url" name="url" required
+               placeholder="Resource URL..."
+               ng-model="resourceModel.url"
+               ng-hide="urlEditorDisabled"
+               ui-keydown="{enter: 'urlEditorDone($event)'}">
+        <div class="popover bottom"
+          ng-show="newResourceForm.url.$dirty && newResourceForm.url.$invalid">
+          <div class="arrow"></div>
+          <h3 class="popover-title">Resource URL</h3>
+          <div class="popover-content">Resource URL must be used with a prefix: `http://`.</div>
+        </div>
+      </div>
+
+      <div class="modal__type">
+        <select name="type" ui-select2 ng-model="resourceModel.type">
+          <option ng-repeat="type in types" value="{{type._id}}">{{type.name}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal__submit">
+    <button type="submit" class="btn">Submit New Resource</button>
+  </div>
+</form>
