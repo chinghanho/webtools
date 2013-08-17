@@ -1,5 +1,5 @@
 /**
- * Controller - Users
+ * Controller - Sessions
  */
 
 /**
@@ -7,13 +7,16 @@
  */
 
 var mongoose = require('mongoose')
-  , sanitize = require('validator').sanitize
   , User     = mongoose.model('User')
+  , sanitize = require('validator').sanitize
 
 /**
- * Create
+ * Handle user login
+ *
+ * @param {HttpRequest} req
+ * @param {HttpResponse} res
+ * @param {Function} next
  */
-
 exports.create = function(req, res, next) {
 
   var login = sanitize(req.body.username).trim()
@@ -23,14 +26,19 @@ exports.create = function(req, res, next) {
   var password = sanitize(req.body.password).trim()
     , password = sanitize(password).xss()
 
-  var user = new User()
+  // TODO: if login and password is 'false'? handle it!
 
-  user.newAndSave(login, password, function(err, user) {
+  User.getUserByLogin(login, function(err, user) {
 
     if (err) { return next(err) }
 
-    // sign in after saved...
-    res.send(user)
+    if (user && user.authenticate(password)) {
+      res.send(user)
+    }
+    else {
+      res.send('')
+    }
 
   })
+
 }

@@ -13,7 +13,7 @@ var mongoose = require('mongoose'),
  * List
  */
 
-exports.list = function(req, res, next) {
+exports.index = function(req, res, next) {
 
   Type.list({}, function(err, data) {
     res.send(data)

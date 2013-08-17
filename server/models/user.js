@@ -60,6 +60,17 @@ UserSchema.pre('save', function(next) {
 
 UserSchema.methods = {
 
+  /**
+   * Authenticate - check if the passwords are the same
+   *
+   * @param  {String} plainText
+   * @return {Boolean}
+   * @api public
+   */
+  authenticate: function(plainText) {
+    return this.encryptPassword(plainText) == this.hashed_password
+  },
+
   newAndSave: function(login, password, callback) {
     this.login = login
     this.password = password

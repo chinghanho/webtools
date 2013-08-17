@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('chhResourcesApp')
-  .controller('ResourcesCtrl', ['$http', '$scope', '$route', '$parse', '$filter', '$routeParams',
-    function ($http, $scope, $route, $filter, $parse, $routeParams) {
+  .controller('ResourcesCtrl', ['$http', '$scope', '$route', '$parse', '$filter', '$routeParams', '$cookies',
+    function ($http, $scope, $route, $filter, $parse, $routeParams, $cookies) {
 
     if (Object.keys($routeParams).length != 0) {
 
@@ -42,7 +42,12 @@ angular.module('chhResourcesApp')
       type: ""
     };
 
-    $scope.sessionModel = $scope.userModel = {
+    $scope.sessionModel = {
+      username: "",
+      password: ""
+    }
+
+    $scope.userModel = {
       username: "",
       password: ""
     }
@@ -172,10 +177,15 @@ angular.module('chhResourcesApp')
     $scope.submitNewSession = function() {
       $http.post('/api/sessions', $scope.sessionModel)
         .success(function(data, status, headers, config) {
-          console.log('Create new session successfully.');
-          $scope.modal(false);
+          if (data) {
+            $cookies.remember_token = data.remember_token
+            $scope.modal(false);
+          }
+          else {
+            console.log('username with wrong password');
+          }
         })
-        .error(function() {
+        .error(function(data, status, headers, config) {
           console.log('New session failed.');
         });
     }
@@ -186,7 +196,7 @@ angular.module('chhResourcesApp')
           console.log('Create new user successfully.');
           $scope.modal(false);
         })
-        .error(function() {
+        .error(function(data, status, headers, config) {
           console.log('New user failed.');
         });
     }

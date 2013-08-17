@@ -15,7 +15,7 @@ var mongoose = require('mongoose'),
  * List
  */
 
-exports.list = function(req, res, next) {
+exports.index = function(req, res, next) {
 
   Resource.list({}, function(err, data) {
     res.send(data)
@@ -29,20 +29,20 @@ exports.list = function(req, res, next) {
 
 exports.create = function(req, res, next) {
 
-  var name = sanitize(req.body.name).trim(),
-      name = sanitize(name).xss()
+  var name = sanitize(req.body.name).trim()
+    , name = sanitize(name).xss()
 
-  var description = sanitize(req.body.description).trim(),
-      description = sanitize(description).xss()
+  var description = sanitize(req.body.description).trim()
+    , description = sanitize(description).xss()
 
-  var img_url = sanitize(req.body.img_url).trim(),
-      img_url = sanitize(img_url).xss()
+  var img_url = sanitize(req.body.img_url).trim()
+    , img_url = sanitize(img_url).xss()
 
-  var url = sanitize(req.body.url).trim(),
-      url = sanitize(url).xss()
+  var url = sanitize(req.body.url).trim()
+    , url = sanitize(url).xss()
 
-  var type_id = sanitize(req.body.type).trim(),
-      type_id = sanitize(type_id).xss()
+  var type_id = sanitize(req.body.type).trim()
+    , type_id = sanitize(type_id).xss()
 
   var resource = new Resource()
 

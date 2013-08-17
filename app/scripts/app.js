@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('chhResourcesApp', ['ui.keypress', 'ui.select2'])
+angular.module('chhResourcesApp', ['ui.keypress', 'ui.select2', 'ngCookies'])
 
   .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
