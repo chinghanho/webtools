@@ -22,6 +22,9 @@ var users     = require('../controllers/users')
 
 module.exports = function(app) {
 
+  app.get('/resources/:id', function(req, res, next) {
+    res.redirect('/#/resources/' + req.param('id'))
+  })
   app.get('/api/cookies', function(req, res, next) {
     // console.info(req.cookies.remember_token)
     res.send(req.cookies)

@@ -5,9 +5,9 @@
   <div class="modal__wrapper">
     <div class="modal__wrapper-inner">
       <div class="modal__content" ng-switch on="modalContent">
-        <div ng-switch-when="signUp" ng-include=" 'views/users/new.html' "></div>
-        <div ng-switch-when="signIn" ng-include=" 'views/sessions/new.html' "></div>
-        <div ng-switch-when="newResource" ng-include=" 'views/resources/new.html' "></div>
+        <div ng-switch-when="signUp" ng-include=" '/views/users/new.html' "></div>
+        <div ng-switch-when="signIn" ng-include=" '/views/sessions/new.html' "></div>
+        <div ng-switch-when="newResource" ng-include=" '/views/resources/new.html' "></div>
 
         <div ng-switch-default>
           <div class="modal__header">
