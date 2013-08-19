@@ -60,8 +60,14 @@ angular.module('chhResourcesApp')
     $scope.modal = function(arg) {
 
       if (arg == 'newResource') {
-        $scope.modalContent = 'newResource';
-        $scope.showModal = true;
+        if ($scope.isLogged) {
+          $scope.modalContent = 'newResource';
+          $scope.showModal = true;
+        }
+        else {
+          $scope.modalContent = 'signIn';
+          $scope.showModal = true;
+        }
       }
       else if (arg == 'signIn') {
         $scope.modalContent = 'signIn';
@@ -89,11 +95,17 @@ angular.module('chhResourcesApp')
         $('body').removeClass('modal-enabled');
         $('.modal__overlay').removeClass('modal-enabled');
       }
+
     }
 
     // $scope.clickUploader = function() {
     //   $('#cover-image-uploader').click();
     // }
+
+    $scope.destroySession = function() {
+      delete $cookies.remember_token;
+      $scope.isLogged = !$scope.isLogged;
+    }
 
     /**
      * Filter
@@ -177,12 +189,13 @@ angular.module('chhResourcesApp')
     $scope.submitNewSession = function() {
       $http.post('/api/sessions', $scope.sessionModel)
         .success(function(data, status, headers, config) {
-          if (data) {
-            $cookies.remember_token = data.remember_token
+          if (data && !data.message) {
+            $scope.isLogged = !$scope.isLogged;
+            clearModelValues($scope.sessionModel);
             $scope.modal(false);
           }
           else {
-            console.log('username with wrong password');
+            console.log(data.message);
           }
         })
         .error(function(data, status, headers, config) {
@@ -193,7 +206,8 @@ angular.module('chhResourcesApp')
     $scope.submitNewUser = function() {
       $http.post('/api/users', $scope.userModel)
         .success(function(data, status, headers, config) {
-          console.log('Create new user successfully.');
+          $scope.isLogged = !$scope.isLogged;
+          clearModelValues($scope.userModel);
           $scope.modal(false);
         })
         .error(function(data, status, headers, config) {
@@ -207,5 +221,11 @@ angular.module('chhResourcesApp')
 
     function clearModalContent() {
       $scope.modalContent = null;
+    }
+
+    function clearModelValues(model) {
+      for (var i in model) {
+        model[i] = ""
+      }
     }
   }]);

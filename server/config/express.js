@@ -1,5 +1,7 @@
-var express = require('express'),
-    path = require('path')
+var express = require('express')
+  , path    = require('path')
+  , env     = process.env.NODE_ENV || 'development'
+  , config  = require('./config')[env]
 
 module.exports = function(app, config) {
 
@@ -17,18 +19,34 @@ module.exports = function(app, config) {
   app.configure(function() {
 
     // cookieParser should be above session
-    app.use(express.cookieParser())
+    app.use(express.cookieParser(config.secret_token))
 
     // bodyParser should be above methodOverride
     app.use(express.bodyParser())
     // app.use(express.methodOverride())  <--- What is this???
 
+    // Express cookie session should be above CSRF protection middleware
+    app.use(express.cookieSession())
+
+    // Telling CSRF middleware to use the right token
+    var csrfValue = function(req) {
+      var token = (req.body && req.body._csrf)
+        || (req.query && req.query._csrf)
+        || (req.headers['x-csrf-token'])
+        || (req.headers['x-xsrf-token'])
+      return token
+    }
+
     // this should be ignored when running on test environment
-    // app.use(express.csrf())
+    app.use(express.csrf({value: csrfValue}))
+
+    app.use(function(req, res, next) {
+      res.cookie('XSRF-TOKEN', req.session._csrf)
+      next()
+    })
 
     // routes should be at the last
     app.use(app.router)
-    // app.use(routes(app))
 
     // // assume "not found" in the error msgs
     // // is a 404. this is somewhat silly, but

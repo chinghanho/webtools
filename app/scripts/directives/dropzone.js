@@ -1,5 +1,5 @@
 angular.module('chhResourcesApp')
-  .directive('dropzone', ['$http', function($http){
+  .directive('dropzone', ['$http', '$cookies', function($http, $cookies){
     return {
       // name: '',
       // priority: 1,
@@ -43,11 +43,12 @@ angular.module('chhResourcesApp')
            *
            */
           var xhr = new XMLHttpRequest();
-          xhr.upload.addEventListener("progress", uploadProgress, false)
-          xhr.addEventListener("load", uploadComplete, false)
-          xhr.addEventListener("error", uploadFailed, false)
-          xhr.addEventListener("abort", uploadCanceled, false)
+          xhr.upload.addEventListener("progress", uploadProgress, false);
+          xhr.addEventListener("load", uploadComplete, false);
+          xhr.addEventListener("error", uploadFailed, false);
+          xhr.addEventListener("abort", uploadCanceled, false);
           xhr.open("POST", "/api/resources/image");
+          xhr.setRequestHeader('X-CSRF-TOKEN', $cookies['XSRF-TOKEN']);
           xhr.send(fd);
 
           $('<div class="progress progress-striped active"><div class="bar"></div></div>')

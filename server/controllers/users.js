@@ -29,7 +29,7 @@ exports.create = function(req, res, next) {
 
     if (err) { return next(err) }
 
-    // sign in after saved...
+    res.cookie('remember_token', user.remember_token, { signed: true })
     res.send(user)
 
   })

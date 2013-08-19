@@ -22,6 +22,7 @@ var UserSchema = new Schema(
     salt:             { type: String },
     hashed_password:  { type: String },
     email:            { type: String },
+    role:             { type: String },
     remember_token:   { type: String },
     create_at:        { type: Date, default: Date.now },
     update_at:        { type: Date, default: Date.now }
@@ -130,6 +131,11 @@ UserSchema.statics = {
    */
   getUserByLogin: function(login, callback) {
     this.findOne({ login: login })
+      .exec(callback)
+  },
+
+  findUserByRememberToken: function(remember_token, callback) {
+    this.findOne({ remember_token: remember_token })
       .exec(callback)
   }
 

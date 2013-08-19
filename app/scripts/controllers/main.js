@@ -2,7 +2,26 @@
 
 angular.module('chhResourcesApp')
 
-  .controller('MainCtrl', ['$scope', '$routeParams', 'resourcesData', 'typesList', function ($scope, $routeParams, resourcesData, typesList) {
+  .controller('MainCtrl', ['$scope', '$http', '$cookies', '$routeParams', 'resourcesData', 'typesList', 'Auth',
+    function ($scope, $http, $cookies, $routeParams, resourcesData, typesList, Auth) {
+
+    $http.get('/api/sessions/check')
+      .success(function(data, status, headers, config) {
+        if (data && data.message == 'Not Found') {
+          Auth.isLogged = false;
+          $scope.isLogged = Auth.isLogged;
+        }
+        else {
+          Auth.isLogged = true;
+          $scope.isLogged = Auth.isLogged;
+        }
+      })
+      .error(function(data, status, headers, config) {
+        console.log('Can\'t check authentication, try again..')
+      })
+
+    $scope.isLogged = Auth.isLogged; // default is false
+    console.log($scope.isLogged);
 
     // var dataForDevelopment = [
     //   {

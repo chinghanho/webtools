@@ -12,10 +12,6 @@ var mongoose = require('mongoose')
 
 /**
  * Handle user login
- *
- * @param {HttpRequest} req
- * @param {HttpResponse} res
- * @param {Function} next
  */
 exports.create = function(req, res, next) {
 
@@ -33,12 +29,44 @@ exports.create = function(req, res, next) {
     if (err) { return next(err) }
 
     if (user && user.authenticate(password)) {
-      res.send(user)
+      res.cookie('remember_token', user.remember_token, { signed: true })
+      res.send({
+        "login": user.login,
+        "id": user._id,
+        "update_at": user.update_at,
+        "create_at": user.create_at
+      })
     }
     else {
-      res.send('')
+      res.send({message: 'Not Found'})
     }
 
   })
 
+}
+
+/**
+ * Check client authentication
+ */
+exports.check = function(req, res, next) {
+
+  var remember_token = req.signedCookies['remember_token']
+
+  if (remember_token) {
+    User.findUserByRememberToken(remember_token, function(err, user) {
+
+      if (err) { return next(err) }
+
+      // res.cookie('remember_token', user.remember_token, { signed: true })
+      res.send({
+        "login": user.login,
+        "id": user._id,
+        "update_at": user.update_at,
+        "create_at": user.create_at
+      })
+    })
+  }
+  else {
+    res.send({message: 'Not Found'})
+  }
 }

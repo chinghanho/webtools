@@ -2,13 +2,13 @@
  * Server
  */
 
-var express = require('express'),
-    fs = require('fs'),
-    path = require('path')
+var express = require('express')
+  , fs = require('fs')
+  , path = require('path')
 
-var env = process.env.NODE_ENV || 'development',
-    config = require('./config/config')[env],
-    mongoose = require('mongoose')
+var env = process.env.NODE_ENV || 'development'
+  , config = require('./config/config')[env]
+  , mongoose = require('mongoose')
 
 // Bootstrap db connection
 mongoose.connect(config.db, function(err) {
