@@ -7,9 +7,14 @@
  */
 
 var mongoose = require('mongoose')
-  , Schema   = mongoose.Schema
   , crypto   = require('crypto')
   , bcrypt   = require('bcrypt')
+  , _        = require('underscore')
+
+var Schema = mongoose.Schema
+
+var env    = process.env.NODE_ENV || 'development'
+  , config = require('../config/config')[env]
 
 /**
  * User Schema
@@ -22,7 +27,7 @@ var UserSchema = new Schema(
     salt:             { type: String },
     hashed_password:  { type: String },
     email:            { type: String },
-    role:             { type: String },
+    role:             { type: String, default: 'user' },
     remember_token:   { type: String },
     create_at:        { type: Date, default: Date.now },
     update_at:        { type: Date, default: Date.now }
@@ -53,6 +58,15 @@ UserSchema.pre('save', function(next) {
     that.remember_token = remember_token
     next()
   })
+})
+
+UserSchema.pre('save', function(next) {
+  if (_.contains(config.admin, this.login)) {
+    this.role = 'admin'
+    next()
+  } else {
+    next()
+  }
 })
 
 /**

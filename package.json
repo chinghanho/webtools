@@ -6,7 +6,8 @@
     "grunt-karma": "~0.4.5",
     "mongoose": "3.6.15",
     "validator": "~1.4.0",
-    "bcrypt": "~0.7.6"
+    "bcrypt": "~0.7.6",
+    "underscore": "~1.5.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
