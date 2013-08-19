@@ -1,0 +1,20 @@
+textarea, input {
+  &.ng-invalid-minlength,
+  &.ng-invalid-url {
+    border: 1px solid hsla(1, 45%, 40%, 1);
+  }
+}
+
+textarea, input {
+  &:focus {
+    .ng-invalid-url,
+    .ng-invalid-minlength {
+      @include box-shadow(hsla(1, 44%, 70%, 1) 0 0 6px);
+    }
+  }
+}
+
+.btn:disabled {
+  cursor: default;
+  @extend .btn.disabled;
+}

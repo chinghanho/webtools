@@ -28,6 +28,7 @@ textarea {
   max-height: 500px;
   padding: 10px;
   resize: vertical;
+  outline: none;
   border: 1px solid hsla(0, 0%, 80%, 1);
   @include box-shadow(hsla(0, 0%, 0%, 0.075) 0 1px 2px inset);
   @include border-radius(3px);
@@ -40,6 +41,8 @@ input {
   resize: vertical;
   padding: 2px 0 2px 5px;
   border: 1px solid hsla(0, 0%, 80%, 1);
+  resize: none;
+  outline: none;
   @include box-shadow(hsla(0, 0%, 0%, 0.075) 0 1px 2px inset);
   @include border-radius(3px);
   @include box-sizing(border-box);

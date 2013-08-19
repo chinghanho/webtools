@@ -1,5 +1,6 @@
-$normal-button-bg-color: hsla(0, 0%, 71%, 1);
+$normal-button-bg-color: hsla(0, 0%, 93%, 1);
 $primary-button-bg-color: hsla(132, 34%, 47%, 1);
+$disabled-button-bg-color: hsla(0, 0%, 71%, 1);
 $blue-button-bg-color: hsla(193, 92%, 49%, 1);
 
 .btn {
@@ -10,7 +11,7 @@ $blue-button-bg-color: hsla(193, 92%, 49%, 1);
   padding: 10px 8px 11px;
   text-align: center;
   @include border-radius(3px);
-  color: hsla(0, 0%, 96%, 1);
+  color: invert($normal-button-bg-color);
   border: 1px solid darken($normal-button-bg-color, 9%);
   font-size: 12px;
   outline: none;
@@ -26,14 +27,25 @@ $blue-button-bg-color: hsla(193, 92%, 49%, 1);
   &.primary {
     @include background($primary-button-bg-color);
     border: 1px solid darken($primary-button-bg-color, 9%);
+    color: hsla(0, 0%, 99%, 1);
     &:hover {
       @include box-shadow(darken($primary-button-bg-color, 14%) 0 -2px inset);
+    }
+  }
+
+  &.disabled {
+    @include background($disabled-button-bg-color);
+    border: 1px solid darken($disabled-button-bg-color, 9%);
+    color: hsla(0, 0%, 99%, 1);
+    &:hover {
+      @include box-shadow(none);
     }
   }
 
   &.blue {
     @include background($blue-button-bg-color);
     border: 1px solid darken($blue-button-bg-color, 9%);
+    color: hsla(0, 0%, 99%, 1);
     &:hover {
       @include box-shadow(darken($blue-button-bg-color, 14%) 0 -2px inset);
     }
