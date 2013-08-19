@@ -7,9 +7,15 @@
     <div class="modal__body__form-group">
       <label for="username">Username</label>
       <input type="text" name="username" placeholder="Pick a username"
-             ng-minlength=6
+             ng-minlength=3
              ng-maxlength=20
              ng-model="userModel.username">
+      <div class="popover bottom"
+        ng-show="newUserForm.username.$dirty && newUserForm.username.$invalid">
+        <div class="arrow"></div>
+        <h3 class="popover-title">Resource name</h3>
+        <div class="popover-content">Username at least 3 letters.</div>
+      </div>
     </div>
 
     <div class="modal__body__form-group modal__separator">
@@ -17,6 +23,12 @@
       <input type="password" name="password" placeholder="Create a password"
              ng-minlength=8
              ng-model="userModel.password">
+      <div class="popover bottom"
+        ng-show="newUserForm.password.$dirty && newUserForm.password.$invalid">
+        <div class="arrow"></div>
+        <h3 class="popover-title">Password</h3>
+        <div class="popover-content">Password at least 8 characters.</div>
+      </div>
     </div>
 
     <div class="modal__body__form-group">

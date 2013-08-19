@@ -7,9 +7,15 @@
     <div class="modal__body__form-group">
       <label for="username">Username</label>
       <input type="text" name="username"
-             ng-minlength=6
+             ng-minlength=3
              ng-maxlength=20
              ng-model="sessionModel.username">
+      <div class="popover bottom"
+        ng-show="newSessionForm.username.$dirty && newSessionForm.username.$invalid">
+        <div class="arrow"></div>
+        <h3 class="popover-title">Username</h3>
+        <div class="popover-content">Username at least 3 letters.</div>
+      </div>
     </div>
 
     <div class="modal__body__form-group modal__separator">
@@ -17,10 +23,17 @@
       <input type="password" name="password"
              ng-minlength=8
              ng-model="sessionModel.password">
+      <div class="popover bottom"
+        ng-show="newSessionForm.password.$dirty && newSessionForm.password.$invalid">
+        <div class="arrow"></div>
+        <h3 class="popover-title">Password</h3>
+        <div class="popover-content">Password at least 8 characters.</div>
+      </div>
     </div>
 
     <div class="modal__body__form-group">
-      <button type="submit" class="btn primary">Sign in</button>
+      <button type="submit" class="btn primary"
+              ng-disable="newSessionForm.$invalid">Sign in</button>
     </div>
   </form>
 </div>
