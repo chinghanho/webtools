@@ -55,4 +55,4 @@ ResourceSchema.statics = {
 
 }
 
-mongoose.model('Resource', ResourceSchema)
+mongoose.model('Resource', ResourceSchema, 'webtools')
