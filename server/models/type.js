@@ -51,4 +51,4 @@ TypeSchema.statics = {
 
 }
 
-mongoose.model('Type', TypeSchema, 'webtools')
+mongoose.model('Type', TypeSchema)

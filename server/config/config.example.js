@@ -7,7 +7,7 @@ var path = require('path')
 module.exports = {
   development: {
     db: {
-      url: 'mongodb://localhost:27017',
+      url: 'mongodb://localhost:27017/webtools',
       options: {
         user: '',
         pass: ''

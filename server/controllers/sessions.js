@@ -57,13 +57,17 @@ exports.check = function(req, res, next) {
 
       if (err) { return next(err) }
 
-      // res.cookie('remember_token', user.remember_token, { signed: true })
-      res.send({
-        "login": user.login,
-        "id": user._id,
-        "update_at": user.update_at,
-        "create_at": user.create_at
-      })
+      if (user) {
+        res.send({
+          "login": user.login,
+          "id": user._id,
+          "update_at": user.update_at,
+          "create_at": user.create_at
+        })
+      }
+      else {
+        res.send({message: 'Not Found'})
+      }
     })
   }
   else {

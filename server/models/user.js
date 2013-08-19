@@ -155,4 +155,4 @@ UserSchema.statics = {
 
 }
 
-mongoose.model('User', UserSchema, 'webtools')
+mongoose.model('User', UserSchema)
