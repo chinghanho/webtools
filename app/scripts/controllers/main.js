@@ -2,8 +2,8 @@
 
 angular.module('chhResourcesApp')
 
-  .controller('MainCtrl', ['$scope', 'resourcesData', 'typesList',
-    function ($scope, resourcesData, typesList) {
+  .controller('MainCtrl', ['$scope', 'resourcesData',
+    function ($scope, resourcesData) {
 
     // var dataForDevelopment = [
     //   {
@@ -40,35 +40,9 @@ angular.module('chhResourcesApp')
     //   }
     // ]
 
-    // var typesListForDevelopment = [
-    //   {
-    //     "_id": "520b37bc0264e40fa52a54fd",
-    //     "name": "Tools",
-    //     "create_at": "2013-08-14T08:15:49.191Z",
-    //     "resources_count": 0
-    //   },
-    //   {
-    //     "_id": "520b37cb0264e40fa52a54fe",
-    //     "name": "jQuery",
-    //     "create_at": "2013-08-14T08:15:49.191Z",
-    //     "resources_count": 0
-    //   },
-    //   {
-    //     "_id": "520b37d40264e40fa52a54ff",
-    //     "name": "Javascript",
-    //     "create_at": "2013-08-14T08:15:49.191Z",
-    //     "resources_count": 0
-    //   }
-    // ]
-
     resourcesData.resources().then(function(resources) {
       $scope.resources = resources;
       // $scope.resources = dataForDevelopment;
     });
-
-    typesList.types().then(function(types) {
-      $scope.types = types;
-      // $scope.types = typesListForDevelopment;
-    })
 
   }]);

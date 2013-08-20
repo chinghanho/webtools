@@ -50,6 +50,7 @@ ResourceSchema.statics = {
 
   list: function(options, callback) {
     this.find(options)
+      .populate('type_id', 'name')
       .exec(callback)
   }
 

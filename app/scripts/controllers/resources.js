@@ -108,18 +108,6 @@ angular.module('chhResourcesApp')
     }
 
     /**
-     * Filter
-     */
-
-    $scope.resourceType = function(resourceTypeId) {
-      var resourceType = '';
-      angular.forEach($scope.types, function(value, index) {
-        if (value._id == resourceTypeId) { resourceType = value.name; }
-      })
-      return resourceType;
-    }
-
-    /**
      * Name Editor
      */
 
