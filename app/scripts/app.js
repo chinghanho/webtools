@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('chhResourcesApp', ['ui.keypress', 'ui.select2', 'ngCookies'])
+angular.module('chhResourcesApp', ['ui.keypress', 'ui.select2', 'ngCookies', 'ngResource'])
 
   .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
@@ -16,4 +16,18 @@ angular.module('chhResourcesApp', ['ui.keypress', 'ui.select2', 'ngCookies'])
       .otherwise({redirectTo: '/'});
 
     $locationProvider.html5Mode(true);
+
+  }])
+
+  .run(['$rootScope', 'Auth', function($rootScope, Auth) {
+
+    Auth.currentUser.$get({}, function(data) {
+      if (data && !(data.message == 'Not Found')) {
+        $rootScope.isLogged = true;
+      }
+      else {
+        $rootScope.isLogged = false;
+      }
+    })
+
   }]);

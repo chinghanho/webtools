@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('chhResourcesApp')
-  .controller('ResourcesCtrl', ['$http', '$scope', '$route', '$parse', '$filter', '$routeParams', '$cookies',
-    function ($http, $scope, $route, $filter, $parse, $routeParams, $cookies) {
+  .controller('ResourcesCtrl', ['$http','$rootScope', '$scope', '$route', '$parse', '$filter', '$routeParams', '$cookies', 'Auth',
+    function ($http, $rootScope, $scope, $route, $filter, $parse, $routeParams, $cookies, Auth) {
 
     if (Object.keys($routeParams).length != 0) {
 
@@ -104,7 +104,7 @@ angular.module('chhResourcesApp')
 
     $scope.destroySession = function() {
       delete $cookies.remember_token;
-      $scope.isLogged = !$scope.isLogged;
+      $rootScope.isLogged = !$rootScope.isLogged;
     }
 
     /**
@@ -190,7 +190,7 @@ angular.module('chhResourcesApp')
       $http.post('/api/sessions', $scope.sessionModel)
         .success(function(data, status, headers, config) {
           if (data && !data.message) {
-            $scope.isLogged = !$scope.isLogged;
+            $rootScope.isLogged = !$rootScope.isLogged;
             clearModelValues($scope.sessionModel);
             $scope.modal(false);
           }
@@ -206,7 +206,7 @@ angular.module('chhResourcesApp')
     $scope.submitNewUser = function() {
       $http.post('/api/users', $scope.userModel)
         .success(function(data, status, headers, config) {
-          $scope.isLogged = !$scope.isLogged;
+          $rootScope.isLogged = !$rootScope.isLogged;
           clearModelValues($scope.userModel);
           $scope.modal(false);
         })
