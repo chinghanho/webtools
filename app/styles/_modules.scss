@@ -13,4 +13,5 @@
 .box {
   background: hsla(0, 0%, 100%, 1);
   @include border-radius(3px);
+  @include box-shadow(hsla(0, 0%, 70%, 0.7) 0 0 4px 1px);
 }
