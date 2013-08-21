@@ -16,6 +16,7 @@ var mongoose = require('mongoose'),
 var TypeSchema = new Schema(
   {
     name:            { type: String, unique: true },
+    resources:       [{ type: Schema.ObjectId, index: true, ref: 'Resource' }],
     resources_count: { type: Number, default: 0 },
     create_at:       { type: Date, default: Date.now }
   }

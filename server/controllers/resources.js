@@ -51,6 +51,7 @@ exports.create = function(req, res, next) {
     if (err) { return next(err) }
 
     Type.getTypeById(req.body.type, function(err, type) {
+      type.resources.push(resource)
       type.resources_count += 1
       type.save()
     })
