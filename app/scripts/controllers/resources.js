@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('chhResourcesApp')
-  .controller('ResourcesCtrl', ['$http','$rootScope', '$scope', '$route', '$parse', '$filter', '$routeParams', '$cookies', 'Auth',
-    function ($http, $rootScope, $scope, $route, $filter, $parse, $routeParams, $cookies, Auth) {
+  .controller('ResourcesCtrl', ['$http','$rootScope', '$scope', '$route', '$parse', '$filter', '$routeParams', '$cookies',
+    function ($http, $rootScope, $scope, $route, $filter, $parse, $routeParams, $cookies) {
 
     if (Object.keys($routeParams).length != 0) {
 
