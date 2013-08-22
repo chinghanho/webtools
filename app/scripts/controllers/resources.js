@@ -34,23 +34,9 @@ angular.module('chhResourcesApp')
       $scope.resourcesContent = null;
     }
 
-    $scope.resourceModel = {
-      name: "",
-      description: "",
-      img_url: "",
-      url: "",
-      type: ""
-    };
-
-    $scope.sessionModel = {
-      username: "",
-      password: ""
-    }
-
-    $scope.userModel = {
-      username: "",
-      password: ""
-    }
+    $scope.resourceModel = {};
+    $scope.sessionModel = {};
+    $scope.userModel = {};
 
     /**
      * Modal Control
