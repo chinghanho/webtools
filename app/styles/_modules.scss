@@ -15,3 +15,24 @@
   @include border-radius(3px);
   @include box-shadow(hsla(0, 0%, 70%, 0.7) 0 0 4px 1px);
 }
+
+.alert {
+  position: fixed;
+  padding: 8px 11px;
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: 14px;
+  z-index: 3000;
+  width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid hsla(0, 0%, 58%, 1);
+  @include border-radius(4px);
+
+  &.alert-error {
+    color: hsla(1, 45%, 50%, 1);
+    @include background(hsla(0, 43%, 91%, 1));
+    border: 1px solid hsla(351, 44%, 88%, 1);
+  }
+}

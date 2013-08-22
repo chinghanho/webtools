@@ -48,7 +48,17 @@ exports.create = function(req, res, next) {
 
   resource.newAndSave(name, description, img_url, url, type_id, function(err, resource) {
 
-    if (err) { return next(err) }
+    if (err) {
+      console.error(err)
+      if (err.code == 11000)
+        res.send(403, 'Duplicate resource name.')
+      return next(err)
+    }
+    else if (!resource) {
+      var err_msg = "Resource not saved"
+      res.send(403, err_msg)
+      return next(new Error(err_msg))
+    }
 
     Type.getTypeById(req.body.type, function(err, type) {
       type.resources.push(resource)

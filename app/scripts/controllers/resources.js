@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('chhResourcesApp')
-  .controller('ResourcesCtrl', ['$http','$rootScope', '$scope', '$route', '$parse', '$filter', '$routeParams', '$cookies',
-    function ($http, $rootScope, $scope, $route, $filter, $parse, $routeParams, $cookies) {
+  .controller('ResourcesCtrl', ['$http','$rootScope', '$scope', '$route', '$parse', '$filter', '$routeParams', '$cookies', '$timeout',
+    function ($http, $rootScope, $scope, $route, $filter, $parse, $routeParams, $cookies, $timeout) {
 
     if (Object.keys($routeParams).length != 0) {
 
@@ -100,12 +100,14 @@ angular.module('chhResourcesApp')
     $scope.submitNewResource = function() {
       $http.post('/api/resources', $scope.resourceModel)
         .success(function(data, status, headers, config) {
-          console.log('Create new resource successfully.');
-          $scope.modal(false);
           $scope.resources.push(data);
+          $scope.modal(false);
         })
         .error(function(data, status, headers, config) {
-          console.log('Submit new resource failed');
+          $scope.alertMsg = data;
+          $timeout(function() {
+            $scope.alertMsg = undefined;
+          }, 4500);
         })
     }
 
