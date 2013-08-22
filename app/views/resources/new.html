@@ -1,20 +1,19 @@
 <form name="newResourceForm" id="new-resource-form" ng-submit="submitNewResource()">
   <div class="modal__header">
-    <div ng-dblclick="enableNameEditor()"
-         ng-show="nameEditorDisabled"
-         ng-bind="resourceModel.name || 'Double click to edit name...'"></div>
-    <input type="text" class="paragraph-text" name="name" placeholder="Press enter to complete..." required
-           ng-minlength=3
-           ng-maxlength=20
-           ng-model="resourceModel.name"
-           ng-hide="nameEditorDisabled"
-           ui-keydown="{enter: 'nameEditorDone($event)'}">
-     <div class="popover bottom"
-       ng-show="newResourceForm.name.$dirty && newResourceForm.name.$invalid">
-       <div class="arrow"></div>
-       <h3 class="popover-title">Resource name</h3>
-       <div class="popover-content">Resource name at least 3 letters.</div>
-     </div>
+    <!-- resourc name: start -->
+    <div class="" name="name"
+      contenteditable ce-minlength=3 ce-maxlength=30
+      ng-model="resourceModel.name"></div>
+
+    <div class="popover bottom" ng-show="newResourceForm.name.$dirty && newResourceForm.name.$invalid">
+      <div class="arrow"></div>
+      <h3 class="popover-title">Resource name</h3>
+      <div class="popover-content" ng-show="newResourceForm.name.$error.minlength">Resource name at least 3 letters.</div>
+      <div class="popover-content" ng-show="newResourceForm.name.$error.maxlength">Resource name at most 30 letters.</div>
+    </div>
+
+    <input type="hidden" ng-model="resourceModel.name">
+    <!-- resourc name: end -->
   </div>
 
   <div class="modal__body">
