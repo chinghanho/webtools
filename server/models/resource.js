@@ -52,6 +52,12 @@ ResourceSchema.statics = {
     this.find(options)
       .populate('type_id', 'name')
       .exec(callback)
+  },
+
+  getResourceById: function(resource_id, callback) {
+    this.findOne({ _id: resource_id })
+      .populate('type_id', 'name')
+      .exec(callback)
   }
 
 }

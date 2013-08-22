@@ -54,9 +54,11 @@ exports.create = function(req, res, next) {
       type.resources.push(resource)
       type.resources_count += 1
       type.save()
-    })
 
-    res.send(resource)
+      Resource.getResourceById(resource._id, function(err, resource) {
+        res.send(resource)
+      })
+    })
 
   })
 }
