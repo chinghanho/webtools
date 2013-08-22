@@ -48,12 +48,27 @@ ResourceSchema.methods = {
 
 ResourceSchema.statics = {
 
+  /**
+   * List
+   *
+   * @param  {Object} options
+   * @param  {Function} callback
+   * @api public
+   */
   list: function(options, callback) {
     this.find(options)
       .populate('type_id', 'name')
       .exec(callback)
   },
 
+  /**
+   * Get resource by id
+   *
+   * @param  {Number}   resource_id
+   * @param  {Function} callback
+   * @return {Object}               resource
+   * @api public
+   */
   getResourceById: function(resource_id, callback) {
     this.findOne({ _id: resource_id })
       .populate('type_id', 'name')
