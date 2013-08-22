@@ -2,7 +2,7 @@
   <div class="modal__header">
     <!-- resourc name: start -->
     <div class="" name="name"
-      contenteditable ce-minlength=3 ce-maxlength=30
+      contenteditable ce-placeholder="Resource name..." ce-minlength=3 ce-maxlength=30
       ng-model="resourceModel.name"></div>
 
     <div class="popover bottom" ng-show="newResourceForm.name.$dirty && newResourceForm.name.$invalid">
@@ -29,7 +29,7 @@
     <!-- resource description: start -->
     <div class="modal__description modal__separator">
       <div class="paragraph-text" name="description"
-        contenteditable ce-minlength=20
+        contenteditable ce-placeholder="Resource description..." ce-minlength=20
         ng-model="resourceModel.description"></div>
 
       <div class="popover bottom"
@@ -47,7 +47,7 @@
       <!-- resource url: start -->
       <div class="modal__url">
         <div class="" name="url"
-          contenteditable ce-url="^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$"
+          contenteditable ce-placeholder="Resource URL..." ce-url="^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$"
           ng-model="resourceModel.url"></div>
 
         <div class="popover bottom"
@@ -71,6 +71,6 @@
 
   <div class="modal__submit">
     <button type="submit" class="btn primary"
-            ng-disabled="newResourceForm.$invalid">Submit New Resource</button>
+      ng-disabled="newResourceForm.$invalid">Submit New Resource</button>
   </div>
 </form>

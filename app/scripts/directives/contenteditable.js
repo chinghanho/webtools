@@ -19,6 +19,16 @@ angular.module('chhResourcesApp')
 
         ngModel.$setViewValue(elem.html());
 
+        if (attrs.cePlaceholder) {
+          var placeholder = attrs.cePlaceholder;
+          ngModel.$setViewValue(elem.html(placeholder));
+          elem.on('focus', function() {
+            if (elem.html() == placeholder) {
+              ngModel.$setViewValue(elem.html(''));
+            }
+          })
+        }
+
         // mix length validator
         if (attrs.ceMinlength) {
           var minlength = attrs.ceMinlength;
