@@ -10,9 +10,7 @@
     @include span-columns(6, $large-display-break);
     .modal__wrapper-inner {
       @include set-container-width;
-      position: relative;
       margin: $grid-padding * 4 0;
-      @include border-radius(3px);
     }
     .modal__url { @include span-columns(3, 6); }
     .modal__type { @include span-columns(3 omega, 6); }
@@ -41,9 +39,7 @@
     @include span-columns(6, $desktop-break);
     .modal__wrapper-inner {
       @include set-container-width;
-      position: relative;
       margin: $grid-padding * 2 0;
-      @include border-radius(3px);
     }
     .modal__url { @include span-columns(3, 6); }
     .modal__type { @include span-columns(3 omega, 6); }
@@ -72,9 +68,7 @@
     @include span-columns(5, $tables-break);
     .modal__wrapper-inner {
       @include set-container-width;
-      position: relative;
       margin: $grid-padding 0;
-      @include border-radius(3px);
     }
     .modal__url { @include span-columns(3, 5); }
     .modal__type { @include span-columns(2 omega, 5); }
@@ -105,9 +99,7 @@
     @include span-columns(7, $phones-to-tables-break);
     .modal__wrapper-inner {
       @include set-container-width;
-      position: relative;
       margin: $grid-padding 0;
-      @include border-radius(3px);
     }
     .modal__url { @include span-columns(4, 7); }
     .modal__type { @include span-columns(3 omega, 7); }
@@ -135,9 +127,7 @@
     @include container;
     .modal__wrapper-inner {
       @include set-container-width;
-      position: relative;
       margin: $grid-padding 0;
-      @include border-radius(3px);
     }
   }
 }
@@ -170,11 +160,13 @@
 }
 
 .modal__wrapper-inner {
+  overflow: hidden;
+  position: relative;
+  @include border-radius(3px);
   @include background($modal-background-color);
 }
 
 .modal__header {
-  padding: 10px 8px 11px;
   border-bottom: 1px solid $border-color;
   color: $heading-text-color;
   a {
@@ -186,10 +178,8 @@
   }
 }
 
-.modal__header, .modal__url {
-  input {
-    resize: none;
-  }
+.modal__name {
+  padding: 10px 8px 11px;
 }
 
 .modal__content {

@@ -1,7 +1,7 @@
 <form name="newResourceForm" id="new-resource-form" ng-submit="submitNewResource()">
   <div class="modal__header">
     <!-- resourc name: start -->
-    <div class="" name="name"
+    <div class="modal__name" name="name"
       contenteditable ce-placeholder="Resource name..." ce-minlength=3 ce-maxlength=30
       ng-model="resourceModel.name"></div>
 
@@ -27,8 +27,8 @@
     <!-- resource image: end -->
 
     <!-- resource description: start -->
-    <div class="modal__description modal__separator">
-      <div class="paragraph-text" name="description"
+    <div class="modal__separator">
+      <div class="paragraph-text modal__description" name="description"
         contenteditable ce-placeholder="Resource description..." ce-minlength=20
         ng-model="resourceModel.description"></div>
 
