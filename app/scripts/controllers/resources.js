@@ -34,10 +34,6 @@ angular.module('chhResourcesApp')
       $scope.resourcesContent = null;
     }
 
-    $scope.resourceModel = {};
-    $scope.sessionModel = {};
-    $scope.userModel = {};
-
     /**
      * Modal Control
      */
@@ -94,59 +90,12 @@ angular.module('chhResourcesApp')
     }
 
     /**
-     * Name Editor
-     */
-
-    $scope.enableNameEditor = function() {
-      $scope.nameEditorDisabled = false;
-    }
-
-    $scope.disableNameEditor = function() {
-      $scope.nameEditorDisabled = true;
-    }
-
-    $scope.nameEditorDone = function($event) {
-      $scope.disableNameEditor();
-      $event.preventDefault();
-    }
-
-    /**
-     * Description Editor
-     */
-
-    $scope.enableDescriptionEditor = function() {
-      $scope.descriptionEditorDisabled = false;
-    }
-
-    $scope.disableDescriptionEditor = function() {
-      $scope.descriptionEditorDisabled = true;
-    }
-
-    $scope.descriptionEditorDone = function($event) {
-      $scope.disableDescriptionEditor();
-      $event.preventDefault();
-    }
-
-    /**
-     * URL Editor
-     */
-
-    $scope.enableUrlEditor = function() {
-      $scope.urlEditorDisabled = false;
-    }
-
-    $scope.disableUrlEditor = function() {
-      $scope.urlEditorDisabled = true;
-    }
-
-    $scope.urlEditorDone = function($event) {
-      $scope.disableUrlEditor();
-      $event.preventDefault();
-    }
-
-    /**
      * Submit Action!
      */
+
+    $scope.resourceModel = {};
+    $scope.sessionModel = {};
+    $scope.userModel = {};
 
     $scope.submitNewResource = function() {
       $http.post('/api/resources', $scope.resourceModel)
