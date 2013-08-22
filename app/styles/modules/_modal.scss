@@ -160,7 +160,6 @@
 }
 
 .modal__wrapper-inner {
-  overflow: hidden;
   position: relative;
   @include border-radius(3px);
   @include background($modal-background-color);
