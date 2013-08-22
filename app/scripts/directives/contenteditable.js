@@ -19,6 +19,7 @@ angular.module('chhResourcesApp')
 
         ngModel.$setViewValue(elem.html());
 
+        // mix length validator
         if (attrs.ceMinlength) {
           var minlength = attrs.ceMinlength;
           var minLengthValidator = function(viewValue) {
@@ -36,6 +37,7 @@ angular.module('chhResourcesApp')
           ngModel.$formatters.push(minLengthValidator);
         }
 
+        // max length validator
         if (attrs.ceMaxlength) {
           var maxlength = attrs.ceMaxlength;
           var maxLengthValidator = function(viewValue) {
@@ -51,6 +53,26 @@ angular.module('chhResourcesApp')
 
           ngModel.$parsers.push(maxLengthValidator);
           ngModel.$formatters.push(maxLengthValidator);
+        }
+
+        // url validator
+        if (attrs.ceUrl) {
+          console.log(attrs.ceUrl);
+          var URL_REGEXP = new RegExp(attrs.ceUrl);
+          console.log(URL_REGEXP);
+          var urlValidator = function(viewValue) {
+            if (!isEmpty(viewValue) && URL_REGEXP.test(viewValue)) {
+              ngModel.$setValidity('url', true);
+              return viewValue;
+            }
+            else {
+              ngModel.$setValidity('url', false);
+              return undefined;
+            }
+          }
+
+          ngModel.$parsers.push(urlValidator);
+          ngModel.$formatters.push(urlValidator);
         }
 
       }
