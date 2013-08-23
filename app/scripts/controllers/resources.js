@@ -120,7 +120,10 @@ angular.module('chhResourcesApp')
             $scope.modal(false);
           }
           else {
-            console.log(data.message);
+            $scope.alertMsg = data.message;
+            $timeout(function() {
+              $scope.alertMsg = undefined;
+            }, 4500);
           }
         })
         .error(function(data, status, headers, config) {
