@@ -152,16 +152,7 @@
 
   <div class="resources">
     <div ng-switch on="resourcesContent">
-      <div ng-switch-when="showAdmin">
-        <div class="box">
-          <div class="admin__new-type">
-            <form name="newTypeForm" ng-submit="submitNewType()">
-              <input name="name" type="text" ng-model="typeModel.name">
-              <button type="submit" class="btn primary" ng-disabled="newTypeForm.$invalid">Create New Type</button>
-            </form>
-          </div>
-        </div>
-      </div>
+      <div ng-switch-when="showAdmin" ng-include=" '/views/admin/index.html' "></div>
 
       <div ng-switch-when="showResource">
         <div class="resource box">
