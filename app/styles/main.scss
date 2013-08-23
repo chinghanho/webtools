@@ -8,12 +8,13 @@
 @import "compass/css3/text-shadow";
 @import "compass/css3/transition";
 
+$white: hsla(0, 0%, 100%, 1);
+$orange: hsla(35, 95%, 50%, 1);
+
 $iconSpritePath: "../images/glyphicons-halflings.png";
 $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 $baseLineHeight: 20px;
 $baseBorderRadius: 0px;
-$white: hsla(0, 0%, 100%, 1);
-$orange: hsla(35, 95%, 50%, 1);
 
 // Popovers
 $zindexPopover: 1010;

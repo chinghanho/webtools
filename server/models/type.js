@@ -28,8 +28,9 @@ var TypeSchema = new Schema(
 
 TypeSchema.methods = {
 
-  newAndSave: function(name) {
+  newAndSave: function(name, callback) {
     this.name = name
+    this.save(callback)
   }
 
 }

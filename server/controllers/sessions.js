@@ -33,6 +33,7 @@ exports.create = function(req, res, next) {
       res.send({
         "login": user.login,
         "id": user._id,
+        "role": user.role,
         "update_at": user.update_at,
         "create_at": user.create_at
       })
@@ -60,6 +61,7 @@ exports.check = function(req, res, next) {
       if (user) {
         res.send({
           "login": user.login,
+          "role": user.role,
           "id": user._id,
           "update_at": user.update_at,
           "create_at": user.create_at

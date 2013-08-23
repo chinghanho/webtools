@@ -1,12 +1,10 @@
 'use strict';
 
 angular.module('chhResourcesApp')
-  .controller('ResourcesCtrl', ['$http','$rootScope', '$scope', '$route', '$parse', '$filter', '$routeParams', '$cookies', '$timeout',
-    function ($http, $rootScope, $scope, $route, $filter, $parse, $routeParams, $cookies, $timeout) {
+  .controller('ResourcesCtrl', ['$http','$rootScope', '$scope', '$location', '$parse', '$filter', '$routeParams', '$cookies', '$timeout',
+    function ($http, $rootScope, $scope, $location, $filter, $parse, $routeParams, $cookies, $timeout) {
 
     if (Object.keys($routeParams).length != 0) {
-
-      // Route to Resource
 
       $scope.resourcesContent = 'showResource';
 
@@ -27,10 +25,21 @@ angular.module('chhResourcesApp')
       })
 
     }
+    else if ($location.path() == '/admin') {
+
+      $scope.resourcesContent = 'showAdmin';
+
+      $scope.$watch('search', function (newValue, oldValue) {
+        if (newValue === oldValue) { return }
+        if (newValue.name == '') {
+          $scope.resourcesContent = 'showAdmin';
+        }
+        else {
+          $scope.resourcesContent = null;
+        }
+      }, true)
+    }
     else {
-
-      // Route to Resources
-
       $scope.resourcesContent = null;
     }
 
@@ -96,6 +105,7 @@ angular.module('chhResourcesApp')
     $scope.resourceModel = {};
     $scope.sessionModel = {};
     $scope.userModel = {};
+    $scope.typeModel = {};
 
     $scope.submitNewResource = function() {
       $http.post('/api/resources', $scope.resourceModel)
@@ -116,6 +126,7 @@ angular.module('chhResourcesApp')
         .success(function(data, status, headers, config) {
           if (data && !data.message) {
             $rootScope.isLogged = !$rootScope.isLogged;
+            if (data.role == 'admin') { $rootScope.isAdmin = true };
             clearModelValues($scope.sessionModel);
             $scope.modal(false);
           }
@@ -144,6 +155,21 @@ angular.module('chhResourcesApp')
             $scope.alertMsg = undefined;
           }, 4500);
         });
+    }
+
+    $scope.submitNewType = function() {
+      $http.post('/api/types', $scope.typeModel)
+        .success(function(data, status, headers, config) {
+          if (data && data.message) {
+            $location.path('/');
+          }
+        })
+        .error(function(data, status, headers, config) {
+          $scope.alertMsg = data;
+          $timeout(function() {
+            $scope.alertMsg = undefined;
+          }, 4500);
+        })
     }
 
     /**

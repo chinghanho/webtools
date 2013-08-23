@@ -6,10 +6,10 @@
  * Module dependencies.
  */
 
-var mongoose = require('mongoose'),
-    Resource = mongoose.model('Resource'),
-    Type     = mongoose.model('Type'),
-    sanitize = require('validator').sanitize
+var mongoose = require('mongoose')
+  , Resource = mongoose.model('Resource')
+  , Type     = mongoose.model('Type')
+  , sanitize = require('validator').sanitize
 
 /**
  * List
