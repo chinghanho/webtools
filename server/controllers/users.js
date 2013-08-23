@@ -27,7 +27,17 @@ exports.create = function(req, res, next) {
 
   user.newAndSave(login, password, function(err, user) {
 
-    if (err) { return next(err) }
+    if (err) {
+      console.error(err)
+      if (err.code == 11000)
+        res.send(403, 'Username is already taken.')
+      return next(err)
+    }
+    else if (!user) {
+      var err_msg = "User not created"
+      res.send(403, err_msg)
+      return next(new Error(err_msg))
+    }
 
     res.cookie('remember_token', user.remember_token, { signed: true })
     res.send(user)

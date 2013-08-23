@@ -136,7 +136,10 @@ angular.module('chhResourcesApp')
           $scope.modal(false);
         })
         .error(function(data, status, headers, config) {
-          console.log('New user failed.');
+          $scope.alertMsg = data;
+          $timeout(function() {
+            $scope.alertMsg = undefined;
+          }, 4500);
         });
     }
 
