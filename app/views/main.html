@@ -45,6 +45,11 @@
       <i class="icon-list clickable" ng-init="showNav = false" ng-click="showNav = !showNav"></i>
       <nav ng-switch on="isLogged">
         <ul ng-switch-when="true">
+          <li class="widgets__admin">
+            <a href="/admin" class="btn narrow">
+              Admin
+            </a>
+          </li>
           <li class="widgets__signout">
             <a href class="btn narrow" ng-click="destroySession(); showNav = !showNav">
               Sign out
@@ -93,6 +98,11 @@
 
   <nav ng-show="showNav" class="nav--main" ng-switch on="isLogged">
     <ul class="nav--main__wrapper" ng-switch-when="true">
+      <li class="widgets__admin">
+        <a href="/admin" class="btn">
+          Admin
+        </a>
+      </li>
       <li class="widgets__signout">
         <a href class="btn" ng-click="destroySession(); showNav = !showNav">
           Sign out
@@ -142,6 +152,17 @@
 
   <div class="resources">
     <div ng-switch on="resourcesContent">
+      <div ng-switch-when="showAdmin">
+        <div class="box">
+          <div class="admin__new-type">
+            <form name="newTypeForm" ng-submit="submitNewType()">
+              <input name="name" type="text" ng-model="typeModel.name">
+              <button type="submit" class="btn primary" ng-disabled="newTypeForm.$invalid">Create New Type</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
       <div ng-switch-when="showResource">
         <div class="resource box">
           <div class="resource--info clearfix">

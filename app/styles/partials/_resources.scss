@@ -32,6 +32,10 @@
   .resource--info__img {
     @include span-columns(6 omega, 12);
   }
+
+  .admin__new-type {
+    padding: 11px 8px;
+  }
 }
 
 
