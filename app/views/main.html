@@ -45,7 +45,7 @@
       <i class="icon-list clickable" ng-init="showNav = false" ng-click="showNav = !showNav"></i>
       <nav ng-switch on="isLogged">
         <ul ng-switch-when="true">
-          <li class="widgets__admin">
+          <li ng-show="isAdmin" class="widgets__admin">
             <a href="/admin" class="btn narrow">
               Admin
             </a>
@@ -98,7 +98,7 @@
 
   <nav ng-show="showNav" class="nav--main" ng-switch on="isLogged">
     <ul class="nav--main__wrapper" ng-switch-when="true">
-      <li class="widgets__admin">
+      <li ng-show="isAdmin" class="widgets__admin">
         <a href="/admin" class="btn">
           Admin
         </a>

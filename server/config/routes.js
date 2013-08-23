@@ -34,7 +34,7 @@ module.exports = function(app) {
   })
 
   app.get('/api/types', types.index)
-  app.post('/api/types', types.create)
+  app.post('/api/types', isAuthenticated, requireAdmin, types.create)
 
   app.get('/api/sessions/check', sessions.check)
   app.post('/api/sessions', sessions.create)
@@ -56,6 +56,25 @@ function isAuthenticated(req, res, next) {
 
       if (err) { return next(err) }
       next()
+
+    })
+  }
+  else {
+    next(new Error(401))
+  }
+
+}
+
+function requireAdmin(req, res, next) {
+
+  var remember_token = req.signedCookies['remember_token']
+
+  if (remember_token) {
+    User.findUserByRememberToken(remember_token, function(err, user) {
+
+      if (err) { return next(err)}
+      if (user.role == 'admin') { next() }
+      else { res.send({message: 'Could not authenticate you.'}) }
 
     })
   }
