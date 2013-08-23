@@ -31,6 +31,7 @@ module.exports = function(app) {
   })
 
   app.get('/api/types', types.index)
+  app.post('/api/types', types.create)
 
   app.get('/api/sessions/check', sessions.check)
   app.post('/api/sessions', sessions.create)
