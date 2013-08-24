@@ -13,9 +13,6 @@ module.exports = function(app, config) {
     level: 9
   }))
 
-  app.use(express.static(path.resolve(__dirname, '../../public')))
-  app.use(express.static(path.resolve(__dirname, '../../dist')))
-
   app.configure(function() {
 
     // cookieParser should be above session
