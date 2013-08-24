@@ -150,6 +150,7 @@ angular.module('chhResourcesApp')
       $http.post('/api/users', $scope.userModel)
         .success(function(data, status, headers, config) {
           $rootScope.isLogged = !$rootScope.isLogged;
+          if (data.role == 'admin') { $rootScope.isAdmin = true };
           clearModelValues($scope.userModel);
           $scope.modal(false);
         })
