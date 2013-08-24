@@ -35,4 +35,10 @@
     @include background(hsla(0, 43%, 91%, 1));
     border: 1px solid hsla(351, 44%, 88%, 1);
   }
+
+  &.alert-success {
+    color: hsla(121, 32%, 40%, 1);
+    @include background(hsla(103, 44%, 89%, 1));
+    border: 1px solid hsla(93, 44%, 85%, 1);
+  }
 }

@@ -1,5 +1,5 @@
 <div class="modal__overlay"></div>
-<div class="alert alert-error" ng-show="alertMsg" ng-bind="alertMsg"></div>
+<div class="alert" ng-class="{'alert-error': alertMsg, 'alert-success': infoMsg}" ng-show="alertMsg || infoMsg" ng-bind="alertMsg || infoMsg"></div>
 
 <!-- modal: start -->
 <modal class="show-resource" ng-show="showModal">

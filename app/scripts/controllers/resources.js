@@ -96,6 +96,10 @@ angular.module('chhResourcesApp')
     $scope.destroySession = function() {
       delete $cookies.remember_token;
       $rootScope.isLogged = !$rootScope.isLogged;
+      $scope.infoMsg = 'Sign out successfully.';
+      $timeout(function() {
+        $scope.infoMsg = undefined;
+      }, 4500);
     }
 
     /**
