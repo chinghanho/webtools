@@ -160,7 +160,11 @@ angular.module('chhResourcesApp')
     $scope.submitNewType = function() {
       $http.post('/api/types', $scope.typeModel)
         .success(function(data, status, headers, config) {
-          if (data && data.message) {
+          if (data && !data.message) {
+            $scope.types.push(data);
+            $scope.typeModel = {};
+          }
+          else {
             $location.path('/');
           }
         })

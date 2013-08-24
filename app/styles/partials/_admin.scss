@@ -1,0 +1,37 @@
+$table-border-color: hsla(200, 26%, 82%, 1);
+
+/*--------------------------------------*\
+    Large Display - Break Point
+
+    ^large-display
+\*--------------------------------------*/
+@include at-breakpoint($large-display) {
+  .admin__stats {
+    & > [class^="admin__"] {
+      @include isolate-grid(6, 12);
+      margin-bottom: gutter($large-display-break);
+    }
+  }
+}
+
+.admin__stats {
+  padding: 10px;
+  table {
+    border: 1px solid $table-border-color;
+  }
+
+  thead {
+    color: $heading-text-color;
+  }
+
+  th {
+    padding: 11px 8px;
+  }
+
+  tr {
+    border-bottom: 1px solid $table-border-color;
+    > td {
+      padding: 11px 8px;
+    }
+  }
+}

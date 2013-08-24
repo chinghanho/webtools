@@ -1,4 +1,47 @@
 <div class="box">
+  <div class="admin__stats clearfix">
+
+    <div class="admin__resources-stats">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Resource Name</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="resource in resources">
+            <td ng-bind="resource._id"></td>
+            <td>
+              <a ng-bind="resource.name" ng-href="/resources/{{resource._id}}"></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="admin__types-stats">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Type Name</th>
+            <th>Resources Count</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="type in types">
+            <td ng-bind="type._id"></td>
+            <td ng-bind="type.name"></td>
+            <td ng-bind="type.resources_count"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <div class="admin__new-type">
     <form name="newTypeForm" ng-submit="submitNewType()">
       <input name="name" type="text" ng-model="typeModel.name">
