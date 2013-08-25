@@ -1,25 +1,82 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+set :application, "webtools"
+set :user, "ubuntu"
+set :domain, "54.248.228.188"
+ssh_options[:keys] = ["~/.ssh/keypair-webtools.pem"]
 
-# set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :scm, :git
+set :repository,  "git@github.com:chinghanho/webtools.git"
+set :branch, "master"
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+set :deploy_to, "/home/#{user}/#{application}"
+set :keep_releases, 5
+set :use_sudo, false
+set :normalize_asset_timestamps, false
+default_run_options[:pty] = true
+
+set :default_environment, {
+  "PATH" => "/home/ubuntu/.nvm/v0.10.15/bin:$PATH"
+}
+
+role :web, domain                   # Your HTTP server, Apache/etc
+role :app, domain                   # This may be the same as your `Web` server
+role :db,  domain, :primary => true #
+
+namespace :deploy do
+
+  desc "Stop Forever"
+  task :stop, :roles => :app do
+    run "cd #{current_path} && node_modules/forever/bin/forever stopall"
+  end
+
+  desc "Start Forever"
+  task :start, :roles => :app do
+    run "cd #{current_path} && node_modules/forever/bin/forever start server/server.js"
+  end
+
+  desc "Restart Forever"
+  task :restart, :roles => :app do
+    run "cd #{current_path} && node_modules/forever/bin/forever restartall"
+  end
+
+  desc "Refresh shared node_modules symlink to current node_modules"
+  task :refresh_symlink, :roles => :app do
+    run "rm -rf #{release_path}/node_modules && ln -s #{shared_path}/node_modules #{release_path}/node_modules"
+    run "rm -rf #{release_path}/server/config/config.js && ln -s #{shared_path}/config/config.js #{release_path}/server/config/config.js"
+    run "rm -rf #{release_path}/public/uploads/pictures/resources && ln -s #{shared_path}/uploads/pictures/resources #{release_path}/public/uploads/pictures/resources"
+    run "rm -rf #{release_path}/dist && ln -s #{shared_path}/dist #{release_path}/dist"
+  end
+
+  desc "Install node modules non-globally"
+  task :npm_install, :roles => :app do
+    run "cd #{current_path} && npm install"
+  end
+
+  task :additional_setup, :roles => :app do
+    run "mkdir -p #{shared_path}/node_modules"
+    run "mkdir -p #{shared_path}/config"
+    run "mkdir -p #{shared_path}/uploads/pictures/resources"
+    run "mkdir -p #{shared_path}/dist"
+  end
+
+  desc "Upload config files to shared directory"
+  task :upload_config, :roles => :app do
+    top.upload("./server/config/config.js", "#{shared_path}/config/config.js", :via => :scp, :recursive => :true)
+  end
+
+  task :assets, :roles => :app do
+    top.upload("./dist", "#{shared_path}", :via => :scp, :recursive => :true)
+  end
+
+end
+
+before "deploy:refresh_symlink", "deploy:upload_config"
+after "deploy:create_symlink", "deploy:refresh_symlink", "deploy:npm_install"
+after "deploy:setup", "deploy:additional_setup"
+
+
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
-
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
