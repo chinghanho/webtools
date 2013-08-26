@@ -6,4 +6,4 @@ angular.module('chhResourcesApp')
     var user = $resource('/api/sessions/check', {});
     return user;
 
-  }])
+  }]);

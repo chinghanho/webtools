@@ -8,5 +8,5 @@ angular.module('chhResourcesApp')
 
       currentUser: _user
 
-    }
-  }])
+    };
+  }]);
