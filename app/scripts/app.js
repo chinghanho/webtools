@@ -23,21 +23,21 @@ angular.module('chhResourcesApp', ['ui.keypress', 'ui.select2', 'ngCookies', 'ng
 
   }]);
 
-  // .run(['$rootScope', 'Auth', function($rootScope, Auth) {
+  .run(['$rootScope', 'Auth', function($rootScope, Auth) {
 
-  //   Auth.currentUser.$get({}, function(data) {
-  //     if (data && !(data.message == 'Not Found')) {
-  //       $rootScope.isLogged = true;
-  //       if (data.role == 'admin') {
-  //         $rootScope.isAdmin = true;
-  //       }
-  //       else {
-  //         $rootScope.isAdmin = false;
-  //       }
-  //     }
-  //     else {
-  //       $rootScope.isLogged = false;
-  //     }
-  //   })
+    Auth.currentUser.$get({}, function(data) {
+      if (data && !(data.message == 'Not Found')) {
+        $rootScope.isLogged = true;
+        if (data.role == 'admin') {
+          $rootScope.isAdmin = true;
+        }
+        else {
+          $rootScope.isAdmin = false;
+        }
+      }
+      else {
+        $rootScope.isLogged = false;
+      }
+    })
 
-  // }]);
+  }]);
