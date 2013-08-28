@@ -130,7 +130,6 @@ angular.module('chhResourcesApp')
         .success(function(data, status, headers, config) {
           if (data && !data.message) {
             $rootScope.isLogged = !$rootScope.isLogged;
-            if (data.role == 'admin') { $rootScope.isAdmin = true };
             clearModelValues($scope.sessionModel);
             $scope.modal(false);
           }
