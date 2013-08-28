@@ -5,9 +5,9 @@ angular.module('chhResourcesApp')
 
     var _user = $resource('/api/sessions/check');
 
-    _user.checkAuth = function() {
-      return _user.get();
-    }
+    _user.checkAuth = function(cb) {
+      return _user.get(cb);
+    };
 
     return _user;
   }]);

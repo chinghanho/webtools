@@ -21,11 +21,11 @@ angular.module('chhResourcesApp', ['ui.keypress', 'ui.select2', 'ngCookies', 'ng
 
     $locationProvider.html5Mode(true);
 
-  }]);
+  }])
 
   .run(['$rootScope', 'Auth', function($rootScope, Auth) {
 
-    Auth.currentUser.$get({}, function(data) {
+    Auth.checkAuth(function(data) {
       if (data && !(data.message == 'Not Found')) {
         $rootScope.isLogged = true;
         if (data.role == 'admin') {
