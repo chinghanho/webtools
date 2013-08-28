@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('chhResourcesApp')
-  .factory('Auth', ['$http', 'UserRest', function($http, UserRest) {
-    var _user = UserRest.get();
+  .factory('Auth', ['$resource', function($resource) {
 
-    return {
+    var _user = $resource('/api/sessions/check');
 
-      currentUser: _user
+    _user.checkAuth = function() {
+      return _user.get();
+    }
 
-    };
+    return _user;
   }]);
