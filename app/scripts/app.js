@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('chhResourcesApp', ['ui.keypress', 'ui.select2', 'ngCookies', 'ngResource'])
+angular.module('chhResourcesApp'
+    , ['ui.keypress', 'ui.select2', 'ngCookies', 'ngResource'])
 
   .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
@@ -23,21 +24,25 @@ angular.module('chhResourcesApp', ['ui.keypress', 'ui.select2', 'ngCookies', 'ng
 
   }])
 
-  .run(['$rootScope', 'Auth', function($rootScope, Auth) {
+  .run(['$rootScope', '$location', 'Auth'
+      , function($rootScope, $location, Auth) {
 
-    Auth.checkAuth(function(data) {
-      if (data && !(data.message == 'Not Found')) {
-        $rootScope.isLogged = true;
-        if (data.role == 'admin') {
-          $rootScope.isAdmin = true;
-        }
-        else {
-          $rootScope.isAdmin = false;
-        }
-      }
-      else {
-        $rootScope.isLogged = false;
-      }
-    })
+    // AngularJS safe $apply (prevent "Error: $apply already in progress")
+    // src: https://gist.github.com/siongui/4969449, https://coderwall.com/p/ngisma
+    $rootScope.safeApply = function(fn) {
+      var phase = this.$root.$$phase;
+      if(phase == '$apply' || phase == '$digest')
+        this.$eval(fn);
+      else
+        this.$apply(fn);
+    };
+
+    Auth.check();
+
+    $rootScope.$on('authEvent', function() {
+      $rootScope.safeApply(function() {
+        $rootScope.user = Auth.user;
+      });
+    });
 
   }]);
