@@ -5,20 +5,13 @@ angular.module('chhResourcesApp')
 
     var auth = {};
 
-    function simpleAuth(callback) {
-      this.check = function() {
-        $http.get('/api/sessions/check')
-          .success(function(result) {
-            callback(result);
-          });
-      };
-    }
-
     auth.broadcastAuthEvent = function() {
       $rootScope.$broadcast('authEvent');
     };
 
-    auth.client = new simpleAuth(function(user) {
+    auth.isLoggedIn = false;
+
+    auth.client = new SimpleAuth(function(user) {
       if (user) {
         auth.user = user;
         auth.broadcastAuthEvent();
