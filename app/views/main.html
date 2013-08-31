@@ -53,7 +53,7 @@
             </a>
           </li>
           <li class="widgets__signout">
-            <a href class="btn narrow" ng-click="destroySession(); showNav = !showNav">
+            <a href class="btn narrow" ng-click="auth.signOut(); showNav = !showNav">
               Sign out
             </a>
           </li>
@@ -106,7 +106,7 @@
         </a>
       </li>
       <li class="widgets__signout">
-        <a href class="btn" ng-click="destroySession(); showNav = !showNav">
+        <a href class="btn" ng-click="auth.signOut(); showNav = !showNav">
           Sign out
         </a>
       </li>

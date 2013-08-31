@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chhResourcesApp')
-  .factory('Auth', function($http) {
+  .factory('Auth', function($http, $cookieStore) {
 
     var Auth = {
 
@@ -19,6 +19,13 @@ angular.module('chhResourcesApp')
             Auth.isLogged = false;
             Auth.user = null;
           });
+      },
+
+      signOut: function() {
+        $cookieStore.remove('remember_token');
+        Auth.isLogged = false;
+        Auth.isAdmin = false;
+        Auth.user = null;
       }
 
     };
