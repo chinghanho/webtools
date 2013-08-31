@@ -9,7 +9,7 @@ angular.module('chhResourcesApp')
 
       isLogged: false,
 
-      login: function() {
+      signIn: function() {
         $http.get('/api/sessions/check')
           .success(function(user) {
             Auth.isLogged = true;
@@ -23,7 +23,7 @@ angular.module('chhResourcesApp')
 
     };
 
-    Auth.login();
+    Auth.signIn();
     return Auth;
 
   });
