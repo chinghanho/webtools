@@ -36,7 +36,6 @@ module.exports = function(app) {
   app.get('/api/types', types.index)
   app.post('/api/types', isAuthenticated, requireAdmin, types.create)
 
-  app.get('/api/sessions/check', sessions.check)
   app.post('/api/sessions', sessions.create)
 
   app.post('/api/users', users.create)

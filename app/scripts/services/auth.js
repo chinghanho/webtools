@@ -11,7 +11,7 @@ angular.module('chhResourcesApp')
       isAdmin: false,
 
       signIn: function() {
-        $http.get('/api/sessions/check')
+        $http.post('/api/sessions', {})
           .success(function(user) {
             Auth.isLogged = true;
             Auth.user = user;
