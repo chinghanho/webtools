@@ -9,3 +9,9 @@ config.js
 /.vagrant
 *.sublime-project
 *.sublime-workspace
+.tags
+
+# Vim temp files
+*~
+*.swp
+*.swo
