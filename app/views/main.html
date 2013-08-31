@@ -1,3 +1,5 @@
+{{user}}
+
 <div class="modal__overlay"></div>
 <div class="alert" ng-class="{'alert-error': alertMsg, 'alert-success': infoMsg}" ng-show="alertMsg || infoMsg" ng-bind="alertMsg || infoMsg"></div>
 
@@ -43,7 +45,7 @@
   <div class="page-header__wrapper">
     <div class="nav--widgets pull-right">
       <i class="icon-list clickable" ng-init="showNav = false" ng-click="showNav = !showNav"></i>
-      <nav ng-switch on="isLogged">
+      <nav ng-switch on="auth.isLogged">
         <ul ng-switch-when="true">
           <li ng-show="isAdmin" class="widgets__admin">
             <a href="/admin" class="btn narrow">
@@ -96,7 +98,7 @@
     </h1>
   </div>
 
-  <nav ng-show="showNav" class="nav--main" ng-switch on="isLogged">
+  <nav ng-show="showNav" class="nav--main" ng-switch on="auth.isLogged">
     <ul class="nav--main__wrapper" ng-switch-when="true">
       <li ng-show="isAdmin" class="widgets__admin">
         <a href="/admin" class="btn">

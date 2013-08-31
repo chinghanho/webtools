@@ -2,8 +2,8 @@
 
 angular.module('chhResourcesApp')
 
-  .controller('MainCtrl', ['$scope', 'resourcesData', 'typesList',
-    function ($scope, resourcesData, typesList) {
+  .controller('MainCtrl'
+      , function ($rootScope, $scope, $location, resourcesData, typesList, Auth) {
 
     resourcesData.resources().then(function(resources) {
       $scope.resources = resources;
@@ -13,4 +13,6 @@ angular.module('chhResourcesApp')
       $scope.types = types;
     });
 
-  }]);
+    $rootScope.auth = Auth;
+
+  });
