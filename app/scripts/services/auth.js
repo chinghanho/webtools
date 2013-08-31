@@ -1,31 +1,29 @@
 'use strict';
 
 angular.module('chhResourcesApp')
-  .factory('Auth', ['$http', '$rootScope', function($http, $rootScope) {
+  .factory('Auth', function($http) {
 
-    var auth = {};
+    var Auth = {
 
-    auth.broadcastAuthEvent = function() {
-      $rootScope.$broadcast('authEvent');
+      user: {},
+
+      isLogged: false,
+
+      login: function() {
+        $http.get('/api/sessions/check')
+          .success(function(user) {
+            Auth.isLogged = true;
+            Auth.user = user;
+          })
+          .error(function(result, status) {
+            Auth.isLogged = false;
+            Auth.user = null;
+          });
+      }
+
     };
 
-    auth.isLoggedIn = false;
+    Auth.login();
+    return Auth;
 
-    auth.client = new SimpleAuth(function(user) {
-      if (user) {
-        auth.user = user;
-        auth.broadcastAuthEvent();
-      }
-      else {
-        auth.user = null;
-        auth.broadcastAuthEvent();
-      }
-    });
-
-    auth.check = function() {
-      this.client.check();
-    };
-
-    return auth;
-
-  }]);
+  });
