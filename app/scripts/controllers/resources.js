@@ -116,26 +116,6 @@ angular.module('chhResourcesApp')
         })
     }
 
-    $scope.submitNewSession = function() {
-      $http.post('/api/sessions', $scope.sessionModel)
-        .success(function(data, status, headers, config) {
-          if (data && !data.message) {
-            $rootScope.isLogged = !$rootScope.isLogged;
-            clearModelValues($scope.sessionModel);
-            $scope.modal(false);
-          }
-          else {
-            $scope.alertMsg = data.message;
-            $timeout(function() {
-              $scope.alertMsg = undefined;
-            }, 4500);
-          }
-        })
-        .error(function(data, status, headers, config) {
-          console.log('New session failed.');
-        });
-    }
-
     $scope.submitNewUser = function() {
       $http.post('/api/users', $scope.userModel)
         .success(function(data, status, headers, config) {
