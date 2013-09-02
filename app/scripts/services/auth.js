@@ -26,6 +26,22 @@ angular.module('chhResourcesApp')
           });
       },
 
+      signUp: function(data) {
+        $http.post('/api/users', data)
+          .success(function(user) {
+            Auth.isLogged = true;
+            Auth.user = user;
+            if (user.role == 'admin') {
+              Auth.isAdmin = true;
+            }
+          })
+          .error(function(result, status) {
+            Auth.isLogged = false;
+            Auth.isAdmin = false;
+            Auth.user = null;
+          });
+      },
+
       signOut: function() {
         $cookieStore.remove('remember_token');
         Auth.isLogged = false;
