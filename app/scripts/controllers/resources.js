@@ -122,22 +122,6 @@ angular.module('chhResourcesApp')
         })
     }
 
-    $scope.submitNewUser = function() {
-      $http.post('/api/users', $scope.userModel)
-        .success(function(data, status, headers, config) {
-          $rootScope.isLogged = !$rootScope.isLogged;
-          if (data.role == 'admin') { $rootScope.isAdmin = true };
-          clearModelValues($scope.userModel);
-          $scope.modal(false);
-        })
-        .error(function(data, status, headers, config) {
-          $scope.alertMsg = data;
-          $timeout(function() {
-            $scope.alertMsg = undefined;
-          }, 4500);
-        });
-    }
-
     $scope.submitNewType = function() {
       $http.post('/api/types', $scope.typeModel)
         .success(function(data, status, headers, config) {
