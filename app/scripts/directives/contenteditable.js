@@ -67,9 +67,7 @@ angular.module('chhResourcesApp')
 
         // url validator
         if (attrs.ceUrl) {
-          console.log(attrs.ceUrl);
           var URL_REGEXP = new RegExp(attrs.ceUrl);
-          console.log(URL_REGEXP);
           var urlValidator = function(viewValue) {
             if (!isEmpty(viewValue) && URL_REGEXP.test(viewValue)) {
               ngModel.$setValidity('url', true);
