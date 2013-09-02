@@ -57,7 +57,7 @@ angular.module('chhResourcesApp')
     $scope.modal = function(arg) {
 
       if (arg == 'newResource') {
-        if ($scope.isLogged) {
+        if ($rootScope.auth.isLogged) {
           $scope.modalContent = 'newResource';
           $scope.showModal = true;
         }
