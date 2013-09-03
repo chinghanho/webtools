@@ -24,12 +24,12 @@ angular.module('chhResourcesApp')
         }
       }, true)
 
-      Resources.query({}, function(resources) {
+      Resources.getResources(function(resources) {
         resources.forEach(function(resource) {
           if (resource._id == $routeParams.resourceId) {
             $scope.resource = resource;
           }
-        })
+        });
       });
 
     }
