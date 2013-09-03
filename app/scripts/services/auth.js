@@ -26,7 +26,7 @@ angular.module('chhResourcesApp')
           });
       },
 
-      signUp: function(data) {
+      signUp: function(data, successCallback, failedCallback) {
         $http.post('/api/users', data)
           .success(function(user) {
             Auth.isLogged = true;
@@ -39,6 +39,7 @@ angular.module('chhResourcesApp')
             Auth.isLogged = false;
             Auth.isAdmin = false;
             Auth.user = null;
+            failedCallback(result);
           });
       },
 
