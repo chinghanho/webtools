@@ -14,7 +14,7 @@ set :normalize_asset_timestamps, false
 default_run_options[:pty] = true
 
 set :default_environment, {
-  "PATH" => "/home/ubuntu/.nvm/v0.10.15/bin:$PATH"
+  "PATH" => "/home/ubuntu/.nvm/v0.10.17/bin:$PATH"
 }
 
 role :web, domain                   # Your HTTP server, Apache/etc
