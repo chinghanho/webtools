@@ -40,7 +40,7 @@ exports.create = function(req, res, next) {
         })
       }
       else {
-        res.send(401, {message: 'Not Found'})
+        res.send(401, 'Incorrect username or password.')
       }
     })
 
@@ -62,7 +62,7 @@ exports.create = function(req, res, next) {
         })
       }
       else {
-        res.send(401, {message: 'Not Found'})
+        res.send(401, 'Incorrect username or password.')
       }
 
     })
