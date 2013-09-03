@@ -13,15 +13,21 @@ angular.module('chhResourcesApp')
     return {
 
       getResources: function(callback) {
-        var resources = cache.get('resources');
-        if (!resources) {
-          resources = Resource.query({}, callback);
-          cache.put('resources', resources);
+        var cachedResources = cache.get('resources');
+        if (!cachedResources) {
+          Resource.query({}, function(resources) {
+            cache.put('resources', resources);
+            if (!!callback) {
+              callback(resources);
+            }
+          });
         }
         else {
-          callback(resources);
+          if (!!callback) {
+            callback(cachedResources);
+          }
         }
-        return resources;
+        return cachedResources;
       }
 
     }

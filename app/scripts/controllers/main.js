@@ -5,7 +5,9 @@ angular.module('chhResourcesApp')
   .controller('MainCtrl'
       , function ($rootScope, $scope, $location, Resources, typesList, Auth) {
 
-    $rootScope.resources = Resources.getResources();
+    Resources.getResources(function(resources) {
+      $rootScope.resources = resources;
+    });
 
     typesList.types().then(function(types) {
       $scope.types = types;
