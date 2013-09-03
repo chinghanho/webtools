@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('chhResourcesApp')
-  .controller('ResourcesCtrl', function($http, $rootScope, $scope, $location, $filter, $parse, $routeParams, $cookies, $timeout) {
+  .controller('ResourcesCtrl'
+      , function($http, $rootScope, $scope, $location, $filter, $parse, $routeParams, $cookies, $timeout, Resources) {
 
     $rootScope.$watch('auth.user', function(newValue) {
       if (newValue != null) {
@@ -23,11 +24,13 @@ angular.module('chhResourcesApp')
         }
       }, true)
 
-      $scope.resources.forEach(function(resource) {
-        if (resource._id == $routeParams.resourceId) {
-          $scope.resource = resource;
-        }
-      })
+      Resources.query({}, function(resources) {
+        resources.forEach(function(resource) {
+          if (resource._id == $routeParams.resourceId) {
+            $scope.resource = resource;
+          }
+        })
+      });
 
     }
     else if ($location.path() == '/admin') {
