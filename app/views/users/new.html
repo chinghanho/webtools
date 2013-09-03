@@ -2,8 +2,8 @@
   <h3 class="modal__name">Sign up</h3>
 </div>
 
-<div class="modal__body clearfix modal__separator">
-  <form name="newUserForm" id="new-user-form" ng-submit="auth.signUp(userModel)">
+<div class="modal__body clearfix modal__separator" ng-controller="SignupCtrl">
+  <form name="newUserForm" id="new-user-form" ng-submit="signup()">
     <div class="modal__body__form-group">
       <label for="username">Username</label>
       <input type="text" name="username" placeholder="Pick a username" required
