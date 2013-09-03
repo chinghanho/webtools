@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('chhResourcesApp')
-  .controller('ResourcesCtrl', ['$http','$rootScope', '$scope', '$location', '$parse', '$filter', '$routeParams', '$cookies', '$timeout',
-    function ($http, $rootScope, $scope, $location, $filter, $parse, $routeParams, $cookies, $timeout) {
+  .controller('ResourcesCtrl', function($http, $rootScope, $scope, $location, $filter, $parse, $routeParams, $cookies, $timeout) {
 
     $rootScope.$watch('auth.user', function(newValue) {
       if (newValue != null) {
@@ -158,4 +157,4 @@ angular.module('chhResourcesApp')
         model[i] = ""
       }
     }
-  }]);
+  });
