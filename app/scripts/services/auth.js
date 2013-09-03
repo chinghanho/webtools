@@ -10,7 +10,7 @@ angular.module('chhResourcesApp')
       isLogged: false,
       isAdmin: false,
 
-      signIn: function(data) {
+      signIn: function(data, successCallback, failedCallback) {
         $http.post('/api/sessions', data || {})
           .success(function(user) {
             Auth.isLogged = true;
@@ -23,6 +23,9 @@ angular.module('chhResourcesApp')
             Auth.isLogged = false;
             Auth.isAdmin = false;
             Auth.user = null;
+            if (!!failedCallback) {
+              failedCallback(result);
+            }
           });
       },
 

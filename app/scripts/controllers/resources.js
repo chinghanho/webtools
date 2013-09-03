@@ -110,7 +110,6 @@ angular.module('chhResourcesApp')
      */
 
     $scope.resourceModel = {};
-    $scope.sessionModel = {};
     $scope.typeModel = {};
 
     $scope.submitNewResource = function() {
