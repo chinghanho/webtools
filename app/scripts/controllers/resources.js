@@ -33,17 +33,23 @@ angular.module('chhResourcesApp')
     }
     else if ($location.path() == '/admin') {
 
-      $scope.resourcesContent = 'showAdmin';
+      if ($rootScope.auth.isAdmin) {
+        $scope.resourcesContent = 'showAdmin';
 
-      $scope.$watch('search', function (newValue, oldValue) {
-        if (newValue === oldValue) { return }
-        if (newValue.name == '') {
-          $scope.resourcesContent = 'showAdmin';
-        }
-        else {
-          $scope.resourcesContent = null;
-        }
-      }, true)
+        $scope.$watch('search', function (newValue, oldValue) {
+          if (newValue === oldValue) { return }
+          if (newValue.name == '') {
+            $scope.resourcesContent = 'showAdmin';
+          }
+          else {
+            $scope.resourcesContent = null;
+          }
+        }, true)
+      }
+      else {
+        $location.path('/');
+      }
+
     }
     else {
       $scope.resourcesContent = null;
