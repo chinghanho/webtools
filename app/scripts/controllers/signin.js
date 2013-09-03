@@ -6,7 +6,12 @@ angular.module('chhResourcesApp')
     $scope.sessionModel = {};
 
     $scope.signin = function() {
-      Auth.signIn($scope.sessionModel, null, function(errMsg) {
+      Auth.signIn($scope.sessionModel, function(user) {
+        $rootScope.infoMsg = 'Welcome! ' + user.login + '.';
+        $timeout(function() {
+          $rootScope.infoMsg = undefined;
+        }, 3500);
+      }, function(errMsg) {
         $rootScope.alertMsg = errMsg;
         $timeout(function() {
           $rootScope.alertMsg = undefined;

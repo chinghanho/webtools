@@ -18,6 +18,9 @@ angular.module('chhResourcesApp')
             if (user.role == 'admin') {
               Auth.isAdmin = true;
             }
+            if (!!successCallback) {
+              successCallback(user);
+            }
           })
           .error(function(result, status) {
             Auth.isLogged = false;
