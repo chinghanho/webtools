@@ -20,6 +20,8 @@ var ResourceSchema = new Schema(
     name:        { type: String, trim: true, unique: true },
     url:         { type: String },
     type_id:     { type: Schema.ObjectId, index: true, ref: 'Type' },
+    user_id:     { type: Schema.ObjectId, index: true, ref: 'User' },
+    comments:   [{ type: Schema.ObjectId, index: true, ref: 'Comment' }],
     create_at:   { type: Date, default: Date.now },
     update_at:   { type: Date, default: Date.now }
   }
