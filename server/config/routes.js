@@ -28,10 +28,6 @@ module.exports = function(app) {
   app.get('/admin', function(req, res, next) {
     res.redirect('/#/admin')
   })
-  app.get('/api/cookies', function(req, res, next) {
-    // console.info(req.cookies.remember_token)
-    res.send(req.cookies)
-  })
 
   app.get('/api/types', types.index)
   app.post('/api/types', isAuthenticated, requireAdmin, types.create)
