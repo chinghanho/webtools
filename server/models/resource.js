@@ -28,7 +28,7 @@ var ResourceSchema = new Schema(
 )
 
 /**
- * Methods（實例方法）
+ * Methods (class method)
  */
 
 ResourceSchema.methods = {
@@ -45,7 +45,7 @@ ResourceSchema.methods = {
 }
 
 /**
- * Statics（類方法）
+ * Statics (instance method)
  */
 
 ResourceSchema.statics = {
