@@ -1,5 +1,5 @@
 {
-  "name": "chh-resources",
+  "name": "webtools-frontend",
   "version": "0.0.0",
   "dependencies": {
     "express": "3.3.4",
@@ -48,7 +48,7 @@
     "karma": "~0.10.2"
   },
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=0.10.18"
   },
   "scripts": {
     "test": "grunt test"
