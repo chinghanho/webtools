@@ -30,7 +30,9 @@ var UserSchema = new Schema(
     role:             { type: String, default: 'user' },
     remember_token:   { type: String },
     resources:       [{ type: Schema.ObjectId, index: true, ref: 'Resource' }],
+    resources_count:  { type: Number, default: 0 },
     comments:        [{ type: Schema.ObjectId, index: true, ref: 'Comment' }],
+    comments_count:   { type: Number, default: 0 },
     create_at:        { type: Date, default: Date.now },
     update_at:        { type: Date, default: Date.now }
   }

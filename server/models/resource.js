@@ -15,15 +15,16 @@ var mongoose = require('mongoose')
 
 var ResourceSchema = new Schema(
   {
-    description: { type: String, trim: true },
-    img_url:     { type: String },
-    name:        { type: String, trim: true, unique: true },
-    url:         { type: String },
-    type_id:     { type: Schema.ObjectId, index: true, ref: 'Type' },
-    user_id:     { type: Schema.ObjectId, index: true, ref: 'User' },
-    comments:   [{ type: Schema.ObjectId, index: true, ref: 'Comment' }],
-    create_at:   { type: Date, default: Date.now },
-    update_at:   { type: Date, default: Date.now }
+    description:    { type: String, trim: true },
+    img_url:        { type: String },
+    name:           { type: String, trim: true, unique: true },
+    url:            { type: String },
+    type_id:        { type: Schema.ObjectId, index: true, ref: 'Type' },
+    user_id:        { type: Schema.ObjectId, index: true, ref: 'User' },
+    comments:      [{ type: Schema.ObjectId, index: true, ref: 'Comment' }],
+    comments_count: { type: Number, default: 0 },
+    create_at:      { type: Date, default: Date.now },
+    update_at:      { type: Date, default: Date.now }
   }
 )
 
