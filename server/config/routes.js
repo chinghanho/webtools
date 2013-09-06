@@ -13,6 +13,7 @@ var users     = require('../controllers/users')
   , types     = require('../controllers/types')
   , upload    = require('../controllers/upload')
   , sessions  = require('../controllers/sessions')
+  , comments  = require('../controllers/comments')
   , mongoose  = require('mongoose')
   , User      = mongoose.model('User')
 
@@ -39,6 +40,8 @@ module.exports = function(app) {
   app.get('/api/resources', resources.index)
   app.post('/api/resources', isAuthenticated, resources.create)
   app.post('/api/resources/image', isAuthenticated, upload.uploadImage)
+
+  app.post('/api/comments', comments.create)
 
 }
 
