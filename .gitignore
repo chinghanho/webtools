@@ -5,11 +5,10 @@ dist
 .sass-cache
 app/bower_components
 config.js
-/public/uploads/pictures/resources/*.png
-/.vagrant
 *.sublime-project
 *.sublime-workspace
 .tags
+/config/deploy.rb
 
 # Vim temp files
 *~
