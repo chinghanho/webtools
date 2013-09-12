@@ -29,7 +29,7 @@ module.exports = function(config) {
 
     // test results reporter to use
     // possible values: dots || progress || growl
-    reporters: ['progress'],
+    reporters: ['dots', 'growl'],
 
     // web server port
     port: 8080,
