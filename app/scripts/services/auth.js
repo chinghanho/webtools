@@ -15,14 +15,14 @@ angular.module('chhResourcesApp')
           .success(function(user) {
             Auth.isLogged = true;
             Auth.user = user;
-            if (user.role == 'admin') {
+            if (user.role === 'admin') {
               Auth.isAdmin = true;
             }
             if (!!successCallback) {
               successCallback(user);
             }
           })
-          .error(function(result, status) {
+          .error(function(result) {
             Auth.isLogged = false;
             Auth.isAdmin = false;
             Auth.user = null;
@@ -37,11 +37,11 @@ angular.module('chhResourcesApp')
           .success(function(user) {
             Auth.isLogged = true;
             Auth.user = user;
-            if (user.role == 'admin') {
+            if (user.role === 'admin') {
               Auth.isAdmin = true;
             }
           })
-          .error(function(result, status) {
+          .error(function(result) {
             Auth.isLogged = false;
             Auth.isAdmin = false;
             Auth.user = null;
