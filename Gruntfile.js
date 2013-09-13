@@ -2,6 +2,7 @@
 'use strict';
 var LIVERELOAD_PORT = 35729;
 var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
+var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
@@ -65,6 +66,7 @@ module.exports = function (grunt) {
           middleware: function (connect) {
             return [
               lrSnippet,
+              proxySnippet,
               mountFolder(connect, '.tmp'),
               mountFolder(connect, yeomanConfig.app)
             ];
@@ -90,7 +92,16 @@ module.exports = function (grunt) {
             ];
           }
         }
-      }
+      },
+      proxies: [
+        {
+          context: '/api',
+          host: '0.0.0.0',
+          port: 3000,
+          https: false,
+          changeOrigin: false
+        }
+      ]
     },
     open: {
       server: {
@@ -330,6 +341,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'concurrent:server',
+      'configureProxies',
       'connect:livereload',
       'watch'
     ]);
