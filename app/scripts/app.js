@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chhResourcesApp'
-    , ['ui.select2', 'ngCookies', 'ngResource'])
+    , ['ui.select2', 'ngCookies', 'ngResource', 'angularMoment'])
 
   .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
