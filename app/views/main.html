@@ -154,29 +154,7 @@
     <div ng-switch on="resourcesContent">
       <div ng-switch-when="showAdmin" ng-include=" '/views/admin/index.html' "></div>
 
-      <div ng-switch-when="showResource">
-        <div class="resource box">
-          <div class="resource--info clearfix">
-            <div class="resource--info__name">
-              <a ng-href="{{resource.url}}" target="_blank">
-                <h3 ng-bind="resource.name || 'Can not fetch the name of this resource. Please refresh your browser try it again.'"></h3>
-              </a>
-            </div>
-
-            <div class="resource--info__img">
-              <img ng-src="{{resource.img_url}}" alt="{{resource.name}}">
-            </div>
-
-            <div class="resource--info__description">
-              <p ng-bind="resource.description || 'Can not fetch the description of this resource. Please refresh your browser try it again.'"></p>
-            </div>
-
-            <div class="resource--info__url">
-              <a ng-href="{{resource.url}}" ng-bind="resource.url" target="_blank"></a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div ng-switch-when="showResource" ng-include=" '/views/resources/show.html' "></div>
 
       <div ng-switch-default>
         <div class="resources-item box" ng-repeat="resource in filteredResources = (resources | filter:search)">
