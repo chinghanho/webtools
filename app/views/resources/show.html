@@ -19,3 +19,30 @@
     </div>
   </div>
 </div>
+
+<div ng-controller="CommentsCtrl">
+  <div class="resource resource--comments__empty" ng-hide="comments.length">
+    There is not any comments.
+  </div>
+
+  <div class="resource resource--comments box" ng-show="comments.length">
+    <div ng-repeat="comment in comments">
+      <div class="comment">
+        <div class="comment-header clearfix">
+          <div class="comment-author" ng-bind="comment.user_id.login"></div>
+          <div class="comment-datetime" ng-bind="comment.create_at | date:'yyyy-MM-dd'"></div>
+        </div>
+        <div class="comment-body" ng-bind="comment.body"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="resource resource--comments box" ng-show="auth.isLogged">
+    <div class="resource--comments__inner">
+      <form name="newCommentForm" ng-submit="submitNewComment()">
+        <textarea ng-model="commentModel.body" name="body" placeholder="Leave a comment"></textarea>
+        <button type="submit" class="btn">Comment</button>
+      </form>
+    </div>
+  </div>
+</div>
