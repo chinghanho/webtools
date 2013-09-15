@@ -43,6 +43,120 @@
       <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
+    <!-- header: start -->
+    <header class="page-header">
+      <div class="page-header__wrapper">
+        <div class="nav--widgets pull-right">
+          <i class="icon-list clickable" ng-init="showNav = false" ng-click="showNav = !showNav"></i>
+          <nav ng-switch on="auth.isLogged">
+            <ul ng-switch-when="true">
+              <li class="widgets__profile">
+                <a href="/users/{{auth.user.login}}" ng-bind="auth.user.login" class="btn narrow">
+                  Profile
+                </a>
+              </li>
+              <li ng-show="auth.isAdmin" class="widgets__admin">
+                <a href="/admin" class="btn narrow">
+                  Admin
+                </a>
+              </li>
+              <li class="widgets__signout">
+                <a href class="btn narrow" ng-click="auth.signOut(); showNav = !showNav">
+                  Sign out
+                </a>
+              </li>
+              <li class="widgets__submit">
+                <a href class="btn primary narrow" ng-click="modal('newResource')">
+                  Submit Resource
+                </a>
+              </li>
+              <li class="widgets__search">
+                <div>
+                  <input type="text" ng-model="search.name">
+                </div>
+              </li>
+            </ul>
+
+            <ul ng-switch-default>
+              <li class="widgets__signin">
+                <a href class="btn narrow" ng-click="modal('signIn')">
+                  Sign in
+                </a>
+              </li>
+              <li class="widgets__signup">
+                <a href class="btn narrow" ng-click="modal('signUp')">
+                  Sign up
+                </a>
+              </li>
+              <li class="widgets__submit">
+                <a href class="btn primary narrow" ng-click="modal('newResource')">
+                  Submit Resource
+                </a>
+              </li>
+              <li class="widgets__search">
+                <div>
+                  <input type="text" ng-model="search.name">
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <h1 id="logo">
+          <a ng-href="/">WebTools</a>
+        </h1>
+      </div>
+
+      <nav ng-show="showNav" class="nav--main" ng-switch on="auth.isLogged">
+        <ul class="nav--main__wrapper" ng-switch-when="true">
+          <li ng-show="auth.isAdmin" class="widgets__admin">
+            <a href="/admin" class="btn">
+              Admin
+            </a>
+          </li>
+          <li class="widgets__signout">
+            <a href class="btn" ng-click="auth.signOut(); showNav = !showNav">
+              Sign out
+            </a>
+          </li>
+          <li class="widgets__submit">
+            <a href class="btn primary" ng-click="modal('newResource'); showNav = !showNav">
+              Submit Resource
+            </a>
+          </li>
+          <li class="widgets__search">
+            <div>
+              <input type="text" ng-model="search.name">
+            </div>
+          </li>
+        </ul>
+
+        <ul class="nav--main__wrapper" ng-switch-default>
+          <li class="widgets__login--twitter">
+            <a href class="btn" ng-click="modal('signIn')">
+              Sign in
+            </a>
+          </li>
+          <li class="widgets__signup">
+            <a href class="btn" ng-click="modal('signUp')">
+              Sign up
+            </a>
+          </li>
+          <li class="widgets__submit">
+            <a href class="btn primary" ng-click="modal('newResource'); showNav = !showNav">
+              Submit Resource
+            </a>
+          </li>
+          <li class="widgets__search">
+            <div>
+              <input type="text" ng-model="search.name">
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- header: end -->
+
+
     <!-- Add your site or application content here -->
     <div class="container" ng-view></div>
 
