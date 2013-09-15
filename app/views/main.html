@@ -45,6 +45,11 @@
       <i class="icon-list clickable" ng-init="showNav = false" ng-click="showNav = !showNav"></i>
       <nav ng-switch on="auth.isLogged">
         <ul ng-switch-when="true">
+          <li class="widgets__profile">
+            <a href="/users/{{auth.user.login}}" ng-bind="auth.user.login" class="btn narrow">
+              Profile
+            </a>
+          </li>
           <li ng-show="auth.isAdmin" class="widgets__admin">
             <a href="/admin" class="btn narrow">
               Admin
