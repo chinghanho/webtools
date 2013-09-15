@@ -115,6 +115,13 @@ module.exports = function (grunt) {
           port: 3000,
           https: false,
           changeOrigin: false
+        },
+        {
+          context: '/users',
+          host: '0.0.0.0',
+          port: 3000,
+          https: false,
+          changeOrigin: false
         }
       ]
     },

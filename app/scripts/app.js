@@ -18,6 +18,10 @@ angular.module('chhResourcesApp'
         templateUrl: '/views/main.html',
         controller: 'ResourcesCtrl'
       })
+      .when('/users/:userName', {
+        templateUrl: '/views/users/show.html',
+        controller: 'UsersCtrl'
+      })
       .otherwise({redirectTo: '/'});
 
     $locationProvider.html5Mode(true);
