@@ -26,7 +26,7 @@
 
           <div class="modal__footer">
             <div class="pull-right">
-              <div class="label" ng-bind="modalResource.type_id.name"></div>
+              <div class="label" ng-bind="modalResource.type.name"></div>
             </div>
             <a ng-href="{{modalResource.url}}" ng-bind="modalResource.url" target="_blank"></a>
           </div>
@@ -168,7 +168,7 @@
             <div class="resources-item__thumb--info">
               <div class="resources-item__thumb--info__name" ng-bind="resource.name"></div>
               <div class="resources-item__thumb--info__type">
-                <div class="label" ng-bind="resource.type_id.name"></div>
+                <div class="label" ng-bind="resource.type.name"></div>
               </div>
             </div>
           </div>

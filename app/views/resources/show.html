@@ -22,14 +22,14 @@
 
 <div ng-controller="CommentsCtrl">
   <div class="resource resource--comments__empty" ng-hide="comments.length">
-    There is not any comments.
+    There are not any comments.
   </div>
 
   <div class="resource resource--comments box" ng-show="comments.length">
     <div ng-repeat="comment in comments">
       <div class="comment">
         <div class="comment-header clearfix">
-          <div class="comment-author" ng-bind="comment.user_id.login"></div>
+          <div class="comment-author" ng-bind="comment.user.login"></div>
           <div class="comment-datetime" ng-bind="comment.create_at | date:'yyyy-MM-dd'"></div>
         </div>
         <div class="comment-body" ng-bind="comment.body"></div>
