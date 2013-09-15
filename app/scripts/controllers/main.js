@@ -14,5 +14,6 @@ angular.module('chhResourcesApp')
     });
 
     $rootScope.auth = Auth;
+    $rootScope.search = {};
 
   });
