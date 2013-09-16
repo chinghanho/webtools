@@ -18,7 +18,7 @@ role :app, domain                   # This may be the same as your `Web` server
 namespace :deploy do
 
   task :assets, :roles => :app do
-    top.upload("./dist", "#{shared_path}", :via => :scp, :recursive => :true)
+    top.upload("./dist", "#{shared_path}/dist", :via => :scp, :recursive => :true)
   end
 
 end
