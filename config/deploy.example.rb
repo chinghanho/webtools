@@ -1,7 +1,7 @@
 set :application, "webtools"
-set :user, "ubuntu"
-set :domain, "54.238.48.207"
-ssh_options[:keys] = ["~/.ssh/keypair-webtools.pem"]
+set :user, "username"
+set :domain, ""
+# ssh_options[:keys] = ["~/.ssh/keypair.pem"]
 
 set :scm, :git
 set :repository,  "git@github.com:chinghanho/webtools-frontend.git"
