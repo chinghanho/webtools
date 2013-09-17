@@ -8,7 +8,7 @@ angular.module('chhResourcesApp'
     $routeProvider
       .when('/', {
         templateUrl: '/views/main.html',
-        controller: 'ResourcesCtrl'
+        controller: 'MainCtrl'
       })
       .when('/resources/:resourceId', {
         templateUrl: '/views/main.html',

@@ -10,10 +10,6 @@ angular.module('chhResourcesApp')
       }
     })
 
-    $scope.resources = Resources.query({}, function (resources) {
-      $scope.resources = resources;
-    });
-
     // $scope.clickUploader = function() {
     //   $('#cover-image-uploader').click();
     // }
