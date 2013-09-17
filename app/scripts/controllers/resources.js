@@ -10,52 +10,9 @@ angular.module('chhResourcesApp')
       }
     })
 
-    if (Object.keys($routeParams).length != 0) {
-
-      $scope.resourcesContent = 'showResource';
-
-      $scope.$watch('search', function (newValue, oldValue) {
-        if (newValue === oldValue) { return }
-        if (newValue.name == '') {
-          $scope.resourcesContent = 'showResource';
-        }
-        else {
-          $scope.resourcesContent = null;
-        }
-      }, true)
-
-      Resources.getResources(function(resources) {
-        resources.forEach(function(resource) {
-          if (resource._id == $routeParams.resourceId) {
-            $scope.resource = resource;
-          }
-        });
-      });
-
-    }
-    else if ($location.path() == '/admin') {
-
-      if ($rootScope.auth.isAdmin) {
-        $scope.resourcesContent = 'showAdmin';
-
-        $scope.$watch('search', function (newValue, oldValue) {
-          if (newValue === oldValue) { return }
-          if (newValue.name == '') {
-            $scope.resourcesContent = 'showAdmin';
-          }
-          else {
-            $scope.resourcesContent = null;
-          }
-        }, true)
-      }
-      else {
-        $location.path('/');
-      }
-
-    }
-    else {
-      $scope.resourcesContent = null;
-    }
+    $scope.resources = Resources.query({}, function (resources) {
+      $scope.resources = resources;
+    });
 
     // $scope.clickUploader = function() {
     //   $('#cover-image-uploader').click();
