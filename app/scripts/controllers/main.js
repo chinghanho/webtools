@@ -10,7 +10,6 @@ angular.module('chhResourcesApp')
     });
 
     $rootScope.auth = Auth;
-    $rootScope.search = {};
 
     /**
      * Modal Control

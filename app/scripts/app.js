@@ -28,4 +28,8 @@ angular.module('chhResourcesApp'
 
   }])
 
-  .run(function(Auth) {});
+  .run(function($rootScope, Auth) {
+
+    $rootScope.search = {};
+
+  });
