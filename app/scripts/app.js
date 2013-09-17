@@ -11,7 +11,7 @@ angular.module('chhResourcesApp'
         controller: 'MainCtrl'
       })
       .when('/resources/:resourceId', {
-        templateUrl: '/views/main.html',
+        templateUrl: '/views/resources/show.html',
         controller: 'ResourcesCtrl'
       })
       .when('/admin', {

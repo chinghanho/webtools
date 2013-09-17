@@ -3,7 +3,7 @@
 angular.module('chhResourcesApp')
   .factory('Resources', function($resource) {
 
-    var url     = '/api/resources'
+    var url     = '/api/resources/:resourceId'
       , params  = {}
       , actions = {};
 
