@@ -2,7 +2,7 @@
 
 angular.module('chhResourcesApp')
   .controller('ResourcesCtrl'
-      , function($http, $rootScope, $scope, $location, $routeParams, $cookies, $timeout, Resources) {
+      , function($http, $rootScope, $scope, $timeout, Resources) {
 
     $rootScope.$watch('auth.user', function(newValue) {
       if (newValue != null) {
