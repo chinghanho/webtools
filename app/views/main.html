@@ -44,32 +44,9 @@
 
   <div class="resources">
     <div ng-switch on="resourcesContent">
-      <div ng-switch-when="showAdmin" ng-include=" '/views/admin/index.html' "></div>
-
+      <div ng-switch-default             ng-include=" '/views/resources/index.html' "></div>
+      <div ng-switch-when="showAdmin"    ng-include=" '/views/admin/index.html' "></div>
       <div ng-switch-when="showResource" ng-include=" '/views/resources/show.html' "></div>
-
-      <div ng-switch-default>
-        <div class="resource-item box" ng-repeat="resource in filteredResources = (resources | filter:search)">
-          <div class="resources-item__thumb clickable" ng-click="modal(resource)">
-            <div class="resources-item__thumb--img">
-              <div>
-                <img ng-src="{{resource.img_url}}" alt="{{resource.name}}">
-              </div>
-            </div>
-
-            <div class="resources-item__thumb--info">
-              <div class="resources-item__thumb--info__name" ng-bind="resource.name"></div>
-              <div class="resources-item__thumb--info__type">
-                <div class="label" ng-bind="resource.type.name"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="resource--empty" ng-hide="filteredResources.length">
-          <p>There are not any resources.</p>
-        </div>
-      </div>
     </div>
   </div>
 
