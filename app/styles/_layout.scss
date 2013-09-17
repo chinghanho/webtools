@@ -45,7 +45,7 @@ $large-display: 1201px $large-display-break;
 \*--------------------------------------*/
 @include at-breakpoint($large-display) {
   .resources { @include span-columns(12, $large-display-break); }
-  .resources--sidebar { @include span-columns(2 omega, $total-columns); }
+  .sidebar { @include span-columns(2 omega, $total-columns); }
 
   .page-header { margin-bottom: gutter($large-display-break); }
   .nav--main { display: none; }
@@ -62,7 +62,7 @@ $large-display: 1201px $large-display-break;
 \*--------------------------------------*/
 @include at-breakpoint($desktop) {
   .resources { @include span-columns($desktop-break); }
-  .resources--sidebar { display: none; }
+  .sidebar { display: none; }
 
   .page-header { margin-bottom: gutter($desktop-break); }
   .nav--main { display: none; }
@@ -79,7 +79,7 @@ $large-display: 1201px $large-display-break;
 \*--------------------------------------*/
 @include at-breakpoint($tables) {
   .resources { @include span-columns($tables-break); }
-  .resources--sidebar { display: none; }
+  .sidebar { display: none; }
   .page-header { margin-bottom: gutter($tables-break); }
   .nav--main { margin-bottom: $grid-padding; }
 }
@@ -94,7 +94,7 @@ $large-display: 1201px $large-display-break;
 \*--------------------------------------*/
 @include at-breakpoint($phones-to-tables) {
   .resources { @include span-columns($phones-to-tables-break); }
-  .resources--sidebar { display: none; }
+  .sidebar { display: none; }
   .page-header { margin-bottom: gutter($phones-to-tables-break); }
   .nav--main { margin-bottom: $grid-padding; }
 }
@@ -110,7 +110,7 @@ $large-display: 1201px $large-display-break;
 \*--------------------------------------*/
 @include at-breakpoint($phones) {
   .resources { @include span-columns($phones-break); }
-  .resources--sidebar { display: none; }
+  .sidebar { display: none; }
   .page-header { margin-bottom: gutter($phones-break); }
   .nav--main { margin-bottom: $grid-padding; }
 }
