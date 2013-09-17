@@ -5,7 +5,7 @@
     ^large-display
 \*--------------------------------------*/
 @include at-breakpoint($large-display) {
-  .resources-item {
+  .resource-item {
     @include isolate-grid(3, 12);
     margin-bottom: gutter($large-display-break);
   }
@@ -48,7 +48,7 @@
     ^desktop
 \*--------------------------------------*/
 @include at-breakpoint($desktop) {
-  .resources-item {
+  .resource-item {
     @include isolate-grid(3, $desktop-break);
     margin-bottom: gutter($desktop-break);
   }
@@ -85,7 +85,7 @@
     ^tables
 \*--------------------------------------*/
 @include at-breakpoint($tables) {
-  .resources-item {
+  .resource-item {
     @include isolate-grid(3, $tables-break);
     margin-bottom: gutter($tables-break);
   }
@@ -123,7 +123,7 @@
     ^phones-to-tables
 \*--------------------------------------*/
 @include at-breakpoint($phones-to-tables) {
-  .resources-item {
+  .resource-item {
     @include isolate-grid(3, $phones-to-tables-break);
     margin-bottom: gutter($phones-to-tables-break);
   }
@@ -148,7 +148,7 @@
     ^phones
 \*--------------------------------------*/
 @include at-breakpoint($phones) {
-  .resources-item {
+  .resource-item {
     @include isolate-grid(6, $phones-break);
     margin-bottom: gutter($phones-break);
   }

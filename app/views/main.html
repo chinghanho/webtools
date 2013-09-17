@@ -49,7 +49,7 @@
       <div ng-switch-when="showResource" ng-include=" '/views/resources/show.html' "></div>
 
       <div ng-switch-default>
-        <div class="resources-item box" ng-repeat="resource in filteredResources = (resources | filter:search)">
+        <div class="resource-item box" ng-repeat="resource in filteredResources = (resources | filter:search)">
           <div class="resources-item__thumb clickable" ng-click="modal(resource)">
             <div class="resources-item__thumb--img">
               <div>
