@@ -2,7 +2,7 @@
 
 angular.module('chhResourcesApp')
 
-.directive('modal', function ($http, $templateCache) {
+.directive('modal', function ($http, $templateCache, $compile) {
 
   var getTemplate = function (contentType) {
     var templateLoader;
@@ -22,13 +22,28 @@ angular.module('chhResourcesApp')
 
   var linker = function (scope, elem, attrs) {
 
-    var loader = getTemplate(scope.show);
+    scope.$watch('show', function (newValue, oldValue) {
+      if (!!newValue) {
 
-    loader.success(function (template) {
-      elem.html(template);
-    })
-    .then(function (response) {
-      elem.replaceWith($compile(elem.html())(scope));
+        var loader = getTemplate(scope.show);
+
+        loader.success(function (template) {
+          elem.html('<div class="modal-container">'
+          + '<div class="modal__wrapper">'
+          + '<div class="modal__wrapper-inner">'
+          + '<div class="modal__content" ng-switch on="modalContent">'
+          + '</div>'
+          + template
+          + '<div ng-click="modal(false)" class="modal__close-button">&times;</div>'
+          + '</div>'
+          + '</div>'
+          + '</div>');
+        })
+        .then(function () {
+          elem.replaceWith($compile(elem.html())(scope));
+        });
+
+      }
     });
 
   }
