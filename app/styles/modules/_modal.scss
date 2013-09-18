@@ -159,6 +159,16 @@
   //
 }
 
+.modal-container {
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+}
+
 .modal__wrapper-inner {
   position: relative;
   @include border-radius(3px);
