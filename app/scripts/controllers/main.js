@@ -9,6 +9,8 @@ angular.module('chhResourcesApp')
       $scope.resources = resources;
     });
 
+    $scope.modalContent = 'signIn';
+
     typesList.types().then(function(types) {
       $scope.types = types;
     });
