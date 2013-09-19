@@ -32,4 +32,17 @@ angular.module('chhResourcesApp'
 
     $rootScope.search = {};
 
+    $rootScope.modalContent = '';
+    $rootScope.modal = {
+
+      signIn: function () {
+        $rootScope.modalContent = 'signIn';
+      },
+
+      signUp: function () {
+        $rootScope.modalContent = 'signUp';
+      }
+
+    }
+
   });

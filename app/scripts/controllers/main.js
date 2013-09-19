@@ -9,16 +9,6 @@ angular.module('chhResourcesApp')
       $scope.resources = resources;
     });
 
-    $scope.modalContent = '';
-
-    $scope.signIn = function () {
-      $scope.modalContent = 'signIn';
-    };
-
-    $scope.signUp = function () {
-      $scope.modalContent = 'signUp';
-    };
-
     typesList.types().then(function(types) {
       $scope.types = types;
     });
