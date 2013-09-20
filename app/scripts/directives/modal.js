@@ -36,10 +36,10 @@ angular.module('chhResourcesApp')
         loader.success(function (template) {
           elem.html('<div class="modal-container">'
           + '<div class="modal__wrapper">'
-          + '<div class="modal__wrapper-inner">'
-          + '<div class="modal__content" ng-switch on="modalContent">'
-          + '</div>'
+          + '<div class="modal-wrapper-inner">'
+          + '<div class="modal__content">'
           + template
+          + '</div>'
           + '<div ng-click="modal.close()" class="modal__close-button">&times;</div>'
           + '</div>'
           + '</div>'
