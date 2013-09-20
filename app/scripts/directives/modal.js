@@ -2,7 +2,7 @@
 
 angular.module('chhResourcesApp')
 
-.directive('modal', function ($http, $templateCache, $compile, $rootScope) {
+.directive('modal', function ($document, $http, $templateCache, $compile, $rootScope) {
 
   var getTemplate = function (contentType) {
     var templateLoader;
@@ -33,6 +33,15 @@ angular.module('chhResourcesApp')
       scope.$apply(function () {
         $rootScope.modal.close();
       });
+    });
+
+    // Close the modal when keypress ESC.
+    $document.keydown(function (event) {
+      if (event.which === 27) {
+        scope.$apply(function () {
+          $rootScope.modal.close();
+        });
+      }
     });
 
     scope.$watch('show', function (newValue, oldValue) {
