@@ -2,15 +2,15 @@
 
 angular.module('chhResourcesApp')
 
-.controller('CommentsCtrl', function (Comments, $scope, $http, $routeParams) {
+.controller('CommentsCtrl', function (Comments, $scope, $http, $stateParams) {
 
-  $scope.comments = Comments.getCommets({resourceId: $routeParams.resourceId});
+  $scope.comments = Comments.getCommets({resourceId: $stateParams.resourceId});
 
   $scope.commentModel = {};
 
   $scope.submitNewComment = function () {
 
-    $scope.commentModel.resource = $routeParams.resourceId;
+    $scope.commentModel.resource = $stateParams.resourceId;
     $scope.commentModel.user     = $scope.auth.user.id;
 
     $http.post('/api/comments', $scope.commentModel)
