@@ -176,7 +176,7 @@
   @include background($modal-background-color);
 }
 
-.modal__header {
+.modal-header {
   border-bottom: 1px solid $border-color;
   color: $heading-text-color;
   a {
@@ -196,7 +196,7 @@
   //
 }
 
-.modal__body {
+.modal-body {
   //
 }
 
@@ -248,7 +248,7 @@
   border-bottom: 1px solid $border-color;
 }
 
-.modal__footer, .modal__submit, .modal__url, .modal__type {
+.modal-footer, .modal__submit, .modal__url, .modal__type {
   @include box-sizing(border-box);
   padding: 11px 8px;
 }

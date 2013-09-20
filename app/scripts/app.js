@@ -49,6 +49,11 @@ angular.module('chhResourcesApp'
         $rootScope.modalContent = 'newResource';
       },
 
+      showResource: function (resource) {
+        $rootScope.modalContent = 'showResource';
+        $rootScope.modalResource = resource;
+      },
+
       close: function () {
         $rootScope.modalContent = '';
       }

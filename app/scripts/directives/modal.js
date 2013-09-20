@@ -10,7 +10,8 @@ angular.module('chhResourcesApp')
     var templateMap = {
       signUp: '/views/users/new.html',
       signIn: '/views/sessions/new.html',
-      newResource: '/views/resources/new.html'
+      newResource: '/views/resources/new.html',
+      showResource: '/views/resources/show-for-modal.html'
     };
 
     var templateUrl = templateMap[contentType];

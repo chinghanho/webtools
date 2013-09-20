@@ -1,0 +1,21 @@
+<div class="modal-header">
+
+  <a href="/resources/{{modalResource._id}}" class="modal__name">
+    <h3 ng-bind="modalResource.name"></h3>
+  </a>
+
+</div>
+
+<div class="modal-body modal__separator">
+  <a ng-href="{{modalResource.url}}" class="modal_cover-image" target="_blank">
+    <img src="{{modalResource.img_url}}" alt="{{modalResource.name}}">
+  </a>
+  <p ng-bind="modalResource.description" class="modal__description paragraph-text">Loading</p>
+</div>
+
+<div class="modal-footer">
+  <div class="pull-right">
+    <div class="label" ng-bind="modalResource.type.name"></div>
+  </div>
+  <a ng-href="{{modalResource.url}}" ng-bind="modalResource.url" target="_blank"></a>
+</div>
