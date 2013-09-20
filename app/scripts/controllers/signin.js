@@ -11,6 +11,7 @@ angular.module('chhResourcesApp')
         $timeout(function() {
           $rootScope.infoMsg = undefined;
         }, 3500);
+        $rootScope.modal.close();
       }, function(errMsg) {
         $rootScope.alertMsg = errMsg;
         $timeout(function() {
