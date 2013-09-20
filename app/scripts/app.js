@@ -28,9 +28,11 @@ angular.module('chhResourcesApp'
 
   }])
 
-  .run(function($rootScope, Auth) {
+  .run(function ($rootScope, Auth, Types) {
 
     $rootScope.search = {};
+
+    $rootScope.types = Types.query({});
 
     $rootScope.modalContent = '';
     $rootScope.modal = {

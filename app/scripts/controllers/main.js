@@ -3,14 +3,10 @@
 angular.module('chhResourcesApp')
 
   .controller('MainCtrl'
-      , function ($rootScope, $scope, $location, Resources, typesList, Auth) {
+      , function ($rootScope, $scope, $location, Resources, Auth) {
 
     $scope.resources = Resources.query({}, function (resources) {
       $scope.resources = resources;
-    });
-
-    typesList.types().then(function(types) {
-      $scope.types = types;
     });
 
     $rootScope.auth = Auth;
