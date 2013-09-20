@@ -141,7 +141,7 @@
   overflow: hidden;
 }
 
-.modal__overlay {
+.modal-overlay {
   display: none;
   position: fixed;
   top: 0;
@@ -150,9 +150,10 @@
   left: 0;
   z-index: 1000;
   @include background(hsla(0, 0%, 34%, .7));
-  &.modal-enabled {
-    display: block;
-  }
+}
+
+.modal-enabled .modal-overlay {
+  display: block;
 }
 
 .modal__wrapper {

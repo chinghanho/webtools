@@ -26,6 +26,7 @@ angular.module('chhResourcesApp')
       if (oldValue === newValue) { return }
 
       if (!newValue || newValue === '') {
+        angular.element('body').removeClass('modal-enabled');
         elem.html('');
       }
       else if (!!newValue) {
@@ -46,6 +47,9 @@ angular.module('chhResourcesApp')
         })
         .then(function () {
           elem.html($compile(elem.html())(scope.$root));
+        })
+        .then(function () {
+          angular.element('body').addClass('modal-enabled');
         });
 
       }
