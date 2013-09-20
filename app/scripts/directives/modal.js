@@ -2,7 +2,7 @@
 
 angular.module('chhResourcesApp')
 
-.directive('modal', function ($http, $templateCache, $compile) {
+.directive('modal', function ($http, $templateCache, $compile, $rootScope) {
 
   var getTemplate = function (contentType) {
     var templateLoader;
@@ -29,7 +29,12 @@ angular.module('chhResourcesApp')
         return
       }
 
+      // Force update DOM by Angular after changed the scope.
+      scope.$apply(function () {
+        $rootScope.modal.close();
+      });
     });
+
     scope.$watch('show', function (newValue, oldValue) {
       if (oldValue === newValue) { return }
 
