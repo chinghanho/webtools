@@ -60,13 +60,4 @@ angular.module('chhResourcesApp')
         })
     }
 
-    /**
-     * Private functions
-     */
-
-    function clearModelValues(model) {
-      for (var i in model) {
-        model[i] = ""
-      }
-    }
   });

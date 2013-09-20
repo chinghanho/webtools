@@ -28,8 +28,36 @@ angular.module('chhResourcesApp'
 
   }])
 
-  .run(function($rootScope, Auth) {
+  .run(function ($rootScope, Auth, Types) {
 
     $rootScope.search = {};
+
+    $rootScope.types = Types.query({});
+
+    $rootScope.modalContent = '';
+    $rootScope.modal = {
+
+      signIn: function () {
+        $rootScope.modalContent = 'signIn';
+      },
+
+      signUp: function () {
+        $rootScope.modalContent = 'signUp';
+      },
+
+      newResource: function () {
+        $rootScope.modalContent = 'newResource';
+      },
+
+      showResource: function (resource) {
+        $rootScope.modalContent = 'showResource';
+        $rootScope.modalResource = resource;
+      },
+
+      close: function () {
+        $rootScope.modalContent = '';
+      }
+
+    }
 
   });

@@ -8,7 +8,7 @@
     @include container;
     @include prefix(4);
     @include span-columns(6, $large-display-break);
-    .modal__wrapper-inner {
+    .modal-wrapper-inner {
       @include set-container-width;
       margin: $grid-padding * 4 0;
     }
@@ -37,7 +37,7 @@
     @include container;
     @include prefix(3);
     @include span-columns(6, $desktop-break);
-    .modal__wrapper-inner {
+    .modal-wrapper-inner {
       @include set-container-width;
       margin: $grid-padding * 2 0;
     }
@@ -66,7 +66,7 @@
     @include container;
     @include prefix(2);
     @include span-columns(5, $tables-break);
-    .modal__wrapper-inner {
+    .modal-wrapper-inner {
       @include set-container-width;
       margin: $grid-padding 0;
     }
@@ -97,7 +97,7 @@
     @include container;
     @include prefix(1);
     @include span-columns(7, $phones-to-tables-break);
-    .modal__wrapper-inner {
+    .modal-wrapper-inner {
       @include set-container-width;
       margin: $grid-padding 0;
     }
@@ -125,7 +125,7 @@
 @include at-breakpoint($phones) {
   .modal__wrapper {
     @include container;
-    .modal__wrapper-inner {
+    .modal-wrapper-inner {
       @include set-container-width;
       margin: $grid-padding 0;
     }
@@ -141,7 +141,7 @@
   overflow: hidden;
 }
 
-.modal__overlay {
+.modal-overlay {
   display: none;
   position: fixed;
   top: 0;
@@ -150,22 +150,33 @@
   left: 0;
   z-index: 1000;
   @include background(hsla(0, 0%, 34%, .7));
-  &.modal-enabled {
-    display: block;
-  }
+}
+
+.modal-enabled .modal-overlay {
+  display: block;
 }
 
 .modal__wrapper {
   //
 }
 
-.modal__wrapper-inner {
+.modal-container {
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+.modal-wrapper-inner {
   position: relative;
   @include border-radius(3px);
   @include background($modal-background-color);
 }
 
-.modal__header {
+.modal-header {
   border-bottom: 1px solid $border-color;
   color: $heading-text-color;
   a {
@@ -185,7 +196,7 @@
   //
 }
 
-.modal__body {
+.modal-body {
   //
 }
 
@@ -237,7 +248,7 @@
   border-bottom: 1px solid $border-color;
 }
 
-.modal__footer, .modal__submit, .modal__url, .modal__type {
+.modal-footer, .modal__submit, .modal__url, .modal__type {
   @include box-sizing(border-box);
   padding: 11px 8px;
 }

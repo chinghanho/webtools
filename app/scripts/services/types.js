@@ -1,21 +1,12 @@
 'use strict';
 
 angular.module('chhResourcesApp')
-  .factory('typesList', ['$http', '$q', function($http, $q) {
-    return {
-      types: function() {
-        var deferred = $q.defer();
+  .factory('Types', function($resource) {
 
-        $http.get('/api/types')
-          .success(function(data) {
-            console.log('success get types list!');
-            deferred.resolve(data);
-          })
-          .error(function() {
-            deferred.reject('An error occured while fetching types.');
-          });
+    var url     = '/api/types'
+      , params  = {}
+      , actions = {};
 
-        return deferred.promise;
-      }
-    };
-  }]);
+    return $resource(url, params, actions);
+
+  });

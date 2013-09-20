@@ -1,46 +1,112 @@
-<div class="modal__overlay"></div>
+<div class="modal-overlay"></div>
 <div class="alert" ng-class="{'alert-error': alertMsg, 'alert-success': infoMsg}" ng-show="alertMsg || infoMsg" ng-bind="alertMsg || infoMsg"></div>
 
-<!-- modal: start -->
-<modal class="show-resource" ng-show="showModal">
-  <div class="modal__wrapper">
-    <div class="modal__wrapper-inner">
-      <div class="modal__content" ng-switch on="modalContent">
-        <div ng-switch-when="signUp" ng-include=" '/views/users/new.html' "></div>
-        <div ng-switch-when="signIn" ng-include=" '/views/sessions/new.html' "></div>
-        <div ng-switch-when="newResource" ng-include=" '/views/resources/new.html' "></div>
-
-        <div ng-switch-default>
-          <div class="modal__header">
-            <a class="modal__name" ng-href="/resources/{{modalResource._id}}">
-              <h3 ng-bind="modalResource.name"></h3>
+<!-- header: start -->
+<header class="page-header">
+  <div class="page-header__wrapper">
+    <div class="nav--widgets pull-right">
+      <i class="icon-list clickable" ng-init="showNav = false" ng-click="showNav = !showNav"></i>
+      <nav ng-switch on="auth.isLogged">
+        <ul ng-switch-when="true">
+          <li class="widgets__profile">
+            <a href="/users/{{auth.user.login}}" ng-bind="auth.user.login" class="btn narrow">
+              Profile
             </a>
-          </div>
-
-          <div class="modal__body modal__separator">
-            <a class="modal__cover-image" ng-href="{{modalResource.url}}" target="_blank">
-              <img ng-src="{{modalResource.img_url}}" alt="{{modalResource.name}}">
+          </li>
+          <li ng-show="auth.isAdmin" class="widgets__admin">
+            <a href="/admin" class="btn narrow">
+              Admin
             </a>
-            <p ng-bind="modalResource.description" class="modal__description paragraph-text">Loading...</p>
-          </div>
-
-          <div class="modal__footer">
-            <div class="pull-right">
-              <div class="label" ng-bind="modalResource.type.name"></div>
+          </li>
+          <li class="widgets__signout">
+            <a href class="btn narrow" ng-click="auth.signOut(); showNav = !showNav">
+              Sign out
+            </a>
+          </li>
+          <li class="widgets__submit">
+            <a href class="btn primary narrow" ng-click="modal.newResource()">Submit Resource</a>
+          </li>
+          <li class="widgets__search">
+            <div>
+              <input type="text" ng-model="search.name">
             </div>
-            <a ng-href="{{modalResource.url}}" ng-bind="modalResource.url" target="_blank"></a>
-          </div>
-        </div>
-      </div>
-      <div ng-click="modal(false)" class="modal__close-button">&times;</div>
-    </div>
-  </div>
-</modal>
-<!-- modal: end -->
+          </li>
+        </ul>
 
+        <ul ng-switch-default>
+          <li class="widgets__signin">
+            <a href class="btn narrow" ng-click="modal.signIn()">Sign in</a>
+          </li>
+          <li class="widgets__signup">
+            <a href class="btn narrow" ng-click="modal.signUp()">Sign up</a>
+          </li>
+          <li class="widgets__submit">
+            <a href class="btn primary narrow" ng-click="modal.newResource()">Submit Resource</a>
+          </li>
+          <li class="widgets__search">
+            <div>
+              <input type="text" ng-model="search.name">
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <h1 id="logo">
+      <a ng-href="/">WebTools</a>
+    </h1>
+  </div>
+
+  <nav ng-show="showNav" class="nav--main" ng-switch on="auth.isLogged">
+    <ul class="nav--main__wrapper" ng-switch-when="true">
+      <li ng-show="auth.isAdmin" class="widgets__admin">
+        <a href="/admin" class="btn">
+          Admin
+        </a>
+      </li>
+      <li class="widgets__signout">
+        <a href class="btn" ng-click="auth.signOut(); showNav = !showNav">
+          Sign out
+        </a>
+      </li>
+      <li class="widgets__submit">
+        <a href class="btn primary" ng-click="modal.newResource(); showNav = !showNav">Submit Resource</a>
+      </li>
+      <li class="widgets__search">
+        <div>
+          <input type="text" ng-model="search.name">
+        </div>
+      </li>
+    </ul>
+
+    <ul class="nav--main__wrapper" ng-switch-default>
+      <li class="widgets__login--twitter">
+        <a href class="btn" ng-click="modal('signIn')">
+          Sign in
+        </a>
+      </li>
+      <li class="widgets__signup">
+        <a href class="btn" ng-click="modal('signUp')">
+          Sign up
+        </a>
+      </li>
+      <li class="widgets__submit">
+        <a href class="btn primary" ng-click="modal.newResource(); showNav = !showNav">Submit Resource</a>
+      </li>
+      <li class="widgets__search">
+        <div>
+          <input type="text" ng-model="search.name">
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+<!-- header: end -->
+
+<modal show="modalContent"></modal>
 
 <!-- page-wrapper: start -->
 <div class="page-wrapper">
+
 
   <div class="resources">
     <div ng-switch on="resourcesContent">
