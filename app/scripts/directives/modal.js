@@ -22,6 +22,14 @@ angular.module('chhResourcesApp')
 
   var linker = function (scope, elem, attrs) {
 
+    elem.bind('click', function (event) {
+
+      // Don't close the modal if click inside the modal element.
+      if (angular.element('.modal-wrapper-inner').get(0).contains(event.target)) {
+        return
+      }
+
+    });
     scope.$watch('show', function (newValue, oldValue) {
       if (oldValue === newValue) { return }
 
