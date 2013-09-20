@@ -8,7 +8,7 @@
 
 <div class="modal-body modal__separator">
   <a ng-href="{{modalResource.url}}" class="modal_cover-image" target="_blank">
-    <img src="{{modalResource.img_url}}" alt="{{modalResource.name}}">
+    <img ng-src="{{modalResource.img_url}}" alt="{{modalResource.name}}">
   </a>
   <p ng-bind="modalResource.description" class="modal__description paragraph-text">Loading</p>
 </div>
