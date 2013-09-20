@@ -23,7 +23,12 @@ angular.module('chhResourcesApp')
   var linker = function (scope, elem, attrs) {
 
     scope.$watch('show', function (newValue, oldValue) {
-      if (!!newValue) {
+      if (oldValue === newValue) { return }
+
+      if (!newValue || newValue === '') {
+        elem.html('');
+      }
+      else if (!!newValue) {
 
         var loader = getTemplate(scope.show);
 
@@ -34,13 +39,13 @@ angular.module('chhResourcesApp')
           + '<div class="modal__content" ng-switch on="modalContent">'
           + '</div>'
           + template
-          + '<div ng-click="modal(false)" class="modal__close-button">&times;</div>'
+          + '<div ng-click="modal.close()" class="modal__close-button">&times;</div>'
           + '</div>'
           + '</div>'
           + '</div>');
         })
         .then(function () {
-          elem.replaceWith($compile(elem.html())(scope));
+          elem.html($compile(elem.html())(scope.$root));
         });
 
       }

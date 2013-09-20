@@ -41,6 +41,10 @@ angular.module('chhResourcesApp'
 
       signUp: function () {
         $rootScope.modalContent = 'signUp';
+      },
+
+      close: function () {
+        $rootScope.modalContent = '';
       }
 
     }
