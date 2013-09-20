@@ -1,5 +1,5 @@
 <form name="newResourceForm" id="new-resource-form" ng-submit="submitNewResource()">
-  <div class="modal__header">
+  <div class="modal-header">
     <!-- resourc name: start -->
     <div class="modal__name" name="name"
       contenteditable ce-placeholder="Resource name..." ce-minlength=3 ce-maxlength=30
@@ -16,7 +16,7 @@
     <!-- resourc name: end -->
   </div>
 
-  <div class="modal__body">
+  <div class="modal-body">
   <!-- resource image: start -->
     <div class="modal__cover-image" dropzone model="resourceModel.img_url">
       <input type="text" name="img_url" style="display: none;" ng-model="resourceModel.img_url" required>
