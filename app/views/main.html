@@ -108,11 +108,8 @@
 <div class="page-wrapper">
 
 
-  <div class="resources">
-    <div ng-switch on="resourcesContent">
-      <div ng-switch-default             ng-include=" '/views/resources/index.html' "></div>
-      <div ng-switch-when="showAdmin"    ng-include=" '/views/admin/index.html' "></div>
-    </div>
+  <div class="resources" ui-view>
+    <div ng-include=" '/views/resources/index.html' "></div>
   </div>
 
   <div ng-include=" '/views/layouts/sidebar.html' "></div>

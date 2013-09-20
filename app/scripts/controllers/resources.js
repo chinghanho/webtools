@@ -2,9 +2,9 @@
 
 angular.module('chhResourcesApp')
   .controller('ResourcesCtrl'
-      , function($http, $rootScope, $routeParams, $scope, $timeout, Resources) {
+      , function($http, $rootScope, $stateParams, $scope, $timeout, Resources) {
 
-    var resourceId = $routeParams.resourceId;
+    var resourceId = $stateParams.resourceId;
 
     Resources.get({resourceId: resourceId}, function (resource) {
       $scope.resource = resource;
