@@ -51,7 +51,7 @@ angular.module('chhResourcesApp')
             $('.progress').remove();
             var callback = $.parseJSON(evt.target.responseText);
             if (callback.status == 'success') {
-              scope.$parent.resourceModel.img_url = callback.url;
+              scope.resourceModel.img_url = callback.url;
             }
             else {
               console.log('upload failed');
