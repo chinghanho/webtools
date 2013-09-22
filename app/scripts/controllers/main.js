@@ -2,11 +2,9 @@
 
 angular.module('chhResourcesApp')
 
-  .controller('MainCtrl'
-      , function ($rootScope, $scope, $location, Resources, Auth) {
+.controller('MainCtrl'
+    , function ($rootScope, $scope, $location, Resources) {
 
-    $scope.resources = Resources;
+  $scope.resources = Resources;
 
-    $rootScope.auth = Auth;
-
-  });
+});
