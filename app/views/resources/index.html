@@ -1,4 +1,4 @@
-<div class="resource-item box" ng-repeat="resource in filteredResources = (resources | filter:search)">
+<div class="resource-item box" ng-repeat="resource in filteredResources = (resources.data | filter:search)">
   <div class="resources-item__thumb clickable" ng-click="modal.showResource(resource)">
     <div class="resources-item__thumb--img">
       <div>

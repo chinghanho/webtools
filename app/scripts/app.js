@@ -7,7 +7,6 @@ angular.module('chhResourcesApp'
 
     $stateProvider
       .state('resources', {
-        // abstract: true,
         url: '/resources',
         templateUrl: '/views/main.html',
         controller: 'MainCtrl'
