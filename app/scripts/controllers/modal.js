@@ -8,17 +8,17 @@ angular.module('chhResourcesApp')
   // $scope.typeModel = {};
 
   $scope.submitNewResource = function() {
-    $http.post('/api/resources', $scope.resourceModel)
-      .success(function(data, status, headers, config) {
-        Resources.data.push(data);
-        $rootScope.modal.close();
-      })
-      .error(function(data, status, headers, config) {
-        $scope.alertMsg = data;
-        $timeout(function() {
-          $scope.alertMsg = undefined;
-        }, 4500);
-      });
+
+    var resource = new Resources.Service();
+    resource.name = $scope.resourceModel.name;
+    resource.img_url = $scope.resourceModel.img_url;
+    resource.description = $scope.resourceModel.description;
+    resource.url = $scope.resourceModel.url;
+    resource.type = $scope.resourceModel.type;
+    resource.$save(function (resource) {
+      Resources.data.push(resource);
+      $rootScope.modal.close();
+    });
   };
 
   $scope.submitNewType = function() {

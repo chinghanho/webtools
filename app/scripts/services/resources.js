@@ -33,7 +33,9 @@ angular.module('chhResourcesApp')
         });
 
       return promised;
-    }
+    },
+
+    Service: Service
 
   }
 
