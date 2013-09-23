@@ -2,7 +2,7 @@
 
 angular.module('chhResourcesApp')
 
-.directive('modal', function ($document, $http, $templateCache, $compile, $rootScope) {
+.directive('modal', function ($document, $http, $templateCache, $compile, $rootScope, Auth) {
 
   var getTemplate = function (contentType) {
     var templateLoader;
@@ -10,11 +10,21 @@ angular.module('chhResourcesApp')
     var templateMap = {
       signUp: '/views/users/new.html',
       signIn: '/views/sessions/new.html',
-      newResource: '/views/resources/new.html',
+      newResource: { url: '/views/resources/new.html', requireAuthorization: true },
       showResource: '/views/resources/show-for-modal.html'
     };
 
-    var templateUrl = templateMap[contentType];
+    var templateUrl = (function () {
+      if (angular.isObject(templateMap[contentType])) {
+        if (templateMap[contentType].requireAuthorization && !Auth.isLogged) {
+          return templateMap['signIn'];
+        } else {
+          return templateMap[contentType].url;
+        }
+      } else {
+        return templateMap[contentType];
+      }
+    })();
 
     templateLoader = $http.get(templateUrl, {cache: $templateCache});
 
