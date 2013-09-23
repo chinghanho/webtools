@@ -63,7 +63,7 @@
 
       <div class="modal__type">
         <select name="type" ui-select2 ng-model="resourceModel.type" required>
-          <option ng-repeat="type in types" value="{{type._id}}">{{type.name}}</option>
+          <option ng-repeat="type in types.data" value="{{type._id}}">{{type.name}}</option>
         </select>
       </div>
     </div>
