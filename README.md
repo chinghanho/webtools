@@ -1,0 +1,3 @@
+## Deploy
+
+    cap deploy:assets
