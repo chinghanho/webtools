@@ -16,7 +16,7 @@ angular.module('chhResourcesApp')
     $http.post('/api/comments', $scope.commentModel)
       .success(function (data) {
         $scope.comments.push(data);
-        $scope.modal(false);
+        $scope.commentModel = {};
       })
       .error(function () {
         // $scope.alertMsg = data;
