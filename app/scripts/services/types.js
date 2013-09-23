@@ -12,7 +12,9 @@ angular.module('chhResourcesApp')
 
   var Types = {
 
-    data: {}
+    data: {},
+
+    Service: Service
 
   };
 
