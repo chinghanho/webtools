@@ -14,14 +14,14 @@
     margin-bottom: gutter($large-display-break);
   }
 
-  .resource--info__name {
+  .resource-info__name {
     @include span-columns(6, 12);
     h3 {
       padding-right: 0 !important;
     }
   }
 
-  .resource--info__description {
+  .resource-info__description {
     @include span-columns(6, 12);
     p {
       padding-top: 0 !important;
@@ -29,7 +29,7 @@
     }
   }
 
-  .resource--info__img {
+  .resource-info__img {
     @include span-columns(6 omega, 12);
   }
 
@@ -57,14 +57,14 @@
     margin-bottom: gutter($desktop-break);
   }
 
-  .resource--info__name {
+  .resource-info__name {
     @include span-columns(6, 12);
     h3 {
       padding-right: 0 !important;
     }
   }
 
-  .resource--info__description {
+  .resource-info__description {
     @include span-columns(6, 12);
     p {
       padding-top: 0 !important;
@@ -72,7 +72,7 @@
     }
   }
 
-  .resource--info__img {
+  .resource-info__img {
     @include span-columns(6 omega, 12);
   }
 }
@@ -94,14 +94,14 @@
     margin-bottom: gutter($tables-break);
   }
 
-  .resource--info__name {
+  .resource-info__name {
     @include span-columns(4, 9);
     h3 {
       padding-right: 0 !important;
     }
   }
 
-  .resource--info__description {
+  .resource-info__description {
     @include span-columns(4, 9);
     p {
       padding-top: 0 !important;
@@ -109,7 +109,7 @@
     }
   }
 
-  .resource--info__img {
+  .resource-info__img {
     @include span-columns(5 omega, 9);
   }
 }
@@ -132,7 +132,7 @@
     margin-bottom: gutter($phones-to-tables-break);
   }
 
-  .resource--info__img img {
+  .resource-info__img img {
     padding-top: 0 !important;
   }
 }
@@ -157,7 +157,7 @@
     margin-bottom: gutter($phones-break);
   }
 
-  .resource--info__img img {
+  .resource-info__img img {
     padding-top: 0 !important;
   }
 }
@@ -206,31 +206,31 @@
   text-align: center;
 }
 
-.resource--info {
+.resource-info {
   // padding: 15px;
 }
 
-.resource--info__name {
+.resource-info__name {
   h3 {
     padding: $gutter-width;
     color: $heading-text-color;
   }
 }
 
-.resource--info__description p, .resource--info__url a {
+.resource-info__description p, .resource-info__url a {
   padding: $gutter-width;
 }
 
-  .resource--info__description p {
+  .resource-info__description p {
     line-height: 1.6;
   }
 
-  .resource--info__url a {
+  .resource-info__url a {
     display: inline-block;
     padding-top: 0;
   }
 
-.resource--info__img {
+.resource-info__img {
   img {
     @include box-sizing(border-box);
     padding: $gutter-width;

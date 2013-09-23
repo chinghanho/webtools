@@ -1,48 +1,58 @@
-<div class="resource box">
-  <div class="resource--info clearfix">
-    <div class="resource--info__name">
-      <a ng-href="{{resource.url}}" target="_blank">
-        <h3 ng-bind="resource.name || 'Can not fetch the name of this resource. Please refresh your browser try it again.'"></h3>
-      </a>
-    </div>
-
-    <div class="resource--info__img">
-      <img ng-src="{{resource.img_url}}" alt="{{resource.name}}">
-    </div>
-
-    <div class="resource--info__description">
-      <p ng-bind="resource.description || 'Can not fetch the description of this resource. Please refresh your browser try it again.'"></p>
-    </div>
-
-    <div class="resource--info__url">
-      <a ng-href="{{resource.url}}" ng-bind="resource.url" target="_blank"></a>
+<ng-switch on="searching">
+  <div ng-switch-when="index">
+    <div class="resources" ui-view>
+      <div ng-include=" '/views/resources/index.html' "></div>
     </div>
   </div>
-</div>
 
-<div ng-controller="CommentsCtrl">
-  <div class="resource resource--comments__empty" ng-hide="comments.length">
-    There are not any comments.
-  </div>
-
-  <div class="resource resource--comments box" ng-show="comments.length">
-    <div ng-repeat="comment in comments">
-      <div class="comment">
-        <div class="comment-header clearfix">
-          <div class="comment-author" ng-bind="comment.user.login"></div>
-          <div class="comment-datetime" ng-bind="comment.create_at | date:'yyyy-MM-dd'"></div>
+  <div ng-switch-default="show">
+    <div class="resource box">
+      <div class="resource-info clearfix">
+        <div class="resource-info__name">
+          <a ng-href="{{resource.url}}" target="_blank">
+            <h3 ng-bind="resource.name || 'Can not fetch the name of this resource. Please refresh your browser try it again.'"></h3>
+          </a>
         </div>
-        <div class="comment-body" ng-bind="comment.body"></div>
+
+        <div class="resource-info__img">
+          <img ng-src="{{resource.img_url}}" alt="{{resource.name}}">
+        </div>
+
+        <div class="resource-info__description">
+          <p ng-bind="resource.description || 'Can not fetch the description of this resource. Please refresh your browser try it again.'"></p>
+        </div>
+
+        <div class="resource-info__url">
+          <a ng-href="{{resource.url}}" ng-bind="resource.url" target="_blank"></a>
+        </div>
+      </div>
+    </div>
+
+    <div ng-controller="CommentsCtrl">
+      <div class="resource resource--comments__empty" ng-hide="comments.length">
+        There are not any comments.
+      </div>
+
+      <div class="resource resource--comments box" ng-show="comments.length">
+        <div ng-repeat="comment in comments">
+          <div class="comment">
+            <div class="comment-header clearfix">
+              <div class="comment-author" ng-bind="comment.user.login"></div>
+              <div class="comment-datetime" ng-bind="comment.create_at | date:'yyyy-MM-dd'"></div>
+            </div>
+            <div class="comment-body" ng-bind="comment.body"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource resource--comments box" ng-show="auth.isLogged">
+        <div class="resource--comments__inner">
+          <form name="newCommentForm" ng-submit="submitNewComment()">
+            <textarea ng-model="commentModel.body" name="body" placeholder="Leave a comment"></textarea>
+            <button type="submit" class="btn">Comment</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="resource resource--comments box" ng-show="auth.isLogged">
-    <div class="resource--comments__inner">
-      <form name="newCommentForm" ng-submit="submitNewComment()">
-        <textarea ng-model="commentModel.body" name="body" placeholder="Leave a comment"></textarea>
-        <button type="submit" class="btn">Comment</button>
-      </form>
-    </div>
-  </div>
-</div>
+</ng-switch>

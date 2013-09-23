@@ -2,20 +2,25 @@
 
 angular.module('chhResourcesApp')
   .controller('ResourcesCtrl'
-      , function ($http, $rootScope, $stateParams, $scope, Resources) {
+      , function ($http, $rootScope, $stateParams, $scope, $state, Resources) {
 
     var resourceId = $stateParams.resourceId;
 
     $scope.resource = Resources.findById(resourceId);
 
-    // $rootScope.$watch('auth.user', function(newValue) {
-    //   if (newValue != null) {
-    //     $scope.modal(false);
-    //   }
-    // });
-
     // $scope.clickUploader = function() {
     //   $('#cover-image-uploader').click();
     // }
+
+    $rootScope.$watch('search.name', function (newValue, oldValue) {
+
+      if (newValue === oldValue) { return };
+
+      $scope.searching = 'index';
+      if (newValue === '') {
+        $scope.searching = 'show';
+      };
+
+    });
 
   });
