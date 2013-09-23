@@ -2,28 +2,44 @@
 
 angular.module('chhResourcesApp')
 
-.service('ResourcesService', function ($resource) {
+.factory('Resources', function ($resource, $rootScope, $q) {
 
   var url     = '/api/resources/:resourceId'
     , params  = {}
     , actions = {};
 
-  this.getResources = function () {
-    return $resource(url, params, actions);
-  }
+  var Service = $resource(url, params, actions);
 
-})
-
-.factory('Resources', function (ResourcesService) {
+  var deferred = $q.defer();
 
   var Resources = {
 
-    data: {}
+    data: {},
+
+    findById: function (id) {
+
+      var result;
+
+      var promised = deferred.promise
+        .then(function () {
+          angular.forEach(Resources.data, function (resource) {
+            if (resource._id === id) {
+              result = resource;
+            }
+          });
+        })
+        .then(function () {
+          return result;
+        });
+
+      return promised;
+    }
 
   }
 
-  ResourcesService.getResources().query({}, function (resources) {
+  Service.query({}, function (resources) {
     Resources.data = resources;
+    deferred.resolve();
   });
 
   return Resources;

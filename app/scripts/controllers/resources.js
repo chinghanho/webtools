@@ -2,13 +2,11 @@
 
 angular.module('chhResourcesApp')
   .controller('ResourcesCtrl'
-      , function($http, $rootScope, $stateParams, $scope, ResourcesService) {
+      , function ($http, $rootScope, $stateParams, $scope, Resources) {
 
     var resourceId = $stateParams.resourceId;
 
-    ResourcesService.getResources().get({resourceId: resourceId}, function (resource) {
-      $scope.resource = resource;
-    });
+    $scope.resource = Resources.findById(resourceId);
 
     // $rootScope.$watch('auth.user', function(newValue) {
     //   if (newValue != null) {
