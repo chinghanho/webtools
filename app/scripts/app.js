@@ -20,15 +20,18 @@ angular.module('chhResourcesApp'
       url: '/admin',
       templateUrl: '/views/admin/index.html',
       controller: 'MainCtrl'
+    })
+    .state('users', {
+      url: '/users',
+      templateUrl: '/views/users/index.html'
+    })
+    .state('users.show', {
+      url: '/:userId',
+      templateUrl: '/views/users/show.html',
+      controller: 'UsersCtrl'
     });
 
   $urlRouterProvider.otherwise('/resources');
-
-  //   .when('/users/:userName', {
-  //     templateUrl: '/views/users/show.html',
-  //     controller: 'UsersCtrl'
-  //   })
-  //   .otherwise({redirectTo: '/'});
 
   $locationProvider.html5Mode(true);
 
