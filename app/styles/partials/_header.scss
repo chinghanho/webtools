@@ -6,7 +6,7 @@
 @include at-breakpoint($large-display) {
   .icon-list { display: none; }
   .nav--widgets {
-    .widgets__submit, .widgets__search { display: none !important; }
+    .widgets-submit, .widgets-search { display: none !important; }
   }
 }
 
@@ -35,7 +35,7 @@
 @include at-breakpoint($tables) {
   .nav--widgets > nav { display: none; }
   .nav--widgets {
-    .widgets__submit, .widgets__search { display: none; }
+    .widgets-submit, .widgets-search { display: none; }
   }
   #logo {
     left: 0;

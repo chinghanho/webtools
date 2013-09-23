@@ -10,14 +10,18 @@
 @include at-breakpoint($large-display) {
   .nav--widgets {
     [class^="widgets__"],
-    [class*=" widgets__"] {
+    [class*=" widgets__"],
+    [class^="widgets-"],
+    [class*=" widgets-"] {
       display: inline-block;
       margin-bottom: 0;
     }
   }
 
   [class^="widgets__"],
-  [class*=" widgets__"] {
+  [class*=" widgets__"],
+  [class^="widgets-"],
+  [class*=" widgets-"] {
     margin-bottom: 10px;
   }
 }
@@ -34,7 +38,9 @@
 @include at-breakpoint($desktop) {
 
   [class^="widgets__"],
-  [class*=" widgets__"] {
+  [class*=" widgets__"],
+  [class^="widgets-"],
+  [class*=" widgets-"] {
     display: inline-block;
     margin-left: 10px;
   }
@@ -53,7 +59,9 @@
 @include at-breakpoint($tables) {
 
   [class^="widgets__"],
-  [class*=" widgets__"] {
+  [class*=" widgets__"],
+  [class^="widgets-"],
+  [class*=" widgets-"] {
     margin-bottom: 10px;
   }
 
@@ -70,7 +78,9 @@
 @include at-breakpoint($phones-to-tables) {
 
   [class^="widgets__"],
-  [class*=" widgets__"] {
+  [class*=" widgets__"],
+  [class^="widgets-"],
+  [class*=" widgets-"] {
     margin-bottom: 10px;
   }
 
@@ -88,13 +98,15 @@
 @include at-breakpoint($phones) {
 
   [class^="widgets__"],
-  [class*=" widgets__"] {
+  [class*=" widgets__"],
+  [class^="widgets-"],
+  [class*=" widgets-"] {
     margin-bottom: 10px;
   }
 
 }
 
-.widgets__search {
+.widgets-search {
   input {
     resize: none;
   }
