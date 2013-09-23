@@ -1,51 +1,68 @@
-<div class="box">
-  <div class="admin__stats clearfix">
+<div class="modal-overlay"></div>
+<div class="alert" ng-class="{'alert-error': alertMsg, 'alert-success': infoMsg}" ng-show="alertMsg || infoMsg" ng-bind="alertMsg || infoMsg"></div>
 
-    <div class="admin__resources-stats">
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Resource Name</th>
-          </tr>
-        </thead>
+<div ng-include=" '/views/layouts/header.html' "></div>
 
-        <tbody>
-          <tr ng-repeat="resource in resources">
-            <td ng-bind="resource._id"></td>
-            <td>
-              <a ng-bind="resource.name" ng-href="/resources/{{resource._id}}"></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<div class="page-wrapper">
+
+  <div class="resources">
+
+    <div class="box">
+      <div class="admin__stats clearfix">
+
+        <div class="admin__resources-stats">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Resource Name</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr ng-repeat="resource in resources.data">
+                <td ng-bind="resource._id"></td>
+                <td>
+                  <a ng-bind="resource.name" ng-href="/resources/{{resource._id}}"></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="admin__types-stats">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Type Name</th>
+                <th>Resources Count</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr ng-repeat="type in types">
+                <td ng-bind="type._id"></td>
+                <td ng-bind="type.name"></td>
+                <td ng-bind="type.resources_count"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="admin__new-type">
+        <form name="newTypeForm" ng-submit="submitNewType()">
+          <input name="name" type="text" ng-model="typeModel.name">
+          <button type="submit" class="btn primary" ng-disabled="newTypeForm.$invalid">Create New Type</button>
+        </form>
+      </div>
     </div>
 
-    <div class="admin__types-stats">
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Type Name</th>
-            <th>Resources Count</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr ng-repeat="type in types">
-            <td ng-bind="type._id"></td>
-            <td ng-bind="type.name"></td>
-            <td ng-bind="type.resources_count"></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
   </div>
 
-  <div class="admin__new-type">
-    <form name="newTypeForm" ng-submit="submitNewType()">
-      <input name="name" type="text" ng-model="typeModel.name">
-      <button type="submit" class="btn primary" ng-disabled="newTypeForm.$invalid">Create New Type</button>
-    </form>
-  </div>
+  <div ng-include=" '/views/layouts/sidebar.html' "></div>
+
 </div>
+
+<footer ng-include=" '/views/layouts/footer.html' "></footer>

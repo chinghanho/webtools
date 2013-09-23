@@ -6,32 +6,24 @@ angular.module('chhResourcesApp'
 .config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
 
   $stateProvider
-    .state('resources', {
+    .state('index', {
       url: '/resources',
       templateUrl: '/views/main.html',
       controller: 'MainCtrl'
     })
-    .state('resources.show', {
+    .state('index.show', {
       url: '/:resourceId',
       templateUrl: '/views/resources/show.html',
       controller: 'ResourcesCtrl'
+    })
+    .state('admin', {
+      url: '/admin',
+      templateUrl: '/views/admin/index.html',
+      controller: 'MainCtrl'
     });
 
   $urlRouterProvider.otherwise('/resources');
 
-  // $routeProvider
-  //   .when('/', {
-  //     templateUrl: '/views/main.html',
-  //     controller: 'MainCtrl'
-  //   })
-  //   .when('/resources/:resourceId', {
-  //     templateUrl: '/views/resources/show.html',
-  //     controller: 'ResourcesCtrl'
-  //   })
-  //   .when('/admin', {
-  //     templateUrl: '/views/admin/index.html',
-  //     controller: 'ResourcesCtrl'
-  //   })
   //   .when('/users/:userName', {
   //     templateUrl: '/views/users/show.html',
   //     controller: 'UsersCtrl'
