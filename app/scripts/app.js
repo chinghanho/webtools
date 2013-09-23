@@ -44,7 +44,7 @@ angular.module('chhResourcesApp'
 
   $rootScope.search = {};
 
-  $rootScope.types = Types.query({});
+  $rootScope.types = Types;
 
   $rootScope.modalContent = '';
   $rootScope.modal = {
