@@ -1,15 +1,22 @@
-<div class="resource-item box" ng-repeat="resource in filteredResources = (resources.data | filter:search)">
-  <div class="resources-item__thumb clickable" ng-click="modal.showResource(resource)">
-    <div class="resources-item__thumb--img">
-      <div>
-        <img ng-src="{{resource.img_url}}" alt="{{resource.name}}">
-      </div>
-    </div>
+<div class="clearfix"
+    infinite-scroll="resources.moreResources()"
+    infinite-scroll-distance="0"
+    infinite-scroll-immediate-check="false">
 
-    <div class="resources-item__thumb--info">
-      <div class="resources-item__thumb--info__name" ng-bind="resource.name"></div>
-      <div class="resources-item__thumb--info__type">
-        <div class="label" ng-bind="resource.type.name"></div>
+  <div class="resource-item box"
+    ng-repeat="resource in filteredResources = (resources.data | filter:search)">
+    <div class="resources-item__thumb clickable" ng-click="modal.showResource(resource)">
+      <div class="resources-item__thumb--img">
+        <div>
+          <img ng-src="{{resource.img_url}}" alt="{{resource.name}}">
+        </div>
+      </div>
+
+      <div class="resources-item__thumb--info">
+        <div class="resources-item__thumb--info__name" ng-bind="resource.name"></div>
+        <div class="resources-item__thumb--info__type">
+          <div class="label" ng-bind="resource.type.name"></div>
+        </div>
       </div>
     </div>
   </div>

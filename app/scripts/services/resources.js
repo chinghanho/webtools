@@ -5,16 +5,18 @@ angular.module('chhResourcesApp')
 .factory('Resources', function ($resource, $rootScope, $q) {
 
   var url     = '/api/resources/:resourceId'
-    , params  = {}
+    , params  = {page: 1}
     , actions = {};
 
   var Service = $resource(url, params, actions);
 
-  var deferred = $q.defer();
+  var deferred = $q.defer()
+    , page = page || 1;
 
   var Resources = {
 
     data: {},
+    busy: false,
 
     findById: function (id) {
 
@@ -33,6 +35,19 @@ angular.module('chhResourcesApp')
         });
 
       return promised;
+    },
+
+    moreResources: function () {
+
+      if (Resources.busy) { return }
+      Resources.busy = true;
+      page += 1;
+
+      Service.query({page: page}, function (resources) {
+        console.dir(Resources.data);
+        Resources.data = Resources.data.concat(resources);
+        Resources.busy = false;
+      });
     },
 
     Service: Service
