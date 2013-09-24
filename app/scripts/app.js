@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chhResourcesApp'
-    , ['ui.select2', 'ngCookies', 'ngResource', 'angularMoment', 'ui.router'])
+    , ['ui.select2', 'ngCookies', 'ngResource', 'angularMoment', 'ui.router', 'infinite-scroll'])
 
 .config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
 
