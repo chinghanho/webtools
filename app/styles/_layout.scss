@@ -26,7 +26,7 @@ $desktop: 981px $desktop-break 1200px;
 $large-display: 1201px $large-display-break;
 
 
-.page-wrapper, .page-header__wrapper, .nav--main__wrapper {
+.page-wrapper, .page-header-wrapper, .nav--main__wrapper {
   @include container;
 }
 
