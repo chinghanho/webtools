@@ -182,7 +182,7 @@ module.exports = function (grunt) {
     },
     compass: {
       options: {
-        require: 'susy',
+        require: ['susy', 'animation'],
         sassDir: '<%= yeoman.app %>/styles',
         cssDir: '.tmp/styles',
         generatedImagesDir: '.tmp/images/generated',
