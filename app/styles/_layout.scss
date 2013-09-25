@@ -26,7 +26,8 @@ $desktop: 981px $desktop-break 1200px;
 $large-display: 1201px $large-display-break;
 
 
-.page-wrapper, .page-header-wrapper, .nav--main__wrapper {
+.page-wrapper, .page-header-wrapper,
+.nav--main__wrapper, .cover-wrapper {
   @include container;
 }
 
@@ -46,8 +47,8 @@ $large-display: 1201px $large-display-break;
 @include at-breakpoint($large-display) {
   .resources { @include span-columns(12, $large-display-break); }
   .sidebar { @include span-columns(2 omega, $total-columns); }
+  .cover { margin-bottom: gutter($large-display-break); }
 
-  .page-header { margin-bottom: gutter($large-display-break); }
   .nav--main { display: none; }
 }
 
@@ -63,8 +64,8 @@ $large-display: 1201px $large-display-break;
 @include at-breakpoint($desktop) {
   .resources { @include span-columns($desktop-break); }
   .sidebar { display: none; }
+  .cover { margin-bottom: gutter($large-display-break); }
 
-  .page-header { margin-bottom: gutter($desktop-break); }
   .nav--main { display: none; }
 }
 
@@ -80,7 +81,8 @@ $large-display: 1201px $large-display-break;
 @include at-breakpoint($tables) {
   .resources { @include span-columns($tables-break); }
   .sidebar { display: none; }
-  .page-header { margin-bottom: gutter($tables-break); }
+  .cover { margin-bottom: gutter($large-display-break); }
+
   .nav--main { margin-bottom: $grid-padding; }
 }
 
@@ -95,7 +97,8 @@ $large-display: 1201px $large-display-break;
 @include at-breakpoint($phones-to-tables) {
   .resources { @include span-columns($phones-to-tables-break); }
   .sidebar { display: none; }
-  .page-header { margin-bottom: gutter($phones-to-tables-break); }
+  .cover { margin-bottom: gutter($large-display-break); }
+
   .nav--main { margin-bottom: $grid-padding; }
 }
 
@@ -111,6 +114,7 @@ $large-display: 1201px $large-display-break;
 @include at-breakpoint($phones) {
   .resources { @include span-columns($phones-break); }
   .sidebar { display: none; }
-  .page-header { margin-bottom: gutter($phones-break); }
+  .cover { margin-bottom: gutter($large-display-break); }
+
   .nav--main { margin-bottom: $grid-padding; }
 }

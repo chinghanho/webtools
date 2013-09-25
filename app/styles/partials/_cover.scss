@@ -1,0 +1,32 @@
+.cover {
+  @include background(hsla(240, 2%, 13%, 1) image-url('dark-bg.png') repeat fixed 0% 0%);
+  border-bottom: 1px solid $border-color;
+  @include box-shadow(hsla(0, 0%, 100%, 1) 0 1px);
+
+  @include animation-name(masthead);
+  @include animation-duration(80s);
+  @include animation-fill-mode(both);
+  @include animation-timing-function(linear);
+  @include animation-iteration-count(infinite);
+}
+
+.cover-wrapper {
+  padding: 45px 0 50px;
+  // height: 600px;
+}
+
+.cover-inner {
+  color: hsla(0, 0%, 96%, 1);
+}
+
+.hero-unit {
+  text-align: center;
+  font-size: 66px;
+  font-family: 'Yanone Kaffeesatz';
+}
+
+@include keyframes(masthead) {
+  0% { background-position: 0% 0%; }
+  50% { background-position: -50% -100%; }
+  100% { background-position: -100% -200%; }
+}
