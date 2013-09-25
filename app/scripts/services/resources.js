@@ -44,6 +44,11 @@ angular.module('chhResourcesApp')
       page += 1;
 
       Service.query({page: page}, function (resources) {
+        if (!resources.length) {
+          Resources.busy = false;
+          page -= 1;
+          return
+        }
         Resources.data = Resources.data.concat(resources);
         Resources.busy = false;
       });
