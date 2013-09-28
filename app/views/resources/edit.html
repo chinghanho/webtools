@@ -1,0 +1,71 @@
+<form ng-controller="ModalCtrl" name="editResourceForm" id="new-resource-form" ng-submit="submitUpdatedResource()">
+  <div class="modal-header">
+    <!-- resourc name: start -->
+    <div class="modal__name" name="name"
+      contenteditable ce-placeholder="Resource name..." ce-minlength=3 ce-maxlength=30
+      ng-model="resourceModel.name"></div>
+
+    <div class="popover bottom" ng-show="editResourceForm.name.$dirty && editResourceForm.name.$invalid">
+      <div class="arrow"></div>
+      <h3 class="popover-title">Resource name</h3>
+      <div class="popover-content" ng-show="editResourceForm.name.$error.minlength">Resource name at least 3 letters.</div>
+      <div class="popover-content" ng-show="editResourceForm.name.$error.maxlength">Resource name at most 30 letters.</div>
+    </div>
+
+    <input type="hidden" ng-model="resourceModel.name">
+    <!-- resourc name: end -->
+  </div>
+
+  <div class="modal-body">
+    <!-- resource image: start -->
+    <img ng-src="{{modalResource.img_url}}" alt="{{modalResource.name}}">
+    <!-- resource image: end -->
+
+    <!-- resource description: start -->
+    <div class="modal__separator">
+      <div class="paragraph-text modal__description" name="description"
+        contenteditable ce-placeholder="Resource description..." ce-minlength=20
+        ng-model="resourceModel.description"></div>
+
+      <div class="popover bottom"
+        ng-show="editResourceForm.description.$dirty && editResourceForm.description.$invalid">
+        <div class="arrow"></div>
+        <h3 class="popover-title">Resource description</h3>
+        <div class="popover-content" ng-show="editResourceForm.description.$error.minlength">Resource description at least 20 letters.</div>
+      </div>
+
+      <textarea style="display: none;"></textarea>
+    </div>
+    <!-- resource description: end -->
+
+    <div class="modal__separator paragraph-text clearfix">
+      <!-- resource url: start -->
+      <div class="modal__url">
+        <div class="" name="url"
+          contenteditable ce-placeholder="Resource URL..." ce-url="^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$"
+          ng-model="resourceModel.url"></div>
+
+        <div class="popover bottom"
+          ng-show="editResourceForm.url.$dirty && editResourceForm.url.$invalid">
+          <div class="arrow"></div>
+          <h3 class="popover-title">Resource URL</h3>
+          <div class="popover-content">Resource URL must be used with a prefix: `http://`.</div>
+        </div>
+
+        <input type="hidden">
+      </div>
+      <!-- resource url: end -->
+
+      <div class="modal__type">
+        <select name="type" ui-select2 ng-model="resourceModel.type" required>
+          <option ng-repeat="type in types.data" value="{{type._id}}">{{type.name}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal__submit">
+    <button type="submit" class="btn primary"
+      ng-disabled="editResourceForm.$invalid">Submit New Resource</button>
+  </div>
+</form>

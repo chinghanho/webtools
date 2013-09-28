@@ -5,8 +5,10 @@ angular.module('chhResourcesApp')
 .factory('Resources', function ($resource, $rootScope, $q) {
 
   var url     = '/api/resources/:resourceId'
-    , params  = {page: 1}
-    , actions = {};
+    , params  = {}
+    , actions = {
+      update: {method: 'PUT'}
+    };
 
   var Service = $resource(url, params, actions);
 

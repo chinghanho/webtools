@@ -11,7 +11,8 @@ angular.module('chhResourcesApp')
       signUp: '/views/users/new.html',
       signIn: '/views/sessions/new.html',
       newResource: { url: '/views/resources/new.html', requireAuthorization: true },
-      showResource: '/views/resources/show-for-modal.html'
+      showResource: '/views/resources/show-for-modal.html',
+      editResource: '/views/resources/edit.html'
     };
 
     var templateUrl = (function () {

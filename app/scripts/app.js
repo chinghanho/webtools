@@ -69,6 +69,11 @@ angular.module('chhResourcesApp'
       $rootScope.modalResource = resource;
     },
 
+    editResource: function (resource) {
+      $rootScope.modalContent = 'editResource';
+      $rootScope.modalResource = resource;
+    },
+
     close: function () {
       $rootScope.modalContent = '';
     }
